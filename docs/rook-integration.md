@@ -52,6 +52,12 @@ The connection guide in each demo describes the five stages: prepare, open, exec
 
 The hooks return both `output` and `agent_reply` for compatibility and save a separate evidence file per conversation. Provider usage must be complete before enabling cost tests. Some Rook versions may show native call assertions as Unable to Verify even when receipt criteria can be judged; retain that distinction in the report.
 
+## Show results in the hosted web UI
+
+From the prepared demo's interactive Rook terminal, run `/sync`, then `/run --only SC-101 --profile demo-normal`. Follow the prompts and open `/ui` to view the hosted report. Hosted runs require a signed-in Rook account. Runs using `--test` stay local and do not appear there.
+
+The demo launcher includes a compatibility adapter for the current CLI and hosted API: it sends hand-authored scenario origin as `manual`, retaining `author: user`, the original YAML and content hash. It also preserves the recorded authorship of unchanged insurance features. This addresses the hosted sync HTTP 500 observed on 2026-09-17; it does not alter test criteria or results. Use `npm run rook -- DEMO_NAME` so interactive sync receives the adapter.
+
 ## Rebuild and check the repository
 
 ```bash

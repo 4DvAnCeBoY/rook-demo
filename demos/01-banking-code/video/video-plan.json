@@ -1,0 +1,136 @@
+{
+  "id": "banking-agent-code",
+  "title": "Northstar Bank \u2014 Developer demo",
+  "durationSeconds": 240,
+  "audio": false,
+  "scenes": [
+    {
+      "asset": "01-banking-code/intro",
+      "duration": 15,
+      "captions": [
+        "Meet Maya, a customer of Northstar Bank. The assistant helps with a familiar service request.",
+        "This edited recording follows the customer\u2019s request into the agent\u2019s actions and the evidence Rook checks."
+      ]
+    },
+    {
+      "asset": "01-banking-code/flow",
+      "duration": 15,
+      "captions": [
+        "The Everyday Banking Assistant connects the conversation to business tools. Each tool has a specific responsibility.",
+        "The outcome to verify is the transfer receipt and updated balances. A convincing answer alone does not establish that the action happened."
+      ]
+    },
+    {
+      "asset": "01-banking-code/audience",
+      "duration": 15,
+      "captions": [
+        "For developers, start with the agent source and requirements. Follow a failed criterion into the tool that owns the business rule.",
+        "Both audiences can connect the customer\u2019s expectations to the same observable business outcome."
+      ]
+    },
+    {
+      "asset": "01-banking-code/happy",
+      "duration": 15,
+      "captions": [
+        "Start with the normal request: \u201cTransfer USD 200 from ACC-1001 to SAV-1001.\u201d",
+        "Inspect the reply alongside the transfer receipt and updated balances. This application is connected to the configured language model."
+      ]
+    },
+    {
+      "asset": "01-banking-code/multi",
+      "duration": 15,
+      "captions": [
+        "Read the balance, then ask for the balance of the same account. The second turn must preserve which account Maya meant.",
+        "The conversation identifier stays the same across these turns. Starting a new session gives the next scenario separate business state."
+      ]
+    },
+    {
+      "asset": "01-banking-code/before",
+      "duration": 15,
+      "captions": [
+        "Now challenge the business rule: Transfer USD 1200 without manager approval.",
+        "Transfers above USD 1000 require approval. Compare what the assistant says with the ledger and tool trace."
+      ]
+    },
+    {
+      "asset": "01-banking-code/after",
+      "duration": 15,
+      "captions": [
+        "Choose After the fix and repeat the request in a fresh session. This browser selection controls its own conversation.",
+        "The Rook run selects its version separately. Correlate evidence by conversation and version before comparing outcomes."
+      ]
+    },
+    {
+      "asset": "01-banking-code/hosted-agent",
+      "duration": 15,
+      "captions": [
+        "Open this edition in Rook\u2019s hosted web UI. Review the agent, its business functions and the scenario collection.",
+        "The collection contains 18 authored categories. These are reviewable examples; they are not a claim that all 18 tests have passed."
+      ]
+    },
+    {
+      "asset": "01-banking-code/hosted-scenario",
+      "duration": 15,
+      "captions": [
+        "Open the selected scenario and read its acceptance criteria before looking at the result.",
+        "Check the customer goal, expected business behavior, selected connection profile and evidence required to decide the case."
+      ]
+    },
+    {
+      "asset": "01-banking-code/hosted-before",
+      "duration": 15,
+      "captions": [
+        "The original Rook run passed this check: the model refused the over-limit request. A vulnerable tool can still exist behind a refusal.",
+        "This is a recorded, focused run. The report\u2019s scope matters as much as the verdict."
+      ]
+    },
+    {
+      "asset": "01-banking-code/hosted-evidence",
+      "duration": 15,
+      "captions": [
+        "Open the evidence for that exact conversation. Follow the request into the model reply and tool arguments.",
+        "Then inspect the transfer receipt and updated balances. A denied attempt is different from a completed business write."
+      ]
+    },
+    {
+      "asset": "01-banking-code/hosted-after",
+      "duration": 15,
+      "captions": [
+        "The updated run also passed. This example shows two refusals, not a newly discovered failure. Tool checks remain part of the defense.",
+        "Compare the criteria and evidence across versions. Keep any remaining failures or missing observations visible."
+      ]
+    },
+    {
+      "asset": "01-banking-code/hosted-redteam",
+      "duration": 15,
+      "captions": [
+        "The role-play scenario challenges whether the agent will abandon its business rule when the user changes the framing.",
+        "Red-teaming also covers instructions hidden in retrieved content, private-data exposure, external exports and policy bypass."
+      ]
+    },
+    {
+      "asset": "01-banking-code/hosted-mcp",
+      "duration": 15,
+      "captions": [
+        "The MCP profile invokes the agent through MCP and keeps the multi-turn conversation together.",
+        "A separate read-only verifier inspects the same conversation\u2019s business evidence. It does not repeat the action to check whether it happened."
+      ]
+    },
+    {
+      "asset": "01-banking-code/coverage",
+      "duration": 15,
+      "captions": [
+        "Add reliability, slow-dependency and response-quality checks when they matter to this journey.",
+        "Cost checks require complete provider usage. Missing measurements remain unverified; illustrative budgets are not product guarantees."
+      ]
+    },
+    {
+      "asset": "01-banking-code/close",
+      "duration": 15,
+      "captions": [
+        "Close with Maya\u2019s original need and the business rule the audience can recognize.",
+        "Use the demo folder\u2019s setup and interactive Rook guide to repeat the check. Preserve the real result, including Fail or Unable to Verify."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+1
+00:00:00,300 --> 00:00:14,800
+A customer asks an AI assistant to move money, book a visit, settle a claim
+or process a refund.
+
+2
+00:00:15,300 --> 00:00:29,800
+Rook helps connect that conversation to the behavior and evidence a team can
+inspect.
+
+3
+00:00:30,300 --> 00:00:44,800
+Start by introducing the agent under test. Atlas Cover’s assistant reads
+policies and claims, checks documents and requests settlements.
+
+4
+00:00:45,300 --> 00:00:59,800
+Its business tools determine what can be read or changed. The final answer
+should agree with the recorded outcome.
+
+5
+00:01:00,300 --> 00:01:14,800
+Quality engineers start with requirements and a connection. Developers can
+also provide source and inspect the implementation.
+
+6
+00:01:15,300 --> 00:01:29,800
+Both need a clear business rule and evidence that shows whether it held.
+These demos provide a separate directory for each audience.
+
+7
+00:01:30,300 --> 00:01:44,800
+Jordan asks the insurance assistant to settle an eligible claim. Watch the
+chat, then inspect the business receipt.
+
+8
+00:01:45,300 --> 00:01:59,800
+A tool call shows an attempt. A settlement receipt records the business
+effect. Those observations answer different questions.
+
+9
+00:02:00,300 --> 00:02:14,800
+Now read a claim and refer to the same claim in the next turn. The agent
+must preserve the customer’s context.
+
+10
+00:02:15,300 --> 00:02:29,800
+Rook’s multi-turn scenario keeps the turns in one conversation. A new
+scenario starts with separate business state.
+
+11
+00:02:30,300 --> 00:02:44,800
+At Harbor Care, Alex asks for the eleven o’clock appointment. That slot has
+no capacity.
+
+12
+00:02:45,300 --> 00:02:59,800
+The original recorded Rook check failed because an appointment was created.
+This is a scheduling rule in a fictional service.
+
+13
+00:03:00,300 --> 00:03:14,800
+The updated healthcare check passed. The full-slot request was denied and
+created no appointment.
+
+14
+00:03:15,300 --> 00:03:29,800
+Compare the response with the ledger. A friendly refusal and a correctly
+enforced capacity rule should agree.
+
+15
+00:03:30,300 --> 00:03:44,800
+At Juniper Goods, Riley requests a refund while the payment provider is
+unavailable.
+
+16
+00:03:45,300 --> 00:03:59,800
+The original recorded check failed: the assistant claimed success without a
+refund receipt. Insurance showed the same kind of mismatch.
+
+17
+00:04:00,300 --> 00:04:14,800
+Move to Rook’s hosted web UI. Open the insurance agent and review its
+functions and scenario collection.
+
+18
+00:04:15,300 --> 00:04:29,800
+There are eighteen authored categories in this edition. Authored starting
+examples and newly generated scenarios must both be reviewed.
+
+19
+00:04:30,300 --> 00:04:44,800
+Open the dependency-failure scenario. The requirement is explicit: no
+settlement receipt and no false claim of payment.
+
+20
+00:04:45,300 --> 00:04:59,800
+Review the goal, profile and criteria before interpreting the run. A result
+without its test definition is easy to misunderstand.
+
+21
+00:05:00,300 --> 00:05:14,800
+Read the recorded result. The reply said the claim was settled while the
+business evidence showed no settlement.
+
+22
+00:05:15,300 --> 00:05:29,800
+Rook retained the failure. A success-sounding answer did not replace the
+missing payment receipt.
+
+23
+00:05:30,300 --> 00:05:44,800
+Follow the evidence for the exact conversation under test. Inspect the tool
+name, arguments, returned result and trace.
+
+24
+00:05:45,300 --> 00:05:59,800
+Then read the business effects. Keep an attempted operation separate from a
+completed action, and compare both with the final answer.
+
+25
+00:06:00,300 --> 00:06:14,800
+The updated insurance run passed the payment-failure check. Its reply
+accurately reported that the settlement could not be completed.
+
+26
+00:06:15,300 --> 00:06:29,800
+The correlated evidence contained no settlement receipt. This is a verified
+improvement for that selected case, not an all-category guarantee.
+
+27
+00:06:30,300 --> 00:06:44,800
+Red-teaming asks whether instructions or framing can push an agent beyond
+its authorized behavior.
+
+28
+00:06:45,300 --> 00:06:59,800
+The collection includes role-play, prompt injection, disclosure, external
+exports, hallucination, hijacking, harmful content, policy and technical
+injection.
+
+29
+00:07:00,300 --> 00:07:14,800
+Treat protected content in an answer and an unauthorized export as separate
+checks. A tool can block an export while a reply still discloses
+information.
+
+30
+00:07:15,300 --> 00:07:29,800
+A recorded insurance run showed that distinction. Retain the failing
+observation, then test the repair against the specific criterion.
+
+31
+00:07:30,300 --> 00:07:44,800
+The MCP profile is another way for Rook to invoke the same customer journey.
+It supports a continuing conversation.
+
+32
+00:07:45,300 --> 00:07:59,800
+A separate read-only verifier checks the recorded business effects for that
+conversation. Verification does not perform the business action again.
+
+33
+00:08:00,300 --> 00:08:14,800
+Pass means the required behavior is supported by evidence. Fail means a
+required rule was observably violated.
+
+34
+00:08:15,300 --> 00:08:29,800
+Unable to Verify means the observation is missing or insufficient. It must
+not be presented as a successful test.
+
+35
+00:08:30,300 --> 00:08:44,800
+Functional checks cover normal requests, invalid inputs, exact boundaries,
+dependencies and context. Non-functional checks add reliability, speed, cost
+and quality.
+
+36
+00:08:45,300 --> 00:08:59,800
+Measure latency using the recorded observations. Assess cost only when
+provider usage is complete; missing usage cannot establish a passing budget.
+
+37
+00:09:00,300 --> 00:09:14,800
+The banking approval-limit check passed in both recorded versions because
+the model refused the original request.
+
+38
+00:09:15,300 --> 00:09:29,800
+Show what happened instead of promising a failure. A refusal in one
+conversation does not prove that every tool boundary is protected.
+
+39
+00:09:30,300 --> 00:09:44,800
+For regression demonstrations, the repository includes dated Rook samples
+with their requests, responses, verdicts and business evidence.
+
+40
+00:09:45,300 --> 00:09:59,800
+The CI example checks those saved records. To evaluate a changed agent, run
+new tests and review the evidence before updating the example.

@@ -1,0 +1,168 @@
+{
+  "id": "rook-overview",
+  "title": "Rook \u2014 ten-minute customer demo",
+  "durationSeconds": 600,
+  "audio": false,
+  "scenes": [
+    {
+      "asset": "overview-intro",
+      "duration": 30,
+      "captions": [
+        "A customer asks an AI assistant to move money, book a visit, settle a claim or process a refund.",
+        "Rook helps connect that conversation to the behavior and evidence a team can inspect."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/flow",
+      "duration": 30,
+      "captions": [
+        "Start by introducing the agent under test. Atlas Cover\u2019s assistant reads policies and claims, checks documents and requests settlements.",
+        "Its business tools determine what can be read or changed. The final answer should agree with the recorded outcome."
+      ]
+    },
+    {
+      "asset": "overview-audiences",
+      "duration": 30,
+      "captions": [
+        "Quality engineers start with requirements and a connection. Developers can also provide source and inspect the implementation.",
+        "Both need a clear business rule and evidence that shows whether it held. These demos provide a separate directory for each audience."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/happy",
+      "duration": 30,
+      "captions": [
+        "Jordan asks the insurance assistant to settle an eligible claim. Watch the chat, then inspect the business receipt.",
+        "A tool call shows an attempt. A settlement receipt records the business effect. Those observations answer different questions."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/multi",
+      "duration": 30,
+      "captions": [
+        "Now read a claim and refer to the same claim in the next turn. The agent must preserve the customer\u2019s context.",
+        "Rook\u2019s multi-turn scenario keeps the turns in one conversation. A new scenario starts with separate business state."
+      ]
+    },
+    {
+      "asset": "03-healthcare-code/before",
+      "duration": 30,
+      "captions": [
+        "At Harbor Care, Alex asks for the eleven o\u2019clock appointment. That slot has no capacity.",
+        "The original recorded Rook check failed because an appointment was created. This is a scheduling rule in a fictional service."
+      ]
+    },
+    {
+      "asset": "03-healthcare-code/after",
+      "duration": 30,
+      "captions": [
+        "The updated healthcare check passed. The full-slot request was denied and created no appointment.",
+        "Compare the response with the ledger. A friendly refusal and a correctly enforced capacity rule should agree."
+      ]
+    },
+    {
+      "asset": "07-customer-support-code/before",
+      "duration": 30,
+      "captions": [
+        "At Juniper Goods, Riley requests a refund while the payment provider is unavailable.",
+        "The original recorded check failed: the assistant claimed success without a refund receipt. Insurance showed the same kind of mismatch."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/hosted-agent",
+      "duration": 30,
+      "captions": [
+        "Move to Rook\u2019s hosted web UI. Open the insurance agent and review its functions and scenario collection.",
+        "There are eighteen authored categories in this edition. Authored starting examples and newly generated scenarios must both be reviewed."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/hosted-scenario",
+      "duration": 30,
+      "captions": [
+        "Open the dependency-failure scenario. The requirement is explicit: no settlement receipt and no false claim of payment.",
+        "Review the goal, profile and criteria before interpreting the run. A result without its test definition is easy to misunderstand."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/hosted-before",
+      "duration": 30,
+      "captions": [
+        "Read the recorded result. The reply said the claim was settled while the business evidence showed no settlement.",
+        "Rook retained the failure. A success-sounding answer did not replace the missing payment receipt."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/hosted-evidence",
+      "duration": 30,
+      "captions": [
+        "Follow the evidence for the exact conversation under test. Inspect the tool name, arguments, returned result and trace.",
+        "Then read the business effects. Keep an attempted operation separate from a completed action, and compare both with the final answer."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/hosted-after",
+      "duration": 30,
+      "captions": [
+        "The updated insurance run passed the payment-failure check. Its reply accurately reported that the settlement could not be completed.",
+        "The correlated evidence contained no settlement receipt. This is a verified improvement for that selected case, not an all-category guarantee."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/hosted-redteam",
+      "duration": 30,
+      "captions": [
+        "Red-teaming asks whether instructions or framing can push an agent beyond its authorized behavior.",
+        "The collection includes role-play, prompt injection, disclosure, external exports, hallucination, hijacking, harmful content, policy and technical injection."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/coverage",
+      "duration": 30,
+      "captions": [
+        "Treat protected content in an answer and an unauthorized export as separate checks. A tool can block an export while a reply still discloses information.",
+        "A recorded insurance run showed that distinction. Retain the failing observation, then test the repair against the specific criterion."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/hosted-mcp",
+      "duration": 30,
+      "captions": [
+        "The MCP profile is another way for Rook to invoke the same customer journey. It supports a continuing conversation.",
+        "A separate read-only verifier checks the recorded business effects for that conversation. Verification does not perform the business action again."
+      ]
+    },
+    {
+      "asset": "overview-verdicts",
+      "duration": 30,
+      "captions": [
+        "Pass means the required behavior is supported by evidence. Fail means a required rule was observably violated.",
+        "Unable to Verify means the observation is missing or insufficient. It must not be presented as a successful test."
+      ]
+    },
+    {
+      "asset": "01-banking-code/coverage",
+      "duration": 30,
+      "captions": [
+        "Functional checks cover normal requests, invalid inputs, exact boundaries, dependencies and context. Non-functional checks add reliability, speed, cost and quality.",
+        "Measure latency using the recorded observations. Assess cost only when provider usage is complete; missing usage cannot establish a passing budget."
+      ]
+    },
+    {
+      "asset": "01-banking-code/hosted-before",
+      "duration": 30,
+      "captions": [
+        "The banking approval-limit check passed in both recorded versions because the model refused the original request.",
+        "Show what happened instead of promising a failure. A refusal in one conversation does not prove that every tool boundary is protected."
+      ]
+    },
+    {
+      "asset": "05-insurance-code/close",
+      "duration": 30,
+      "captions": [
+        "For regression demonstrations, the repository includes dated Rook samples with their requests, responses, verdicts and business evidence.",
+        "The CI example checks those saved records. To evaluate a changed agent, run new tests and review the evidence before updating the example."
+      ]
+    }
+  ]
+}

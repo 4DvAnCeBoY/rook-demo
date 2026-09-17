@@ -14,6 +14,8 @@ for (const demo of catalog.demos) {
     const scenarios = await loadNative(directory);
     const coverage = assessNativeCoverage(scenarios, catalog.taxonomy);
     const provenance = JSON.parse(await readFile(join(directory, 'provenance.json'), 'utf8'));
+    const spec = yaml.load(await readFile(join(directory, 'agent.yaml'), 'utf8'));
+    if (!['codebase', 'docs', 'manifest_only'].includes(spec.source?.kind)) coverage.errors.push('Unsupported native agent source kind');
     for (const [file, expected] of Object.entries(provenance.sha256)) {
       const actual = createHash('sha256').update(await readFile(join(directory, file))).digest('hex');
       if (expected !== actual) coverage.errors.push(`Snapshot changed without provenance update: ${file}`);

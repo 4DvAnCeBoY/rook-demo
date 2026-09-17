@@ -4,7 +4,7 @@ Recorded on 2026-09-17 for Banking, Healthcare, Insurance and Customer Support, 
 
 | Check | Result |
 |---|---|
-| Runtime and configuration tests | 31 passed |
+| Runtime, configuration and evidence checks | 35 passed |
 | Demo folder checks | Eight demos include setup, diagrams, functions and all 18 categories |
 | Scenario inventory | 144 authored scenarios validated |
 | Desktop/mobile browser checks | 128 checks passed across all eight apps |
@@ -12,6 +12,10 @@ Recorded on 2026-09-17 for Banking, Healthcare, Insurance and Customer Support, 
 | Insurance model and Rook runs | 72 HTTP results and six MCP results |
 | Insurance evidence review | 102 distinct captured samples matched their original observations |
 | Interactive Rook smoke check | Terminal opened, 18 scenarios listed, connection checked and one insurance scenario passed |
+| Fresh local Rook checks across all eight editions | 48 selected results: 42 Pass, 6 Fail, 0 Unable to Verify; 40 HTTP and 8 MCP |
+| Model-backed browser recordings | 32 customer conversations across all eight editions, including two-turn journeys |
+
+The fresh local checks cover normal requests, context, role-play, a selected business-rule case before and after a fix, and MCP. They do not rerun all 18 categories. Banking's approval case passed in both versions because the model refused the request. Healthcare, insurance and support retained their original failing behavior and passed the selected repaired check. The [sample index](../artifacts/reference/sample-runs.json) preserves these results separately from the earlier runs.
 
 Application tests and controlled rehearsals check the demo implementation. Rook runs assess the agent using the selected model. The [insurance results](insurance-validation.md) retain their original date and scope.
 

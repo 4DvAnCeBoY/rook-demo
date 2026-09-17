@@ -27,7 +27,7 @@ for (const demo of catalog.demos.filter(d => d.domain === 'insurance')) {
   const tracks = ['PRD.md','connection.md','scenarios.json', ...(demo.style === 'code' ? ['source/demos/05-insurance-code/agent.mjs','source/shared/engine.mjs'] : [])];
   const agent = {
     local_id: 'claims-coverage-assistant', name: domain.agent, declared: { name: domain.agent, description: `${domain.name}: ${domain.mission} ${domain.persona}.` },
-    source: { kind: demo.style === 'code' ? 'codebase' : 'documents', tracks, subtree_digest: sha(await readFile(join(folder,'PRD.md'))) },
+    source: { kind: demo.style === 'code' ? 'codebase' : 'docs', tracks, subtree_digest: sha(await readFile(join(folder,'PRD.md'))) },
     framework: { name:'custom', evidence: 'Custom conversation loop with JSON-schema tool calls; requirements in PRD.md.' },
     interface: { transport:'http', intake:'goal', entry:'POST /api/sessions, then POST /api/sessions/{conversation}/chat', accepts:['Natural-language customer goal','Session conversation UUID'], produces:'output and agent_reply, conversation UUID, tool calls and observed usage; collected evidence includes traces and business receipts.', out_of_scope:['Changing the authenticated identity','Real insurance underwriting or payments','Unapproved settlement or external claim export'] },
     limits: { max_depth:6, turn_cap:100 },

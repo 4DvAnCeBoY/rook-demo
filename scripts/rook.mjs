@@ -1,6 +1,7 @@
 import { access, mkdir, mkdtemp } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { spawn } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
 import { root, demoName, loadDemoEnv } from '../shared/config.mjs';
 
 const [selector = 'banking-agent-code', ...command] = process.argv.slice(2);
@@ -12,6 +13,8 @@ catch {
   throw new Error(`Prepare this workspace first: ${workspace}\nSelect a project with rook project create or rook project use, then run npm run rook:seed -- ${demoName(demo)} from the repository root.\nSee docs/testing-with-rook.md for setup.`);
 }
 const env = { ...process.env };
+env.ROOK_DEMO_SYNC_PROVENANCE = join(root, 'demos', demo.id, 'rook', 'provenance.json');
+env.NODE_OPTIONS = [env.NODE_OPTIONS, `--import=${pathToFileURL(join(root, 'scripts', 'rook-sync-compat.mjs')).href}`].filter(Boolean).join(' ');
 // Rook connects to the agent service; only that service needs the LLM secret.
 for (const key of ['MODEL_BASE_URL', 'MODEL_NAME', 'MODEL_API_KEY']) delete env[key];
 // The installed Rook profile probe runs open/execute/close without a stateDir.

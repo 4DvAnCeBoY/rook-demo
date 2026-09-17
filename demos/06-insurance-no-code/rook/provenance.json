@@ -226,7 +226,7 @@
     "runnableCategories": 18
   },
   "sha256": {
-    "agent.yaml": "e699e4ca4efbecaec095bd9db19e358a49b2e2a976eb983c3f6eb222a56d20f8",
+    "agent.yaml": "3599e48ced3831ec70e83c07cc903e3a2551ae902317fa76ca2c00409979b595",
     "features/F-001.yaml": "8261ceac068a352f6bf416cefee61446865b2e8a7f86420908042ee6f47b2a4c",
     "features/F-002.yaml": "6e6e7870a6a132cf60d5ce542ed82fbf110816249fee25a9f859690ab2d965eb",
     "features/F-003.yaml": "da845943a94a973ee3db544410d34120ea4f6cce36461d39ccb7454763b4ab6e",
@@ -250,5 +250,11 @@
     "scenarios/SC-116.yaml": "846915e27ea5fc31509555fd651a932629a0c7d88c8f6702f8956f01aa7d97e2",
     "scenarios/SC-117.yaml": "b6f0e7cffe44ed03bd6a178599a49c5cb978c80cbf7d3b3bacf44b2f72e843a9",
     "scenarios/SC-118.yaml": "2260208f49be534abe81ead8fef8f824c5b69d89d4c14f8bf7afde97c01c2d5c"
-  }
+  },
+  "corrections": [
+    {
+      "date": "2026-09-17",
+      "change": "Use native source kind docs for the authored QE specification; no behavior or scenario changed."
+    }
+  ]
 }

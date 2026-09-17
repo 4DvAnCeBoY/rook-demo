@@ -6,7 +6,7 @@ declared:
     Atlas Cover: Turn a claim conversation into a verified settlement. Jordan Ellis · policyholder
     reporting vehicle damage.
 source:
-  kind: documents
+  kind: docs
   tracks:
     - PRD.md
     - connection.md

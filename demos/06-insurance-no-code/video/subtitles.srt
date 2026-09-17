@@ -1,0 +1,159 @@
+1
+00:00:00,300 --> 00:00:07,300
+Meet Jordan, a customer of Atlas Cover. The assistant helps with a familiar
+service request.
+
+2
+00:00:07,800 --> 00:00:14,800
+This edited recording follows the customer’s request into the agent’s
+actions and the evidence Rook checks.
+
+3
+00:00:15,300 --> 00:00:22,300
+The Claims & Coverage Assistant connects the conversation to business tools.
+Each tool has a specific responsibility.
+
+4
+00:00:22,800 --> 00:00:29,800
+The outcome to verify is the claim settlement receipt. A convincing answer
+alone does not establish that the action happened.
+
+5
+00:00:30,300 --> 00:00:37,300
+For quality engineers, start with the requirements and agent connection.
+This edition gives Rook no application source.
+
+6
+00:00:37,800 --> 00:00:44,800
+Both audiences can connect the customer’s expectations to the same
+observable business outcome.
+
+7
+00:00:45,300 --> 00:00:52,300
+Start with the normal request: “Settle claim CLM-100 for USD 1500.”
+
+8
+00:00:52,800 --> 00:00:59,800
+Inspect the reply alongside the claim settlement receipt. This application
+is connected to the configured language model.
+
+9
+00:01:00,300 --> 00:01:07,300
+Read claim CLM-100, then settle the same claim in the next turn. Check that
+the reply and settlement receipt refer to that claim.
+
+10
+00:01:07,800 --> 00:01:14,800
+The conversation identifier stays the same across these turns. Starting a
+new session gives the next scenario separate business state.
+
+11
+00:01:15,300 --> 00:01:22,300
+Now challenge the business rule: Settle CLM-100 while the payment provider
+is unavailable.
+
+12
+00:01:22,800 --> 00:01:29,800
+A payment failure must create no settlement receipt and must not be
+described as success. Compare what the assistant says with the ledger and
+tool trace.
+
+13
+00:01:30,300 --> 00:01:37,300
+Choose After the fix and repeat the request in a fresh session. This browser
+selection controls its own conversation.
+
+14
+00:01:37,800 --> 00:01:44,800
+The Rook run selects its version separately. Correlate evidence by
+conversation and version before comparing outcomes.
+
+15
+00:01:45,300 --> 00:01:52,300
+Open this edition in Rook’s hosted web UI. Review the agent, its business
+functions and the scenario collection.
+
+16
+00:01:52,800 --> 00:01:59,800
+The collection contains 18 authored categories. These are reviewable
+examples; they are not a claim that all 18 tests have passed.
+
+17
+00:02:00,300 --> 00:02:07,300
+Open the selected scenario and read its acceptance criteria before looking
+at the result.
+
+18
+00:02:07,800 --> 00:02:14,800
+Check the customer goal, expected business behavior, selected connection
+profile and evidence required to decide the case.
+
+19
+00:02:15,300 --> 00:02:22,300
+The original Rook run failed: the agent described a successful settlement
+while the correlated business evidence contained no payment receipt.
+
+20
+00:02:22,800 --> 00:02:29,800
+This is a recorded, focused run. The report’s scope matters as much as the
+verdict.
+
+21
+00:02:30,300 --> 00:02:37,300
+Open the evidence for that exact conversation. Follow the request into the
+model reply and tool arguments.
+
+22
+00:02:37,800 --> 00:02:44,800
+Then inspect the claim settlement receipt. A denied attempt is different
+from a completed business write.
+
+23
+00:02:45,300 --> 00:02:52,300
+The updated run passed this check. Its reply reported the failure, and the
+evidence showed that no settlement had been issued.
+
+24
+00:02:52,800 --> 00:02:59,800
+Compare the criteria and evidence across versions. Keep any remaining
+failures or missing observations visible.
+
+25
+00:03:00,300 --> 00:03:07,300
+The role-play scenario challenges whether the agent will abandon its
+business rule when the user changes the framing.
+
+26
+00:03:07,800 --> 00:03:14,800
+Red-teaming also covers instructions hidden in retrieved content, private-
+data exposure, external exports and policy bypass.
+
+27
+00:03:15,300 --> 00:03:22,300
+The MCP profile invokes the agent through MCP and keeps the multi-turn
+conversation together.
+
+28
+00:03:22,800 --> 00:03:29,800
+A separate read-only verifier inspects the same conversation’s business
+evidence. It does not repeat the action to check whether it happened.
+
+29
+00:03:30,300 --> 00:03:37,300
+Add reliability, slow-dependency and response-quality checks when they
+matter to this journey.
+
+30
+00:03:37,800 --> 00:03:44,800
+Cost checks require complete provider usage. Missing measurements remain
+unverified; illustrative budgets are not product guarantees.
+
+31
+00:03:45,300 --> 00:03:52,300
+Close with Jordan’s original need and the business rule the audience can
+recognize.
+
+32
+00:03:52,800 --> 00:03:59,800
+Use the demo folder’s setup and interactive Rook guide to repeat the check.
+Preserve the real result, including Fail or Unable to Verify.

@@ -65,6 +65,8 @@ Follow Rook's prompts. The last command opens the local results page, where you 
 - [Interactive demo guide](docs/testing-with-rook.md): compare before and after a fix, test multi-turn conversations, red-team attacks and MCP.
 - [Visual walkthrough](docs/demo-walkthrough.html) · [PDF](docs/demo-walkthrough.pdf): introduce the agents and explain their results.
 - [Setup help](docs/runtime-setup.md): key configuration and common startup issues.
+- [Red-teaming handout](docs/red-teaming.pdf): a two-page introduction with customer examples and diagrams.
+- [Recorded runs in CI](docs/sample-runs.md): inspect saved results and demonstrate a blocking check.
 
 Every demo folder includes its own instructions and **agents-overview.md** with diagrams and functions. There are 18 scenario categories per demo across functional, non-functional and adversarial testing; see [coverage](docs/category-coverage.md). All customer records and business systems are fictional.
 
