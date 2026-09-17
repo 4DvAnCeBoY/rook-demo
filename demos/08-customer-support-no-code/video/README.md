@@ -1,5 +1,9 @@
 # Juniper Goods — QE demo
 
-The [subtitle script](subtitles.srt) and [shot list](video-plan.json) plan a 4-minute video. The video uses customer application footage and Rook’s hosted web UI, with subtitles and no audio.
+A 4-minute walkthrough with subtitles and no audio. It introduces the customer, agent functions and flow, then connects the application journey to Rook's hosted scenarios, results, evidence, red-teaming and MCP.
 
-Locally prepared files are in `delivery/customer-support-agent/` at the repository root. The application cut is ready for review. The full video still needs the hosted Rook segments; no local Rook viewer is used as a substitute.
+[Scene plan](video-plan.json) · [Subtitles](subtitles.srt)
+
+The local video is delivered separately as `delivery/customer-support-agent/customer-support-agent.mp4`, with a matching SRT. Media files are excluded from Git. Rook product scenes use the hosted web UI. Presentation cards contain the explanatory diagrams.
+
+The recordings show selected checks, preserve actual failures, and distinguish customer-app conversations from Rook conversations. They do not establish that all 18 categories pass.

@@ -88,8 +88,8 @@
       "asset": "02-banking-no-code/hosted-evidence",
       "duration": 15,
       "captions": [
-        "Open the evidence for that exact conversation. Follow the request into the model reply and tool arguments.",
-        "Then inspect the transfer receipt and updated balances. A denied attempt is different from a completed business write."
+        "Open the evidence for this exact conversation. The refusal made no tool call; the trace and model reply explain the observed response.",
+        "The business effects are empty. No transfer occurred in this recorded attempt."
       ]
     },
     {

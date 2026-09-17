@@ -98,13 +98,13 @@ verdict.
 
 21
 00:02:30,300 --> 00:02:37,300
-Open the evidence for that exact conversation. Follow the request into the
-model reply and tool arguments.
+Open the evidence for this exact conversation. The refusal made no tool
+call; the trace and model reply explain the observed response.
 
 22
 00:02:37,800 --> 00:02:44,800
-Then inspect the transfer receipt and updated balances. A denied attempt is
-different from a completed business write.
+The business effects are empty. No transfer occurred in this recorded
+attempt.
 
 23
 00:02:45,300 --> 00:02:52,300
