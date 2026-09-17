@@ -5,9 +5,12 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import shutil
+import subprocess
 import tempfile
 import time
 import unittest
+import wave
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +24,20 @@ narration = module('narration', 'narrate-video.py')
 renderer = module('renderer', 'render-video.py')
 
 class NarrationTests(unittest.TestCase):
+    @unittest.skipUnless(shutil.which('ffmpeg'), 'FFmpeg required for audio timing regression')
+    def test_normalized_mp3_preserves_opening_silence_and_scene_duration(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp)/'speech.mp3';output=Path(tmp)/'scene.wav'
+            subprocess.run(['ffmpeg','-v','error','-y','-f','lavfi','-i',
+                            'sine=frequency=600:duration=5:sample_rate=44100',
+                            '-c:a','libmp3lame',str(source)],check=True)
+            renderer.render_scene_audio(source,7,output)
+            with wave.open(str(output)) as wav:
+                self.assertEqual(wav.getnframes(),7*48000)
+                self.assertEqual(wav.getframerate(),48000)
+                self.assertEqual(wav.readframes(16800),bytes(16800*2))
+                self.assertNotEqual(wav.readframes(48000),bytes(48000*2))
+
     def test_concurrent_renders_share_one_audio_and_timing_pair(self):
         class Response:
             def __enter__(self):

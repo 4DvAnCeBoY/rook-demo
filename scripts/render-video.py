@@ -1,5 +1,5 @@
 """Render reviewed footage with subtitles and optional speech-aligned narration."""
-import argparse, json, pathlib, subprocess, textwrap
+import argparse, json, pathlib, subprocess, textwrap, wave
 
 def clock(seconds, separator=','):
     ms=round(seconds*1000); h,ms=divmod(ms,3600000);m,ms=divmod(ms,60000);s,ms=divmod(ms,1000)
@@ -24,6 +24,16 @@ def run(args):
     result=subprocess.run(args,capture_output=True,text=True)
     if result.returncode: raise RuntimeError(result.stderr[-2400:])
     return result.stdout
+
+def render_scene_audio(audio, duration, output):
+    samples=round(duration*48000)
+    # loudnorm can leave a timestamp offset. Reset it after resampling so
+    # every scene retains its opening delay and exact place on the timeline.
+    filters=f'loudnorm=I=-18:TP=-2:LRA=7,aresample=48000,asetpts=N/SR/TB,adelay=350:all=1,apad,atrim=end_sample={samples}'
+    run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(audio),'-af',filters,'-ar','48000','-ac','1','-c:a','pcm_s16le',str(output)])
+    with wave.open(str(output)) as wav:
+        if wav.getframerate()!=48000 or wav.getnframes()!=samples:
+            raise RuntimeError('Scene audio does not match its timeline duration')
 
 def render(plan, assets, output, draft=False):
     output.mkdir(parents=True,exist_ok=True)
@@ -74,7 +84,7 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
             speech=scene['speech'];audio=pathlib.Path(speech['audio']).resolve()
             if speech['duration']+.35>duration:raise RuntimeError('Narration exceeds scene duration')
             wav=work/f'{index:02}.wav'
-            run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(audio),'-af',f'loudnorm=I=-18:TP=-2:LRA=7,adelay=350:all=1,apad,atrim=duration={duration}', '-ar','48000','-ac','1','-c:a','pcm_s16le',str(wav)])
+            render_scene_audio(audio,duration,wav)
             audio_segments.append(wav)
         cursor+=duration
         print(plan['id'],f'{index+1}/{len(plan["scenes"])}',flush=True)
@@ -89,6 +99,9 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
     info=json.loads(run(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(movie)]))
     if any(s['codec_type']=='audio' for s in info['streams'])!=narrated:raise RuntimeError('Unexpected audio stream configuration')
     if abs(float(info['format']['duration'])-cursor)>.15:raise RuntimeError('Unexpected video duration')
+    if narrated:
+        audio_stream=next(s for s in info['streams'] if s['codec_type']=='audio')
+        if abs(float(audio_stream['duration'])-cursor)>.03:raise RuntimeError('Narration duration does not match the video')
     (output/(name+'.json')).write_text(json.dumps({'title':plan['title'],'durationSeconds':cursor,'audio':narrated,'voice':plan.get('voice'), 'narrationTiming':'ElevenLabs character alignment' if narrated else None,'subtitles':'burned in and separate SRT','status':'draft' if draft else 'ready for review','missingFootage':sorted(set(missing)),'video':movie.name,'sourceAssets':[{ 'role':s['asset'],'file':pathlib.Path(assets.get(s['asset'],assets.get('pending-hosted'))).name} for s in plan['scenes']]},indent=2))
     for p in segments+audio_segments:p.unlink()
     print('Saved',movie,flush=True)

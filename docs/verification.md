@@ -5,7 +5,7 @@ Recorded on 2026-09-17 for Banking, Healthcare, Insurance and Customer Support, 
 | Check | Result |
 |---|---|
 | Runtime, configuration and evidence checks | 35 passed |
-| Narration timing and concurrent cache checks | 2 passed; no external API calls |
+| Narration timing and concurrent cache checks | 3 passed locally, including exact audio length and opening silence; no external API calls |
 | Narrated video export checks | Nine complete streams decoded; speech-timed captions validated; AAC narration around -18.3 LUFS |
 | Demo folder checks | Eight demos include setup, diagrams, functions and all 18 categories |
 | Scenario inventory | 144 authored scenarios validated |
