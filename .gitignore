@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.demo-state/
+.testmuai/
+artifacts/local/
+*.log
+.DS_Store
