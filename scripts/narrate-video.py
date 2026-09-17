@@ -54,16 +54,23 @@ def narrate(plan,output,cache):
     voice=plan['voice']['voiceId']
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         records=list(pool.map(lambda scene:synthesize(scene['narration'],voice,cache),plan['scenes']))
-    minimum=[math.ceil(r['duration']+1.1) for r in records]
-    target=plan['durationSeconds']
-    if sum(minimum)>target:raise RuntimeError(f'Narration requires at least {sum(minimum)}s, exceeding the {target}s plan; shorten the script.')
-    durations=[max(scene['duration'],least) for scene,least in zip(plan['scenes'],minimum)]
-    while sum(durations)>target:
-        index=max(range(len(durations)),key=lambda i:durations[i]-minimum[i])
-        durations[index]-=1
-    while sum(durations)<target:
-        index=max(range(len(durations)),key=lambda i:plan['scenes'][i]['duration']-durations[i])
-        durations[index]+=1
+    if plan.get('pacing')=='speech-led':
+        # A short lead-in and exit hold, rounded to an exact video frame.
+        # Do not pad a presentation to an arbitrary target running time.
+        durations=[math.ceil((r['duration']+.65)*24)/24 for r in records]
+        target=sum(durations)
+        plan['durationSeconds']=target
+    else:
+        minimum=[math.ceil(r['duration']+1.1) for r in records]
+        target=plan['durationSeconds']
+        if sum(minimum)>target:raise RuntimeError(f'Narration requires at least {sum(minimum)}s, exceeding the {target}s plan; shorten the script.')
+        durations=[max(scene['duration'],least) for scene,least in zip(plan['scenes'],minimum)]
+        while sum(durations)>target:
+            index=max(range(len(durations)),key=lambda i:durations[i]-minimum[i])
+            durations[index]-=1
+        while sum(durations)<target:
+            index=max(range(len(durations)),key=lambda i:plan['scenes'][i]['duration']-durations[i])
+            durations[index]+=1
     for scene,record,duration in zip(plan['scenes'],records,durations):
         scene['duration']=duration;scene['speech']=record
     (output/'narrated-plan.json').write_text(json.dumps(plan,indent=2,ensure_ascii=False)+'\n')

@@ -35,7 +35,7 @@ else if (phase === 'open') {
 else if (phase === 'collect') {
   const id = await conversation();
   const data = await request(`/api/sessions/${id}/evidence`);
-  const evidenceFile = resolve(directory, `demo-evidence-${id}.json`);
+  const evidenceFile = resolve(directory, `evidence-${id}.json`);
   await writeFile(evidenceFile, JSON.stringify(data, null, 2));
   await writeFile(join(directory, 'demo-evidence.json'), JSON.stringify(data, null, 2));
   // Put independently read state into output as well as an artifact. Rook versions differ

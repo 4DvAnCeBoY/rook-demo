@@ -1,77 +1,79 @@
-# Give an interactive Rook demo
+# Agent Assurance — ROOK
 
-Start the customer application using the selected demo's README. Keep it running, then open a second terminal in that demo folder:
+Start the customer application using its folder's README. Introduce the agent, its tools and the business rule at risk, then open Rook in a separate terminal.
 
-```bash
-npm run rook
-```
+## Discover the agent
 
-This opens [interactive Rook](https://www.testmuai.com/support/docs/rook-command-start/). If this is your first run, follow the README's one-time Rook setup first. Type the commands below **inside Rook**, one at a time, and follow its prompts. Use `/guide` for help.
+Prepare a fresh workspace as described in the README. The Developer edition supplies source and requirements. The QE edition supplies requirements and the connection contract, without agent source.
 
-## Start with a customer request
+Enter these commands in the interactive Rook terminal:
 
 ```text
+/explore . Read PRD.md as the required behavior and inspect the supplied agent material.
+/agent
+/generate --class functional,non_functional,adversarial --total 18
 /scenarios list
-/sync
-/profile test demo-normal
-/run --only SC-101 --profile demo-normal
-/report
-/ui
 ```
 
-`/sync` records the prepared agent and scenarios in the hosted project. The connection check calls the agent once. SC-101 tests its everyday customer journey. In the hosted results page, open **agent → run → scenario** to see the request, reply, tool trace and business receipt.
+Review the discovered responsibilities and each generated scenario. Check customer goals and acceptance criteria against the requirements. A requested count does not guarantee coverage of every category.
 
-Explain **Pass**, **Fail** and **Unable to Verify** using the evidence shown. The supplied scenarios are authored examples; exploring and generating new tests is a separate demonstration described in [integration details](rook-integration.md).
-
-## Show an issue, then the fix
-
-Choose a test your audience will recognize:
-
-| Demo | Customer concern | Enter inside Rook |
-|---|---|---|
-| Banking | A transfer exceeds the approval limit | `/run --only SC-117 --profile demo-normal` |
-| Healthcare | An urgent request goes to routine scheduling | `/run --only SC-117 --profile demo-normal` |
-| Insurance | A failed payment is reported as a completed settlement | `/run --only SC-104 --profile demo-dependency-error` |
-| Customer Support | A failed refund is reported as successful | `/run --only SC-104 --profile demo-dependency-error` |
-
-Read the report and compare the reply with the recorded business action. Model responses vary; explain the result that actually occurred.
-
-To test **After the fix**, leave Rook with `/exit`. In the same demo folder, reopen it with:
-
-```bash
-DEMO_VARIANT=hardened npm run rook
-```
-
-Run the same test again, then use `/report` and `/ui` to compare. The browser's Before/After choice controls its own conversation; this command selects the version tested by Rook.
-
-## Show more capabilities
-
-Choose a short follow-up rather than running the entire collection during a presentation:
-
-| Capability | What the audience sees | Enter inside Rook |
-|---|---|---|
-| Multi-turn conversation | The agent remembers the previous customer request | `/run --only SC-105 --profile demo-normal` |
-| Reliability | Repeated requests preserve consistent business records | `/run --only SC-108 --profile demo-normal` |
-| Red-teaming | A role-play attack tries to bypass the business rule | `/run --only SC-111 --profile demo-normal` |
-| Prompt injection | Instructions hidden in a retrieved note challenge the agent | `/run --only SC-110 --profile demo-poisoned-context` |
-| Traces | A slow service appears in the tool trace | `/run --only SC-106 --profile demo-slow-tool` |
-| MCP | Rook calls the agent through MCP and reads its evidence | `/run --only SC-101,SC-105 --profile demo-mcp` |
-
-Before the MCP example, enter `/profile test demo-mcp`. After each example, inspect the report. Cost tests need complete provider usage; the supplied profiles leave them disabled until that information is available.
-
-## Run the full collection
-
-Use the connection matching each test's service condition:
+## Connect and run locally
 
 ```text
-/run --tag fault-none --profile demo-normal
-/run --category integration --profile demo-dependency-error
-/run --category performance --profile demo-slow-tool
-/run --category prompt_injection --profile demo-poisoned-context
+/profile add http --from connection.md
+/profile show http
+/profile test http
+/run --test --profile http
 /report
+```
+
+The profile describes how Rook reaches the agent and collects evidence. Keep one conversation across a scenario's turns, with separate conversations between scenarios. Review the run plan before proceeding. For a short presentation, select a reviewed scenario with `--only SC-ID`.
+
+`--test` keeps the run out of the hosted project timeline. Model and judging requests still use their respective services; local storage does not mean offline inference.
+
+## Inspect what Rook wrote
+
+Open `.testmuai/rook/` in the workspace:
+
+| Artifact | What to inspect |
+|---|---|
+| `agent.yaml` | Discovered agent, interface and tool responsibilities |
+| `features/*.yaml` | Behavior derived from the supplied material |
+| `scenarios/*.yaml` | Customer goals and acceptance criteria |
+| `profiles/*.yaml` and `scripts/` | Connection configuration and evidence collection |
+| `runs/<run-id>/run.yaml` | The scope and profile selected for this run |
+| `runs/<run-id>/report.yaml` | The recorded findings |
+| Per-scenario requests, responses and verdicts | What was asked, returned and judged |
+| Collected evidence files | Tool calls, timing and business receipts |
+
+These files are under the selected project's agent directory. They can be read, reviewed and compared without opening the hosted UI. `/ui --local` is an optional on-disk viewer; the recorded walkthroughs use the hosted UI for the sharing chapter.
+
+For a finding, connect the criterion to the actual action: a tool call shows an attempt; a business receipt shows what happened. Missing evidence remains **Unable to Verify**.
+
+## Share when ready
+
+```text
+/sync
+/run --profile http
 /ui
 ```
 
-There are 18 categories in each demo. Some cases intentionally fail, and missing evidence must remain unverified. The illustrative speed and token budgets are demonstration settings.
+`/sync` records the reviewed project definitions upstream. The next run, without `--test`, records its results in the hosted timeline. It is a **new shared run**: syncing does not promote the earlier local test run. Open **agent → run → scenario** and check the matching run ID before reviewing its evidence.
 
-The commands above record runs in the hosted project timeline. For a separate local experiment, `--test` keeps a run out of that timeline and `/ui --local` opens its local results. Model requests and Rook judging use their respective accounts. Use `/exit` when finished.
+## Continue with the supplied scenario pack
+
+For repeatable customer examples, use the separate prepared workspace from `npm run rook:setup` and `npm run rook`. It includes 18 authored categories and connection profiles for these service conditions:
+
+| Capability | Command inside the prepared Rook workspace |
+|---|---|
+| Everyday request | `/run --test --only SC-101 --profile demo-normal` |
+| Multi-turn context | `/run --test --only SC-105 --profile demo-normal` |
+| Role-play attack | `/run --test --only SC-111 --profile demo-normal` |
+| Prompt injection | `/run --test --only SC-110 --profile demo-poisoned-context` |
+| Dependency failure | `/run --test --only SC-104 --profile demo-dependency-error` |
+| Tool timing | `/run --test --only SC-106 --profile demo-slow-tool` |
+| MCP connection | `/profile test demo-mcp`, then `/run --test --only SC-105 --profile demo-mcp` |
+
+For a before/after comparison, exit Rook and reopen the prepared workspace using `DEMO_VARIANT=hardened npm run rook`. Keep the scenario and service condition unchanged. The application's version selector controls only its own conversation.
+
+The supplied profiles do not claim complete token usage, so cost checks remain disabled through them. See the [coverage inventory](category-coverage.md) and [recorded limits](verification.md). Present the result that actually occurs; model responses can vary.

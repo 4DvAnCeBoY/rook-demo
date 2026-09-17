@@ -1,15 +1,7 @@
-# Atlas Cover / QE video
+# Agent Assurance — ROOK
 
-A six-minute walkthrough with Indian English narration and matching subtitles.
+Atlas Cover · QE · Requirements and connection
 
-1. Meet the agent under test and understand its tools.
-2. Follow the customer request through its decision diagram.
-3. Run a real test in Rook’s interactive TUI.
-4. Open the matching run in the hosted Web UI, inspect evidence, and compare the recorded repair.
-5. Review separately recorded red-teaming and MCP examples.
+The recording follows the agent and business flow through interactive exploration, generation, profile setup, local testing and evidence review. The final chapter shows optional synchronization and a separate shared run in Rook's hosted Web UI.
 
-[Scene plan and narration](video-plan.json) · [Subtitles](subtitles.srt)
-
-The local video is `delivery/insurance-agent/insurance-agent.mp4`. Audio uses ElevenLabs’ Vanishree — Energetic Indian English voice. The media files and credentials stay outside Git.
-
-Terminal footage is edited from an actual recorded interactive session, with waiting time removed. Hosted results retain their real verdicts. The comparison, red-teaming and MCP clips are separately recorded runs; this video does not claim that all 18 categories passed. Source and requirements exploration are described as starting points; the demonstrated execution uses an authored scenario pack.
+Narration uses Indian English with matching captions. The edit follows the speech; it is not padded to a fixed duration. Source plans are in [video-plan.json](video-plan.json). Finished recordings and raw working evidence stay in the local delivery directory.

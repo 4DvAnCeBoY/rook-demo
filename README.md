@@ -1,75 +1,71 @@
-# Rook demo agents
+# Agent Assurance — ROOK
 
-See how Rook tests AI agents through everyday customer journeys: moving money, booking appointments, settling claims and processing refunds. Each demo includes a chat application, agent diagrams, and examples of issues Rook can find.
+Explore an agent, generate tests, prove its connection and inspect the evidence. The applications cover banking, healthcare, insurance and customer support, with separate workflows for Developers and Quality Engineers.
 
-Choose **Developer** to explore the agent's code, or **QE** to work from requirements and the agent connection. Both use interactive Rook.
-
-| Industry | Developer | QE |
+| Industry | Developer: source and requirements | QE: requirements and connection |
 |---|---|---|
 | Banking | [banking-agent-code](demos/01-banking-code/README.md) | [banking-agent](demos/02-banking-no-code/README.md) |
 | Healthcare | [healthcare-agent-code](demos/03-healthcare-code/README.md) | [healthcare-agent](demos/04-healthcare-no-code/README.md) |
 | Insurance | [insurance-agent-code](demos/05-insurance-code/README.md) | [insurance-agent](demos/06-insurance-no-code/README.md) |
 | Customer Support | [customer-support-agent-code](demos/07-customer-support-code/README.md) | [customer-support-agent](demos/08-customer-support-no-code/README.md) |
 
-## Start here
+## Start an application
 
-You'll need Node.js 22 or later, [Rook](https://github.com/LambdaTest/rook), and an OpenAI API key. Open a terminal in this repository:
+You need Node.js 22 or later, Rook and an OpenAI API key. From a fresh checkout:
 
 ```bash
 npm ci
-npm run setup
+npm run setup -- insurance-agent-code
 ```
 
-`npm ci` installs the packages this demo needs, using the versions recorded in the repository. You only need to install them once for a fresh checkout.
-
-For the insurance example, add your key to `demos/05-insurance-code/.env`. The model and URLs are already filled in. An existing exported `MODEL_API_KEY` also works and takes priority over the file.
+`npm ci` installs the saved package versions. Add `MODEL_API_KEY` to `demos/05-insurance-code/.env`; the model and URLs are already configured. An exported key also works and takes priority.
 
 ```bash
-npm run demo -- insurance-agent-code
+npm start -- insurance-agent-code
 ```
 
-Open the address printed in the terminal and try: **“Settle claim CLM-100 for USD 1500.”** Keep this terminal running.
+Open the printed address. Meet the customer, inspect the tools and follow the agent diagram before testing. Use any edition name from the table in place of `insurance-agent-code`.
 
-## Open interactive Rook
+## Discover and test in interactive Rook
 
-In a second terminal at the repository root, prepare the demo once:
+Keep the application running. Prepare an empty workspace in a second terminal:
 
 ```bash
+npm run rook:prepare -- insurance-agent-code /tmp/insurance-agent-code
+cd /tmp/insurance-agent-code
 rook login
-rook project create "Rook Customer Demos"
-npm run rook:setup -- insurance-agent-code
+rook project create "Agent Assurance — Insurance"
+rook
 ```
 
-If you already have a project, use `rook project use PROJECT_ID` instead of creating one. Skip setup when this demo is already prepared.
+Choose another empty directory if this one already exists. Use `rook project use PROJECT_ID` when reusing a project.
 
-Open Rook for this demo:
-
-```bash
-npm run rook -- insurance-agent-code
-```
-
-This opens Rook's interactive terminal. Type the following **inside Rook**, one at a time:
+Inside Rook, review the prompts as you proceed:
 
 ```text
+/explore . Read PRD.md as the required behavior and inspect the supplied agent material.
+/generate --class functional,non_functional,adversarial --total 18
 /scenarios list
-/sync
-/profile test demo-normal
-/run --only SC-101 --profile demo-normal
+/profile add http --from connection.md
+/profile test http
+/run --test --profile http
 /report
+```
+
+Review the generated tests before running them. Rook writes agent definitions, features, scenarios, profiles and evidence under **.testmuai/rook/** in this workspace. Inspect those files and the local report first.
+
+## Share a reviewed run, if needed
+
+```text
+/sync
+/run --profile http
 /ui
 ```
 
-Follow Rook's prompts. The last command opens the hosted results page, where you can inspect the conversation, tool trace and report. Use `/guide` for help and `/exit` to leave Rook. Testing uses your model and Rook accounts.
+Sync records the project definitions. The next run creates a **new shared result** in the hosted Web UI. The earlier `--test` run remains local. Rook's optional `/ui --local` viewer reads files on this machine.
 
-## Continue the demo
+[Interactive workflow](docs/testing-with-rook.md) · [Agent architecture and walkthrough](docs/demo-walkthrough.html) · [Recorded results and limits](docs/verification.md)
 
-- [Interactive demo guide](docs/testing-with-rook.md): compare before and after a fix, test multi-turn conversations, red-team attacks and MCP.
-- [Visual walkthrough](docs/demo-walkthrough.html) · [PDF](docs/demo-walkthrough.pdf): introduce the agents and explain their results.
-- [Setup help](docs/runtime-setup.md): key configuration and common startup issues.
-- [Red-teaming handout](docs/red-teaming.pdf): a two-page introduction with customer examples and diagrams.
-- [Video scene plans](media/rook-overview/README.md): a ten-minute overview and a separate walkthrough in each demo’s `video` folder.
-- [Recorded runs in CI](docs/sample-runs.md): inspect saved results and demonstrate a blocking check.
+Every edition includes an agent overview, connected diagrams, setup instructions and an authored pack covering 18 categories. [Coverage](docs/category-coverage.md) describes that inventory; executed results establish what passed or failed. The [prepared-pack workflow](docs/rook-integration.md) provides a shorter starting point with existing scenarios and profiles.
 
-Every demo folder includes its own instructions and **agents-overview.md** with diagrams and functions. There are 18 scenario categories per demo across functional, non-functional and adversarial testing; see [coverage](docs/category-coverage.md). All customer records and business systems are fictional.
-
-For contributors: [integration details](docs/rook-integration.md) and [verification notes](docs/verification.md).
+All customer records and business systems are fictional. Model requests and Rook judging use their respective services.

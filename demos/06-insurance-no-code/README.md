@@ -1,4 +1,4 @@
-# Atlas Cover — QE demo
+# Atlas Cover — QE edition
 
 Turn a claim conversation into a verified settlement.
 
@@ -16,7 +16,7 @@ cd demos/06-insurance-no-code
 npm run setup
 ```
 
-`npm ci` installs the demo's packages; run it once for a fresh checkout. Add **MODEL_API_KEY** to this folder's `.env`. The model and URLs are already configured. An exported `MODEL_API_KEY` also works and takes priority. Setup must still create the `.env` file.
+`npm ci` installs the application's packages; run it once for a fresh checkout. Add **MODEL_API_KEY** to this folder's `.env`. The model and URLs are already configured. An exported `MODEL_API_KEY` also works and takes priority. Setup must still create the `.env` file.
 
 ```bash
 npm start
@@ -27,44 +27,53 @@ Open **http://127.0.0.1:4315**, or the address printed in the terminal. Keep the
 ## Meet the customer
 
 1. Ask: **Settle claim CLM-100 for USD 1500.** Check the reply and business receipt.
-2. Choose **Before the fix**. Select **Handle a dependency failure honestly**, then send the same request. The payment provider is unavailable in this scenario. Compare what the agent says with what happened.
+2. Choose **Before the fix**. Select **Report a failed settlement payment**, then send the same request. The payment provider is unavailable in this scenario. Compare what the agent says with what happened.
 3. Choose **After the fix** and repeat. Explain the customer impact using the [required behavior](PRD.md).
 
 This edition lets Rook explore requirements and connect to the running agent. QEs do not need application source code.
 
-## Open interactive Rook
+## Discover and test with Rook
 
-In a second terminal, enter this demo folder. Prepare it once:
+Keep the application running. In a second terminal at the repository root, prepare a fresh workspace:
 
 ```bash
+npm run rook:prepare -- insurance-agent /tmp/insurance-agent
+cd /tmp/insurance-agent
 rook login
-rook project create "Rook Customer Demos"
-npm run rook:setup
+rook project create "Agent Assurance — Atlas Cover"
+rook
 ```
 
-Already have a project? Use `rook project use PROJECT_ID` instead of creating one. Skip setup if this demo is already prepared; existing results are preserved.
+Choose another empty directory if that workspace already exists. Existing evidence is preserved. If you already have a project, use `rook project use PROJECT_ID`.
 
-```bash
-npm run rook
-```
-
-Type these **inside Rook**, one at a time, and follow its prompts:
+Type these **inside Rook**, one at a time, and review its prompts:
 
 ```text
+/explore . Read PRD.md as the required behavior and inspect the supplied agent material.
+/agent
+/generate --class functional,non_functional,adversarial --total 18
 /scenarios list
-/sync
-/profile test demo-normal
-/run --only SC-101 --profile demo-normal
+/profile add http --from connection.md
+/profile show http
+/profile test http
+/run --test --profile http
 /report
+```
+
+Rook writes agent definitions, features, scenarios, profiles and run evidence under **.testmuai/rook/** in this workspace. Read and review these files before sharing. Generated tests need review; 18 generated scenarios do not automatically cover every category.
+
+The `--test` run stays out of the hosted project timeline. For an optional shared run, enter:
+
+```text
+/sync
+/run --profile http
 /ui
 ```
 
-SC-101 tests the everyday customer request. Open **agent → run → scenario** in the hosted results page to inspect the conversation, trace and verdict. Use `/guide` for help and `/exit` to leave Rook.
+This executes a new run and records its results in the hosted Web UI. It does not upload the earlier `--test` run. Open **agent → run → scenario** to inspect criteria, the conversation and collected evidence. Use `/guide` for help and `/exit` to leave Rook.
 
-Continue with [before/after comparisons, multi-turn, red-teaming and MCP](../../docs/testing-with-rook.md). The browser's version choice applies to its conversation; the guide explains how to select the same version in Rook. Model responses can vary, so present the result you observe.
-
-From the repository root, the same launch commands are `npm run demo -- insurance-agent` and `npm run rook -- insurance-agent`.
+For a shorter session using the supplied 18 reviewed scenarios, prepare the existing pack with `npm run rook:setup` in this edition's folder, then `npm run rook`. See the [interactive workflow](../../docs/testing-with-rook.md) for before/after comparisons, multi-turn conversations, red-teaming and MCP.
 
 ## What's included
 
-The demo has 18 categories across functional, non-functional and adversarial tests. The [scenario pack](rook/README.md) lists the supplied tests; [connection.md](connection.md) provides the details Rook needs to reach the agent. All customer records and business systems are fictional. Model requests and Rook testing use their respective accounts.
+This edition has 18 categories across functional, non-functional and adversarial tests. The [scenario pack](rook/README.md) lists the supplied tests; [connection.md](connection.md) provides the details Rook needs to reach the agent. All customer records and business systems are fictional. Model requests and Rook testing use their respective accounts.

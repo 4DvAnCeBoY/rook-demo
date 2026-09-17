@@ -9,7 +9,7 @@ const directory = process.env.ROOK_STATE_DIR;
 if (!directory) throw new Error('ROOK_STATE_DIR is required');
 await mkdir(directory, { recursive: true });
 const path = join(directory, 'mcp-session.json');
-const client = new Client({ name: 'rook-demo-profile', version: '0.1.0' });
+const client = new Client({ name: 'rook-agent-profile', version: '0.1.0' });
 const env = Object.fromEntries(Object.entries(process.env).filter(([,v])=>v !== undefined));
 await client.connect(new StdioClientTransport({ command: process.execPath, args: [fileURLToPath(new URL('./mcp.mjs', import.meta.url)), ...(phase === 'collect' ? [] : ['--target'])], env }));
 async function call(name, args) {
@@ -32,7 +32,7 @@ try {
   } else if (phase === 'close') result = await call('close_agent_session', { session_id: await id() });
   else if (phase === 'collect') {
     const proof = await call('inspect_session', { session_id: await id() });
-    const evidenceFile = resolve(directory,`demo-evidence-${proof.sessionId}.json`);
+    const evidenceFile = resolve(directory,`evidence-${proof.sessionId}.json`);
     await writeFile(evidenceFile,JSON.stringify(proof,null,2));
     await writeFile(join(directory,'demo-evidence.json'),JSON.stringify(proof,null,2));
     result = { output:JSON.stringify({ sessionId:proof.sessionId,effects:proof.effects,verificationGaps:proof.verificationGaps }),conversation:proof.sessionId,calls:proof.calls,traces:proof.traces,

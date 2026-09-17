@@ -36,7 +36,7 @@ catch {
 async function readBrowserState() {
   const until = Date.now() + 15000;
   const el = id => document.getElementById(id);
-  while (!el('send') || el('send').disabled || !el('brand')?.textContent || document.title === 'Rook · Customer journeys') {
+  while (!el('send') || el('send').disabled || !el('brand')?.textContent || document.title === 'Agent Assurance — ROOK') {
     if (Date.now() > until) throw new Error('UI did not become ready');
     await new Promise(resolve => setTimeout(resolve, 25));
   }
@@ -176,10 +176,10 @@ async function checkDemo(demo) {
       assert.equal(ui.persona, domain.persona);
       assert.equal(ui.policy, domain.policy);
       assert.ok(ui.audience.includes(demo.audience.toUpperCase()));
-      assert.ok(ui.audience.includes(demo.style.toUpperCase() + ' DEMO'));
+      assert.ok(ui.audience.includes(demo.style === 'code' ? 'SOURCE ACCESS' : 'REQUIREMENTS ACCESS'));
       assert.equal(ui.hasEngineSelector, false);
       assert.equal(ui.hasFaultSelector, false);
-      assert.ok(!/fixture|live model/i.test(ui.visibleText));
+      assert.ok(!/fixture|live model|\bdemo\b/i.test(ui.visibleText));
       assert.equal(ui.cards.length, 18);
       assert.equal(ui.documentWidth, ui.width);
       const snapshot = await browser('snapshot', '-i');

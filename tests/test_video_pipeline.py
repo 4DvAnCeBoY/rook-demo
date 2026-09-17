@@ -24,6 +24,17 @@ narration = module('narration', 'narrate-video.py')
 renderer = module('renderer', 'render-video.py')
 
 class NarrationTests(unittest.TestCase):
+    def test_speech_led_edit_does_not_pad_to_old_running_time(self):
+        plan={'id':'assurance','voice':{'voiceId':'voice'},'pacing':'speech-led','durationSeconds':360,
+              'scenes':[{'duration':40,'narration':'First.'},{'duration':40,'narration':'Second.'}]}
+        records=[{'duration':3.4,'audio':'first.mp3','cues':[]},{'duration':7.9,'audio':'second.mp3','cues':[]}]
+        with tempfile.TemporaryDirectory() as tmp, patch.object(narration,'synthesize',side_effect=records):
+            result=narration.narrate(plan,Path(tmp)/'output',Path(tmp)/'cache')
+        self.assertLess(result['durationSeconds'],13)
+        for scene in result['scenes']:
+            self.assertLessEqual(scene['duration']-scene['speech']['duration'],.7)
+            self.assertAlmostEqual(scene['duration']*24,round(scene['duration']*24))
+
     @unittest.skipUnless(shutil.which('ffmpeg'), 'FFmpeg required for audio timing regression')
     def test_normalized_mp3_preserves_opening_silence_and_scene_duration(self):
         with tempfile.TemporaryDirectory() as tmp:

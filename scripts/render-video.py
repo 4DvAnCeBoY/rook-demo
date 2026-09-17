@@ -75,10 +75,10 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
         speed=1
         if not still:
             seconds=float(run(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(source)]))
-            speed=min(1,(duration-4)/max(seconds,.1))
+            speed=min(1,duration/max(seconds,.1))
         # Short takes pause on their final frame; long takes are edited to fit.
-        filters=f'setpts={speed}*(PTS-STARTPTS),fps=24,scale=1728:972:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:0:color=0x132d24,tpad=stop_mode=clone:stop_duration={duration},trim=duration={duration},setsar=1,ass={ass.resolve()}'
-        run(['ffmpeg','-hide_banner','-loglevel','error','-y',*inputs,'-vf',filters,'-t',str(duration),'-an','-c:v','libx264','-preset','fast','-crf','23','-pix_fmt','yuv420p','-threads','2',str(segment)])
+        filters=f'setpts={speed}*(PTS-STARTPTS),fps=24,scale=1920:972:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:0:color=0x132127,tpad=stop_mode=clone:stop_duration={duration},trim=duration={duration},setsar=1,ass={ass.resolve()}'
+        run(['ffmpeg','-hide_banner','-loglevel','error','-y',*inputs,'-vf',filters,'-t',str(duration),'-an','-c:v','libx264','-preset','veryfast','-crf','23','-pix_fmt','yuv420p','-threads','2',str(segment)])
         segments.append(segment)
         if narrated:
             speech=scene['speech'];audio=pathlib.Path(speech['audio']).resolve()

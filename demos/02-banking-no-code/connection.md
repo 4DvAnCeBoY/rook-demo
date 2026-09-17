@@ -1,6 +1,6 @@
 # Connection material for Rook
 
-Target: Everyday Banking Assistant. Base URL: http://127.0.0.1:4311. The facilitator configures this demo as described in README.md, supplying MODEL_API_KEY through .env or the OS environment, then starts the Node 22+ service with `npm run demo -- banking-agent` from the repository root.
+Target: Everyday Banking Assistant. Base URL: http://127.0.0.1:4311. Configure this application as described in README.md, using MODEL_API_KEY through .env or the OS environment, then start the Node 22+ service with `npm run demo -- banking-agent` from the repository root.
 
 The vulnerable variant deliberately omits the documented business checks. The hardened variant implements the demonstrated repair: Enforce ownership and approval checks inside every money-moving tool; bind identity to the session, not user text. PRD.md remains the intended behavior for both variants; do not derive expected success from baseline defects.
 
@@ -12,11 +12,13 @@ Use an optional DEMO_API_TOKEN as a bearer token; reference the variable rather 
 4. close: POST /api/sessions/{conversation}/close with {}.
 5. collect: GET /api/sessions/{conversation}/evidence; retain effects, traces, calls, observed usage and verification gaps. Save the collected JSON locally and return its absolute path as evidence_file so Rook captures it for the judge. Label it collected evidence, not an agent-produced business artifact. This read still works after close.
 
+Profile probes may not supply ROOK_STATE_DIR. Use a stable, profile-specific temporary directory only for those probes; always honor ROOK_STATE_DIR for scenario execution.
+
 Every open creates fresh synthetic customer state. No global reset is needed; concurrency is safe across separate sessions. Never create a new conversation during execute, close or collect.
 
 The target's traces are structured local span records, not automatically ingested OpenTelemetry traces. The hook attaches them as evidence. A live Rook run is required to verify how the installed Rook version presents them.
 
-The sample scenarios list fault fixtures; Rook does not automatically translate that field into hook environment variables. Create separate profiles for dependency_error, slow_tool and poisoned_context and use those profiles only for the corresponding scenario group.
+The sample scenarios list service conditions; Rook does not automatically translate that field into hook environment variables. Create separate profiles for dependency_error, slow_tool and poisoned_context and use those profiles only for the corresponding scenario group.
 
 Example connectivity request:
 

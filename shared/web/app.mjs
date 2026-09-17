@@ -47,7 +47,7 @@ function renderScenarios() {
   for (const scenario of scenarios) {
     const button = document.createElement('button'); button.className = 'scenario-button'; button.type = 'button'; button.setAttribute('aria-pressed', String(selected?.id === scenario.id));
     const category = document.createElement('small'); category.textContent = scenario.category.replaceAll('_', ' ');
-    button.append(category, document.createTextNode(scenario.title));
+    button.append(category, document.createTextNode(scenarioTitle(demo.domain, scenario)));
     button.addEventListener('click', async () => {
       if (busy) return; selected = scenario;
       $('expectations').replaceChildren();
@@ -103,11 +103,11 @@ $('auth-form').addEventListener('submit', async event => { event.preventDefault(
 async function initialize() {
   try {
     demo = await api('/api/demo'); $('auth-form').hidden = true; $('error').hidden = true;
-    document.title = `${demo.name} · Rook demo`; document.documentElement.style.setProperty('--accent',demo.accent);
+    document.title = `${demo.name} · Agent Assurance — ROOK`; document.documentElement.style.setProperty('--accent',demo.accent);
     text('brand',demo.name); text('mission',demo.mission); text('persona',demo.persona); text('agent-name',demo.agent); text('chat-title',demo.agent); text('policy',demo.policy);
-    text('audience',`${demo.audience.toUpperCase()} / ${demo.domain.replaceAll('-',' ').toUpperCase()} / ${demo.style.toUpperCase()} DEMO`); text('demo-number',demo.id.slice(0,2)); $('goal').value = demo.starter;
+    text('audience',`${demo.domain.replaceAll('-',' ').toUpperCase()} / ${demo.audience.toUpperCase()} / ${demo.style === 'code' ? 'SOURCE ACCESS' : 'REQUIREMENTS ACCESS'}`); $('goal').value = demo.starter;
     renderScenarios();
   } catch(error) { showError(error); }
 }
 await initialize();
-import { readableReply, customerImpact } from './presentation.mjs';
+import { readableReply, customerImpact, scenarioTitle } from './presentation.mjs';

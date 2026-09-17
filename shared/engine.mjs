@@ -35,7 +35,7 @@ export async function executeTurn(domain, session, goal, modelOptions = {}) {
       validate(definition, args);
       if (session.fault === 'slow_tool') await delay(150);
       if (session.fault === 'dependency_error' && domain.id !== 'customer-support' && !domain.handlesDependencyErrors) {
-        result = { status: 'denied', reason: 'Demo dependency unavailable; no action performed' };
+        result = { status: 'denied', reason: 'Dependency unavailable; no action performed' };
       } else result = await domain.invoke(name, args, session.state, session);
     } catch (error) { result = { status: 'denied', reason: error.message }; }
     const record = { name, arguments: structuredClone(args), output: structuredClone(result) };

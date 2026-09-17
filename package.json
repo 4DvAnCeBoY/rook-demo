@@ -23,7 +23,9 @@
     "rook:generate": "node scripts/generate-native.mjs",
     "rook:coverage": "node scripts/check-native.mjs",
     "samples:check": "node scripts/sample-runs.mjs",
-    "docs:build": "node scripts/build-demo-guide.mjs"
+    "docs:build": "node scripts/build-demo-guide.mjs",
+    "videos": "node scripts/serve-videos.mjs",
+    "media:plan": "node scripts/build-assurance-media.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.30.0",

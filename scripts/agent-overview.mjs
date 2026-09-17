@@ -95,7 +95,7 @@ export function agentOverview(demo, domain, taxonomy) {
   const x = workflows[demo.domain];
   return `# ${domain.agent}
 
-${domain.name} · ${demo.audience} demonstration
+${domain.name} · ${demo.audience} edition
 
 **The customer:** ${domain.persona}. ${domain.mission}
 
@@ -103,7 +103,7 @@ ${x.context}
 
 ## Agent under test
 
-This agent handles one customer-service journey. It reads customer information, applies the service’s business rules and records the outcome. The demo uses fictional customer data and simulated business systems.
+This agent handles one customer-service journey. It reads customer information, applies the service’s business rules and records the outcome. The application uses fictional customer data and simulated business systems.
 
 \`\`\`mermaid
 flowchart LR
@@ -113,7 +113,8 @@ flowchart LR
   A --> E["Conversation and tool trace"]
   B --> R["Rook verification"]
   E --> R
-  R --> U["Rook hosted Web UI and report"]
+  R --> L["Local report and evidence files"]
+  L -.-> U["Optional sync and shared Web UI run"]
 \`\`\`
 
 ## High-level functions
@@ -140,22 +141,27 @@ ${demo.style === 'code' ? 'For developers, start with the agent’s implementati
 \`\`\`mermaid
 flowchart LR
   A["${demo.style === 'code' ? 'Agent code and requirements' : 'Requirements and agent connection'}"] --> B["Rook discovers agent features"]
-  B --> C["Review scenarios and test in Rook TUI"]
+  B --> G["Generate and review scenarios"]
+  G --> P["Create and test a connection profile"]
+  P --> C["Run locally in Rook TUI"]
   C --> D["Inspect criteria, conversation and trace"]
   D --> E["Verify business receipts through MCP"]
-  E --> F["Read the report and rerun after the fix"]
+  E --> F["Read local report and rerun after the fix"]
+  F -.-> S["Optional sync and hosted Web UI"]
 \`\`\`
 
-After running the test in **Rook’s interactive TUI**, enter **/ui** to open the hosted Web UI. There, open the agent, review its features and scenarios, then open a run. Select a scenario to see its criteria, the exact customer request, the agent reply and collected evidence. In the **report**, compare Pass, Fail and Unable to Verify. A missing observation is not a pass.${demo.domain === 'insurance' ? '\n\nSee [insurance validation](../../docs/insurance-validation.md) for actual Rook findings, tested workflows and remaining limits.' : ''}
+Use **/explore**, **/generate**, **/profile add** and **/profile test** in Rook’s interactive TUI. Then run **/run --test** and read **/report**. Agent definitions, features, scenarios, profiles, requests, responses, verdicts and collected evidence remain inspectable under **.testmuai/rook/**. The local viewer is available with **/ui --local** when wanted.
 
-| Class | Scenarios covered in this demo |
+Sharing is optional: **/sync** records the project definition upstream. A subsequent run without **--test** records its results in the hosted timeline; **/ui** opens that Web UI. This is a new shared run, not an upload of the earlier local run. Select a scenario to see its criteria, customer request, reply and evidence. Keep Pass, Fail and Unable to Verify distinct.${demo.domain === 'insurance' ? '\n\nSee [insurance validation](../../docs/insurance-validation.md) for actual Rook findings, tested workflows and remaining limits.' : ''}
+
+| Class | Scenario categories |
 |---|---|
 ${Object.entries(taxonomy).map(([kind, categories]) => `| ${kind.replaceAll('_', ' ')} | ${categories.join(', ')} |`).join('\n')}
 
-## Present this demo
+## Walk through the agent
 
-Open **http://127.0.0.1:${demo.port}** after starting demo ${demoName(demo)}. Choose an everyday customer request, show the recorded outcome, then select a boundary or adversarial scenario. Compare the original and updated agent then test in Rook’s interactive TUI and inspect the matching run in its hosted Web UI.
+Open **http://127.0.0.1:${demo.port}** after starting ${demoName(demo)}. Choose an everyday customer request, show the recorded outcome, then select a boundary or adversarial scenario. Compare the original and updated agent then explore, generate and test in Rook’s interactive TUI. Inspect the local files before optionally creating a shared run for the hosted Web UI.
 
-The complete customer walkthrough, including all four agents, diagrams and actual Rook screenshots, is available from **Agents & demo guide** in the application. [PRD.md](PRD.md) contains the required behavior; [connection.md](connection.md) contains presenter setup material. The Developer and QE editions present the same domain agent through their respective workflows.
+The complete customer walkthrough, including all four agents, diagrams and actual Rook screenshots, is available from **Agent architecture** in the application. [PRD.md](PRD.md) contains the required behavior; [connection.md](connection.md) contains presenter setup material. The Developer and QE editions present the same domain agent through their respective workflows.
 `;
 }

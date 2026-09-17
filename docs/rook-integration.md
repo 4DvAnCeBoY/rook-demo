@@ -1,6 +1,6 @@
-# Optional setup and integration details
+# Connection and prepared-workspace details
 
-The [interactive demo guide](testing-with-rook.md) covers the normal presentation. Use this page when changing the connection or demonstrating fresh exploration.
+The [interactive workflow](testing-with-rook.md) starts with exploration and local artifacts. Use this page for connection details or a shorter session with the supplied scenario pack.
 
 ## Explore and generate interactively
 
@@ -21,12 +21,29 @@ Inside Rook, select a project with `/project` and follow `/guide`. Then enter:
 /agent
 /generate --class functional,non_functional,adversarial --total 18
 /scenarios list
-/profile add
+/profile add http --from connection.md
+/profile test http
+/run --test --profile http
+/report
 ```
 
 Review the discovered agent and generated tests. For the connection, provide `connection.md` and ask Rook to reuse one conversation across all turns. Test the profile using the name Rook creates before running its scenarios. Generating 18 tests does not guarantee every category is covered; compare against the [category list](category-coverage.md).
 
 This workflow discovers and generates new material. The quick start instead loads the supplied authored examples for a repeatable presentation.
+
+## Use the prepared scenario pack
+
+Select a Rook project in the repository root or edition folder, then run `npm run rook:setup` in the edition folder. This creates a separate workspace with 18 authored scenarios and the supplied HTTP and MCP profiles. Open it with `npm run rook`.
+
+```text
+/scenarios list
+/profile show demo-normal
+/profile test demo-normal
+/run --test --only SC-101 --profile demo-normal
+/report
+```
+
+This path reuses reviewed definitions; it does not represent a new exploration or generation. Existing workspaces and evidence are preserved.
 
 ## Optional settings
 
@@ -52,9 +69,9 @@ The connection guide in each demo describes the five stages: prepare, open, exec
 
 The hooks return both `output` and `agent_reply` for compatibility and save a separate evidence file per conversation. Provider usage must be complete before enabling cost tests. Some Rook versions may show native call assertions as Unable to Verify even when receipt criteria can be judged; retain that distinction in the report.
 
-## Show results in the hosted web UI
+## Optional hosted review
 
-From the prepared demo's interactive Rook terminal, run `/sync`, then `/run --only SC-101 --profile demo-normal`. Follow the prompts and open `/ui` to view the hosted report. Hosted runs require a signed-in Rook account. Runs using `--test` stay local and do not appear there.
+Inspect the local files and `/report` first. To share the prepared pack, run `/sync`, then `/run --only SC-101 --profile demo-normal`, and open `/ui`. This creates a new shared run. An earlier `--test` run remains local and is not promoted by sync. Exploration, generation and local test artifacts remain under `.testmuai/rook/`; `/ui --local` can display those files when wanted.
 
 The demo launcher includes a compatibility adapter for the current CLI and hosted API: it sends hand-authored scenario origin as `manual`, retaining `author: user`, the original YAML and content hash. It also preserves the recorded authorship of unchanged insurance features. This addresses the hosted sync HTTP 500 observed on 2026-09-17; it does not alter test criteria or results. Use `npm run rook -- DEMO_NAME` so interactive sync receives the adapter.
 

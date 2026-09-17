@@ -1,0 +1,169 @@
+{
+  "status": "validated",
+  "videos": [
+    {
+      "id": "banking-agent",
+      "durationSeconds": 334.2916666666667,
+      "audioDurationSeconds": 334.291,
+      "captionCues": 76,
+      "integratedLoudnessLUFS": -18.3,
+      "truePeakDBTP": -1.86,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "d4ae5225fb29ff6f27132e4e57e1662afbd42ce6040d96229a5bb50044dc27e8"
+    },
+    {
+      "id": "banking-agent-code",
+      "durationSeconds": 336.4583333333333,
+      "audioDurationSeconds": 336.458,
+      "captionCues": 76,
+      "integratedLoudnessLUFS": -18.31,
+      "truePeakDBTP": -1.86,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "9f8d03e1c50d313ce386985c73db93e5fd5e1640ec1c11207d79e1007f79e9a3"
+    },
+    {
+      "id": "customer-support-agent",
+      "durationSeconds": 338.7083333333333,
+      "audioDurationSeconds": 338.708,
+      "captionCues": 75,
+      "integratedLoudnessLUFS": -18.31,
+      "truePeakDBTP": -1.9,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "6761ca8c2f9b5927365161c4a23209afe7f84eac4ace39fedbac36c2572ecb88"
+    },
+    {
+      "id": "customer-support-agent-code",
+      "durationSeconds": 339.2916666666667,
+      "audioDurationSeconds": 339.291,
+      "captionCues": 74,
+      "integratedLoudnessLUFS": -18.3,
+      "truePeakDBTP": -1.9,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "ad149ec64257bd9c892b43c8cee3b442a521ced6fde483288f85e11db0de5c8d"
+    },
+    {
+      "id": "healthcare-agent",
+      "durationSeconds": 343.375,
+      "audioDurationSeconds": 343.375,
+      "captionCues": 77,
+      "integratedLoudnessLUFS": -18.27,
+      "truePeakDBTP": -1.97,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "997dd82a77dab8f5b1a578147d1313983155afe249d3f175346b1fbc9553f48a"
+    },
+    {
+      "id": "healthcare-agent-code",
+      "durationSeconds": 347.6666666666667,
+      "audioDurationSeconds": 347.666,
+      "captionCues": 77,
+      "integratedLoudnessLUFS": -18.3,
+      "truePeakDBTP": -1.96,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "1ee2be76629b5087230a9358c41d6d07863f338be878e11a2cdc876582a3586c"
+    },
+    {
+      "id": "insurance-agent",
+      "durationSeconds": 350.3333333333333,
+      "audioDurationSeconds": 350.333,
+      "captionCues": 75,
+      "integratedLoudnessLUFS": -18.31,
+      "truePeakDBTP": -1.96,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "b9e05e2fb0953d674908c00bd021c3ad7c249f48abb78edfcdef2cccd359d484"
+    },
+    {
+      "id": "insurance-agent-code",
+      "durationSeconds": 352.5,
+      "audioDurationSeconds": 352.5,
+      "captionCues": 75,
+      "integratedLoudnessLUFS": -18.32,
+      "truePeakDBTP": -1.94,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "edbdd9534c0471d9eaabf4fc2733de9a9cdfe6f4dc8e48cce2eb1315d725b6d0"
+    },
+    {
+      "id": "rook-overview",
+      "durationSeconds": 432.25,
+      "audioDurationSeconds": 432.25,
+      "captionCues": 94,
+      "integratedLoudnessLUFS": -18.32,
+      "truePeakDBTP": -1.93,
+      "longestDetectedSilenceSeconds": 0,
+      "detectedSilencesAbove1_2Seconds": [],
+      "decodedAllFrames": true,
+      "sha256": "186335bb9945fc2010511020515e0c66bd9964e694e52e174817998ec72b68bb"
+    }
+  ],
+  "browserPlayback": [
+    {
+      "id": "rook-overview",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 14312,
+      "chapterSeek": true
+    },
+    {
+      "id": "banking-agent-code",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 13761,
+      "chapterSeek": true
+    },
+    {
+      "id": "banking-agent",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 13761,
+      "chapterSeek": true
+    },
+    {
+      "id": "healthcare-agent-code",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 12942,
+      "chapterSeek": true
+    },
+    {
+      "id": "healthcare-agent",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 13306,
+      "chapterSeek": true
+    },
+    {
+      "id": "insurance-agent-code",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 14481,
+      "chapterSeek": true
+    },
+    {
+      "id": "insurance-agent",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 13964,
+      "chapterSeek": true
+    },
+    {
+      "id": "customer-support-agent-code",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 13768,
+      "chapterSeek": true
+    },
+    {
+      "id": "customer-support-agent",
+      "unmutedPlayback": true,
+      "decodedAudioBytes": 13358,
+      "chapterSeek": true
+    }
+  ]
+}

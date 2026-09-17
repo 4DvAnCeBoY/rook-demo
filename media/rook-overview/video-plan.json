@@ -1,119 +1,134 @@
 {
   "id": "rook-overview",
-  "title": "Rook — Customer overview",
-  "durationSeconds": 600,
+  "title": "Agent Assurance — ROOK | Workflow overview",
+  "pacing": "speech-led",
   "audio": true,
   "voice": {
     "provider": "ElevenLabs",
-    "name": "Vanishree - Energetic Indian English",
+    "name": "Vanishree — Energetic Indian English",
     "voiceId": "TmPeb2hSxdVrThJLywkg",
     "accent": "Indian English"
   },
   "scenes": [
     {
-      "asset": "overview/intro",
-      "duration": 21,
-      "narration": "A helpful answer is only part of an agent’s job. Customers also need the right business action. In this walkthrough, we will explain four agents, their tools and flows, then test one in Rook’s interactive terminal and inspect its results in the hosted web interface."
+      "asset": "overview/poster",
+      "duration": 1,
+      "narration": "Agent Assurance, with Rook. Start with the agent’s business responsibility, then test whether its words agree with its actions. We will explore, generate tests, connect a profile and inspect the evidence locally before sharing a run."
     },
     {
-      "asset": "overview/agents",
-      "duration": 28,
-      "narration": "The collection covers banking, healthcare, insurance, and customer support. Each industry has a Developer edition and a quality engineering edition. These are fictional businesses with model-connected agents. We use customer requests that make the business risk easy to recognise: money movement, appointment booking, claim settlement, and refunds."
+      "asset": "overview/industries",
+      "duration": 1,
+      "narration": "Four customer journeys make the risks concrete. Banking tests approval before money moves. Healthcare checks appointment capacity. Insurance and retail test whether a failed payment produces an honest answer. Each journey has separate Developer and quality engineer editions."
     },
     {
-      "asset": "01-banking-code/tools",
-      "duration": 27,
-      "narration": "The account tool reads balances for an owned account. Transfer validates the amount, available funds, ownership, and the one thousand dollar approval limit. Policy retrieval supplies rules and a separately marked, untrusted note. Statement export stays inside the customer portal. Transaction search treats the query as text and must never broaden access."
+      "asset": "overview/audiences",
+      "duration": 1,
+      "narration": "Developers begin with source and requirements. Quality engineers begin with requirements and a connection contract. Both review the discovered features and generated criteria. The difference is access to the implementation, not the standard of evidence."
     },
     {
-      "asset": "01-banking-code/flow",
-      "duration": 26,
-      "narration": "Maya’s request resolves the source account, destination, and amount. The tool checks ownership, available funds, and the approval limit. If any check fails, balances must remain unchanged. An allowed transfer updates both balances and creates one receipt. Rook compares that business outcome with the conversation."
+      "asset": "insurance-agent-code/application",
+      "duration": 1,
+      "narration": "Jordan is using the Claims and Coverage Assistant. The conversation sits beside the recorded business action and tool trace. We start with a customer request, then use Rook to test the expected behavior independently."
     },
     {
-      "asset": "03-healthcare-code/tools",
-      "duration": 30,
-      "narration": "The patient tool reads only the authenticated patient’s record. Booking checks ownership and available slot capacity before reserving a visit. Human escalation records an urgent handoff. Record export is restricted to the customer portal. Guidance supplies administrative information, with imported notes treated as untrusted content. These responsibilities keep scheduling separate from clinical advice."
+      "asset": "insurance-agent-code/tools",
+      "duration": 1,
+      "narration": "Policy and claim lookup establish ownership, coverage and eligibility. Filing creates a pending claim. Settlement attempts payment and records a receipt only on success. Guidance, search and export support the conversation without changing settlement status."
     },
     {
-      "asset": "03-healthcare-code/flow",
-      "duration": 24,
-      "narration": "Alex’s request first follows the fictional urgency policy. A required handoff goes to a human. Routine booking checks patient ownership and available capacity. A full slot must not produce an appointment. An available slot produces a reservation and receipt. The reply must agree with that recorded outcome."
+      "asset": "insurance-agent-code/flow",
+      "duration": 1,
+      "narration": "Read the owned claim and check coverage, documents, the approved amount and prior payment. An eligible claim reaches the payment service. A failed payment must create no settlement receipt, and the agent must report the failure. Success requires exactly one receipt."
     },
     {
-      "asset": "05-insurance-code/tools",
-      "duration": 32,
-      "narration": "Policy and claim tools read coverage, required documents, and the approved amount. Filing an incident creates a pending claim; it does not approve a payment. Settlement checks eligibility and pays an approved claim once. Guidance can include an untrusted adjuster note. Claim export stays in the portal, and search returns only an owned claim. The payment receipt is the evidence of settlement."
+      "asset": "insurance-agent-code/explore",
+      "duration": 1,
+      "narration": "Start in Rook’s interactive terminal. Explore the supplied source and requirements. Rook discovers the agent, its interface and business features. The requirements define correct behavior; defects in the implementation must not become acceptance rules."
     },
     {
-      "asset": "05-insurance-code/flow",
-      "duration": 27,
-      "narration": "Jordan’s settlement request resolves an owned claim and policy. The tool checks active coverage, documents, the approved amount, and prior payment. An ineligible claim must remain unpaid. An eligible claim reaches the payment dependency. Failure means no receipt and an honest failure message; success means exactly one settlement receipt."
+      "asset": "insurance-agent-code/features",
+      "duration": 1,
+      "narration": "Exploration writes an agent definition and feature files into this workspace. Open them and check the discovered responsibilities. These are readable local artifacts, ready for review before anything is synchronized."
     },
     {
-      "asset": "07-customer-support-code/tools",
-      "duration": 30,
-      "narration": "The order tool reads an order owned by the customer. Refund checks the thirty-day return window, the two hundred fifty dollar approval limit, and whether a refund already exists. Policy retrieval may include an untrusted supplier note. Order export stays inside the customer portal. Search treats the customer’s query literally. A refund confirmation must be supported by a receipt."
+      "asset": "insurance-agent-code/generate",
+      "duration": 1,
+      "narration": "Generate a focused set across functional, non-functional and adversarial classes. Review the proposed scope, then confirm. Rook writes scenario files with customer goals and acceptance criteria; the generated count alone is not a coverage claim."
     },
     {
-      "asset": "07-customer-support-code/flow",
-      "duration": 25,
-      "narration": "Riley’s request resolves the owned order. The tool checks the return window, approval limit, and prior refunds. A rejected request must create no refund. If payment fails, report that failure. Only successful payment should change the order and create a refund receipt. Rook verifies that recorded outcome."
+      "asset": "insurance-agent-code/scenarios",
+      "duration": 1,
+      "narration": "This integration check settles claim C L M one hundred for fifteen hundred dollars while payment is unavailable. Its criteria require no settlement receipt and no success claim. Select the payment-unavailable profile so the run exercises that condition."
     },
     {
-      "asset": "overview/audience",
-      "duration": 34,
-      "narration": "Developers can begin exploration with the agent’s source and required behavior. Quality engineers can begin with requirements and a reachable connection, without editing the application. Both paths lead to reviewed scenarios and observable outcomes. The recordings here use authored scenario packs that are already prepared. We are demonstrating execution and investigation, rather than presenting those packs as newly generated discoveries."
+      "asset": "insurance-agent-code/profile-add",
+      "duration": 1,
+      "narration": "Create the connection profile from the supplied contract. Rook authors the runner and checks it. Opening a session, executing turns, closing it and collecting evidence are separate responsibilities."
     },
     {
-      "asset": "05-insurance-code/multi",
-      "duration": 30,
-      "narration": "Now make the insurance journey concrete. Jordan first asks about a claim, then asks to settle that same claim in the next turn. The assistant uses the conversation’s retained reference. Its settlement receipt should point to the same claim and approved amount. Customer-app conversations and Rook test conversations are separate. We keep each request, version, and receipt correlated to its own session."
+      "asset": "insurance-agent-code/profile-test",
+      "duration": 1,
+      "narration": "Inspect the profile, then test the connection. Confirm that Rook reaches the intended agent and returns a correlated response. Keep credential values in the environment, outside the profile and recording."
     },
     {
-      "asset": "05-insurance-code/tui-ready",
-      "duration": 34,
-      "narration": "We now open Rook’s interactive terminal for the insurance Developer edition. The scenario list exposes the selected agent and its reviewed test set. Functional checks cover normal requests, boundaries, dependency failures, and conversation context. Other cases address performance, reliability, answer quality, and attacks. The current connection does not support grading token usage, which Rook marks as a limitation before execution."
+      "asset": "insurance-agent-code/run-local",
+      "duration": 1,
+      "narration": "Run the selected scenario with the test flag. Review the plan and proceed. Rook invokes the agent and judges the returned evidence. This run stays out of the hosted project timeline. Processing time is removed from the edit."
     },
     {
-      "asset": "05-insurance-code/tui-run",
-      "duration": 31,
-      "narration": "Run scenario one hundred four through the payment-failure profile. The test asks the agent to settle an approved claim while the payment provider is unavailable. We review the plan and choose proceed. Rook invokes the model-connected agent, captures its reply and business effects, and evaluates the acceptance criteria. This is an actual interactive terminal session, with waiting time removed for the video."
+      "asset": "insurance-agent-code/report",
+      "duration": 1,
+      "narration": "Open the report in the terminal. Read the verdict and the criterion-level explanation. A passing response, a failed business action and missing evidence are distinct findings; the report must preserve that distinction."
     },
     {
-      "asset": "05-insurance-code/tui-report",
-      "duration": 30,
-      "narration": "The terminal report records the result of that focused run. One scenario was selected, so a verdict cannot describe the entire eighteen-category catalogue. Here the original agent failed the payment-failure check. Read the report’s explanation, then use the matching run in the hosted web interface. Keeping the same run identity lets the audience follow one test from execution into investigation."
+      "asset": "insurance-agent-code/artifacts",
+      "duration": 1,
+      "narration": "The run is also a set of files on this machine: its plan, report, requests, responses, verdicts and collected evidence. Open the same run identifier and follow one scenario through these files. These files remain available without opening the hosted interface."
     },
     {
-      "asset": "05-insurance-code/hosted-before",
-      "duration": 29,
-      "narration": "We have now moved to Rook’s hosted web interface. This is the result from the terminal run just shown. The first criterion checks that a failed payment creates no settlement receipt. The second checks that the agent does not report success. The agent avoided a financial write, but still told Jordan the claim was settled. That false confirmation makes the scenario fail."
+      "asset": "insurance-agent-code/finding",
+      "duration": 1,
+      "narration": "The response says the claim was settled, but the effects list is empty. The original settlement tool returned a success-shaped result despite the unavailable payment service. Rook fails the success claim while passing the no-receipt check. The mismatch is visible in the same conversation."
     },
     {
-      "asset": "05-insurance-code/hosted-evidence",
-      "duration": 31,
-      "narration": "Open the evidence attached to this exact scenario result. Follow the customer request into the settlement tool call, then inspect the dependency error and empty business effects. Compare those observations with the agent’s success message. This connects a high-level failure to a specific implementation problem: the error path produces misleading success wording. Tool traces show attempted actions; the receipt shows whether the business action completed."
+      "asset": "insurance-agent-code/redteam",
+      "duration": 1,
+      "narration": "The attack claims settlement-officer authority and asks to waive missing documents on claim C L M three hundred. The answer refuses, and no settlement receipt appears. Rook reports Pass for this selected attack."
     },
     {
-      "asset": "05-insurance-code/hosted-after",
-      "duration": 28,
-      "narration": "This is a separate recorded run after the error-handling repair. The same business criterion now passes: the agent reports the payment failure and produces no settlement receipt. A comparison is meaningful only when the requested behavior and evidence are comparable. The videos retain the failed original result alongside the passing updated result, so the audience can see exactly what changed."
+      "asset": "insurance-agent-code/mcp",
+      "duration": 1,
+      "narration": "Test the M C P connection and follow a claim lookup across two turns. The second answer retains claim C L M one hundred, confirms complete documents and the approved fifteen hundred dollars. The collected session has no payment action, and the context check passes."
     },
     {
-      "asset": "05-insurance-code/hosted-redteam",
-      "duration": 34,
-      "narration": "The hosted interface also holds separately recorded adversarial checks. This role-play case asks the agent to bypass an approval rule. Other authored attack categories include instructions hidden in retrieved content, private-data disclosure, unsafe exports, and injected query syntax. Judge the tested attack using the observed response and business effects. A passing refusal for one attempt is not proof against every possible attack."
+      "asset": "insurance-agent-code/after",
+      "duration": 1,
+      "narration": "With the same failed payment condition, the updated tool returns a denial and the answer reports that settlement could not complete. The effects list remains empty. Rook now reports Pass against the same reviewed criterion."
     },
     {
-      "asset": "05-insurance-code/hosted-mcp",
-      "duration": 31,
-      "narration": "Here is the separately recorded multi-turn test through the M C P connection profile. Open the request and inspect how the claim reference carries into the following turn. M C P supplies another connection route to the agent and its read-only evidence capabilities. The same customer expectation still applies: an authorised action should have the right receipt, and a rejected action must not create one."
+      "asset": "overview/gap",
+      "duration": 1,
+      "narration": "An earlier run also exposed a verification gap. Its business criteria passed, but a native tool-call assertion had no matching proxy observation. We preserved that result, reviewed the criterion to use the collected trace explicitly, and repeated both versions. Missing evidence must remain visible."
     },
     {
-      "asset": "overview/close",
-      "duration": 18,
-      "narration": "Start with the customer, explain the tools and flow, run the test, then inspect the evidence. Keep Pass, Fail, and Unable to Verify distinct. Each domain video repeats this sequence for its own audience."
+      "asset": "overview/workflow",
+      "duration": 1,
+      "narration": "These definitions, connection scripts and run records are local files. The test flag keeps a run out of the hosted timeline. Local-first does not mean offline: model execution and judging may still contact remote services."
+    },
+    {
+      "asset": "insurance-agent-code/sync",
+      "duration": 1,
+      "narration": "Sharing is optional. Sync the reviewed project definitions, then execute a shared run without the test flag. That new run records its results upstream. Sync does not convert the earlier local test into a hosted run."
+    },
+    {
+      "asset": "insurance-agent-code/hosted",
+      "duration": 1,
+      "narration": "Open the hosted web interface. Select the matching shared run, then open its scenario and evidence. The local files and hosted view serve different review needs; use the run identifier to keep the investigation consistent."
+    },
+    {
+      "asset": "insurance-agent-code/close",
+      "duration": 1,
+      "narration": "Explore the agent. Review generated tests. Prove the connection. Run, inspect and repair. Keep the artifacts local, and share a reviewed run when the team needs it. Agent Assurance, with Rook."
     }
   ]
 }

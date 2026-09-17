@@ -1,0 +1,22 @@
+import {readFile,writeFile} from 'node:fs/promises';
+const base='artifacts/local/agent-assurance/cards/';
+const source=JSON.parse(await readFile('demos/05-insurance-code/video/video-plan.json','utf8'));
+const pick=role=>structuredClone(source.scenes.find(s=>s.asset.endsWith('/'+role)));
+const scenes=[
+ {asset:'overview/poster',duration:1,narration:'Agent Assurance, with Rook. Start with the agent’s business responsibility, then test whether its words agree with its actions. We will explore, generate tests, connect a profile and inspect the evidence locally before sharing a run.'},
+ {asset:'overview/industries',duration:1,narration:'Four customer journeys make the risks concrete. Banking tests approval before money moves. Healthcare checks appointment capacity. Insurance and retail test whether a failed payment produces an honest answer. Each journey has separate Developer and quality engineer editions.'},
+ {asset:'overview/audiences',duration:1,narration:'Developers begin with source and requirements. Quality engineers begin with requirements and a connection contract. Both review the discovered features and generated criteria. The difference is access to the implementation, not the standard of evidence.'},
+ ...['application','tools','flow','explore','features','generate','scenarios','profile-add','profile-test','run-local','report','artifacts','finding','redteam','mcp','after'].map(pick),
+ {asset:'overview/gap',duration:1,narration:'An earlier run also exposed a verification gap. Its business criteria passed, but a native tool-call assertion had no matching proxy observation. We preserved that result, reviewed the criterion to use the collected trace explicitly, and repeated both versions. Missing evidence must remain visible.'},
+ {asset:'overview/workflow',duration:1,narration:'These definitions, connection scripts and run records are local files. The test flag keeps a run out of the hosted timeline. Local-first does not mean offline: model execution and judging may still contact remote services.'},
+ ...['sync','hosted','close'].map(pick)
+];
+await writeFile('media/rook-overview/video-plan.json',JSON.stringify({...source,id:'rook-overview',title:'Agent Assurance — ROOK | Workflow overview',scenes},null,2)+'\n');
+await writeFile('media/rook-overview/README.md','# Agent Assurance — ROOK\n\nThe overview follows the insurance investigation through agent architecture, source and requirements exploration, generated scenarios, profile setup, local testing, trace and MCP evidence, repair, and optional hosted review. It also introduces the four industries and the QE and Developer editions.\n\nIndian English narration and matching subtitles follow the recorded evidence. Running time follows speech, with idle processing removed. Finished media stays in the local delivery package.\n');
+const poster=await readFile(base+'insurance-agent-code-poster.html','utf8');
+await writeFile(base+'overview-poster.html',poster.replace('Was the claim actually paid?','From a customer request to evidence you can inspect.').replace('Atlas Cover<small>Developer · Source and requirements','Four industries · Eight editions<small>Quality engineers + Developers').replace('<span class="meta">insurance</span>','<span class="meta">Workflow overview</span>'));
+const card=await readFile(base+'workflow.html','utf8');
+function body(content){return card.replace(/<main>[\s\S]*?<\/main>/,'<main>'+content+'</main>');}
+await writeFile(base+'overview-industries.html',body('<div class="kicker">Four customer journeys</div><h1>Start with the business rule.</h1><div class="tools"><div class="tool"><h2>Northstar Bank</h2><p>Approval before money moves.</p></div><div class="tool"><h2>Harbor Care</h2><p>Capacity before a booking is confirmed.</p></div><div class="tool"><h2>Atlas Cover</h2><p>A settlement claim needs a payment receipt.</p></div><div class="tool"><h2>Juniper Goods</h2><p>A refund claim needs a refund receipt.</p></div></div>'));
+await writeFile(base+'overview-audiences.html',body('<div class="kicker">Two ways to begin</div><h1>One standard of evidence.</h1><div class="columns"><section><h2>Developer</h2><p>Source + requirements<br>Discover the tool boundary.<br>Trace the failure and test the repair.</p></section><section><h2>Quality engineer</h2><p>Requirements + connection<br>Review the customer outcome.<br>Verify the behavior through its interface.</p></section></div><div class="path">Explore → Generate → Profile → Run → Report</div>'));
+console.log('Prepared workflow overview and audience cards.');
