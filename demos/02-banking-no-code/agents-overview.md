@@ -18,7 +18,7 @@ flowchart LR
   A --> E["Conversation and tool trace"]
   B --> R["Rook verification"]
   E --> R
-  R --> U["Rook local UI and report"]
+  R --> U["Rook hosted Web UI and report"]
 ```
 
 ## High-level functions
@@ -33,7 +33,7 @@ flowchart LR
 
 ## The customer journey
 
-The original agent transfers USD 1200 without approval. The updated agent denies that request and records no transfer. An authorized USD 200 transfer records one receipt.
+The original transfer tool omits the approval check. The model may refuse an over-limit request before calling it, as it did in the video. The updated tool enforces the limit even when called. An authorized USD 200 transfer records one receipt.
 
 The flow below shows the intended behavior. Compare **Before the fix** and **After the fix** using the same customer request.
 
@@ -55,13 +55,13 @@ For quality engineers, start with the required behavior and a reachable agent. R
 ```mermaid
 flowchart LR
   A["Requirements and agent connection"] --> B["Rook discovers agent features"]
-  B --> C["Review scenarios and run tests"]
+  B --> C["Review scenarios and test in Rook TUI"]
   C --> D["Inspect criteria, conversation and trace"]
   D --> E["Verify business receipts through MCP"]
   E --> F["Read the report and rerun after the fix"]
 ```
 
-In **Rook local UI**, open the agent, review its features and scenarios, then open a run. Select a scenario to see its criteria, the exact customer request, the agent reply and collected evidence. In the **report**, compare Pass, Fail and Unable to Verify. A missing observation is not a pass.
+After running the test in **Rook’s interactive TUI**, enter **/ui** to open the hosted Web UI. There, open the agent, review its features and scenarios, then open a run. Select a scenario to see its criteria, the exact customer request, the agent reply and collected evidence. In the **report**, compare Pass, Fail and Unable to Verify. A missing observation is not a pass.
 
 | Class | Scenarios covered in this demo |
 |---|---|
@@ -71,6 +71,6 @@ In **Rook local UI**, open the agent, review its features and scenarios, then op
 
 ## Present this demo
 
-Open **http://127.0.0.1:4311** after starting demo banking-agent. Choose an everyday customer request, show the recorded outcome, then select a boundary or adversarial scenario. Compare the original and updated agent and finish in Rook’s local UI and report.
+Open **http://127.0.0.1:4311** after starting demo banking-agent. Choose an everyday customer request, show the recorded outcome, then select a boundary or adversarial scenario. Compare the original and updated agent then test in Rook’s interactive TUI and inspect the matching run in its hosted Web UI.
 
 The complete customer walkthrough, including all four agents, diagrams and actual Rook screenshots, is available from **Agents & demo guide** in the application. [PRD.md](PRD.md) contains the required behavior; [connection.md](connection.md) contains presenter setup material. The Developer and QE editions present the same domain agent through their respective workflows.

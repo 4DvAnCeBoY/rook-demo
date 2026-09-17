@@ -5,6 +5,8 @@ Recorded on 2026-09-17 for Banking, Healthcare, Insurance and Customer Support, 
 | Check | Result |
 |---|---|
 | Runtime, configuration and evidence checks | 35 passed |
+| Narration timing and concurrent cache checks | 2 passed; no external API calls |
+| Narrated video export checks | Nine complete streams decoded; speech-timed captions validated; AAC narration around -18.3 LUFS |
 | Demo folder checks | Eight demos include setup, diagrams, functions and all 18 categories |
 | Scenario inventory | 144 authored scenarios validated |
 | Desktop/mobile browser checks | 128 checks passed across all eight apps |
@@ -25,7 +27,7 @@ Application tests and controlled rehearsals check the demo implementation. Rook 
 
 The insurance payment-failure case changed from **Fail before the fix to Pass after it** in both editions. One repaired Developer run still repeated a protected marker from an untrusted note. The illustrative speed and token budgets also failed; six MCP scenarios passed.
 
-The [recorded banking screenshots](assets/README.md) show an unauthorized-transfer case changing from Fail to Pass. A separate native call assertion remained Unable to Verify. These examples do not establish that every category passes.
+The earlier recorded banking sample includes an unauthorized-transfer case changing from Fail to Pass, with a separate native call assertion remaining Unable to Verify. The current [walkthrough screenshots](assets/README.md) show the insurance payment-failure case and its repair. Neither example establishes that every category passes.
 
 Cost checks require complete provider usage. A provider may count reasoning tokens beyond the connector's input/output sum. Missing or partial usage cannot establish a passing cost result.
 
@@ -44,3 +46,5 @@ The interactive smoke check used the existing insurance Developer workspace and 
 The [successful CI run](https://github.com/4DvAnCeBoY/rook-demo/actions/runs/35239565040) used commit `4e9f340`. A separate fresh local checkout passed the same setup and checks without copying private configuration. CI verifies recorded evidence; it makes no new model calls.
 
 The [hosted video validation](../artifacts/reference/hosted-video-validation.json) records a separate set of 32 non-test runs in eight hosted projects. All 48 collected samples used the model, retained separate scenario conversations, and matched the expected before/after configuration; the context checks retained two turns. Videos use Rook’s hosted web UI. The supplied hook traces are collected evidence, not an OpenTelemetry export.
+
+The [interactive video validation](../artifacts/reference/interactive-video-validation.json) adds eight fresh TUI runs: two Pass and six Fail, with no Unable to Verify result. Every captured sample used the model, a distinct conversation and the original agent configuration. Each recording follows its exact run into the hosted Web UI. The separately recorded repaired, red-teaming and MCP runs retain their own identities. All nine videos include Indian English narration and speech-aligned subtitles; the domain editions are six minutes and the overview is ten minutes.

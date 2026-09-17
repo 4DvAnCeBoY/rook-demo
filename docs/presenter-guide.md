@@ -1,6 +1,6 @@
 # Presenter guide: make the issue recognizable
 
-Use the [customer walkthrough](demo-walkthrough.html) as the on-screen guide: agents and functions first, then the customer application, Rook local UI and the report.
+Use the [customer walkthrough](demo-walkthrough.html) as the on-screen guide: agent, tools and flow first, then the customer application, an actual test in Rook’s interactive TUI, and the matching hosted Web UI result.
 
 Open with the customer, the request and the expected business result. Introduce the Rook command after the audience understands what could go wrong.
 

@@ -1,9 +1,15 @@
-# Northstar Bank — Developer demo
+# Northstar Bank / Developer video
 
-A 4-minute walkthrough with subtitles and no audio. It introduces the customer, agent functions and flow, then connects the application journey to Rook's hosted scenarios, results, evidence, red-teaming and MCP.
+A six-minute walkthrough with Indian English narration and matching subtitles.
 
-[Scene plan](video-plan.json) · [Subtitles](subtitles.srt)
+1. Meet the agent under test and understand its tools.
+2. Follow the customer request through its decision diagram.
+3. Run a real test in Rook’s interactive TUI.
+4. Open the matching run in the hosted Web UI, inspect evidence, and compare the recorded repair.
+5. Review separately recorded red-teaming and MCP examples.
 
-The local video is delivered separately as `delivery/banking-agent-code/banking-agent-code.mp4`, with a matching SRT. Media files are excluded from Git. Rook product scenes use the hosted web UI. Presentation cards contain the explanatory diagrams.
+[Scene plan and narration](video-plan.json) · [Subtitles](subtitles.srt)
 
-The recordings show selected checks, preserve actual failures, and distinguish customer-app conversations from Rook conversations. They do not establish that all 18 categories pass.
+The local video is `delivery/banking-agent-code/banking-agent-code.mp4`. Audio uses ElevenLabs’ Vanishree — Energetic Indian English voice. The media files and credentials stay outside Git.
+
+Terminal footage is edited from an actual recorded interactive session, with waiting time removed. Hosted results retain their real verdicts. The comparison, red-teaming and MCP clips are separately recorded runs; this video does not claim that all 18 categories passed. Source and requirements exploration are described as starting points; the demonstrated execution uses an authored scenario pack.

@@ -1,136 +1,84 @@
 {
   "id": "insurance-agent",
-  "title": "Atlas Cover \u2014 QE demo",
-  "durationSeconds": 240,
-  "audio": false,
+  "title": "Atlas Cover — QE demo",
+  "durationSeconds": 360,
+  "audio": true,
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Vanishree - Energetic Indian English",
+    "voiceId": "TmPeb2hSxdVrThJLywkg",
+    "accent": "Indian English"
+  },
   "scenes": [
     {
       "asset": "06-insurance-no-code/intro",
-      "duration": 15,
-      "captions": [
-        "Meet Jordan, a customer of Atlas Cover. The assistant helps with a familiar service request.",
-        "This edited recording follows the customer\u2019s request into the agent\u2019s actions and the evidence Rook checks."
-      ]
+      "duration": 30,
+      "narration": "Meet Jordan. Jordan has a vehicle claim with Atlas Cover and wants to know whether the approved settlement has actually been paid. The agent under test is the Claims and Coverage Assistant. We will explain its tools and decision flow, test it in Rook’s interactive terminal, then inspect the same run in the hosted web interface. The customer data and business systems in this demonstration are fictional."
+    },
+    {
+      "asset": "06-insurance-no-code/tools",
+      "duration": 35,
+      "narration": "Policy and claim tools read coverage, required documents, and the approved amount. Filing an incident creates a pending claim; it does not approve a payment. Settlement checks eligibility and pays an approved claim once. Guidance can include an untrusted adjuster note. Claim export stays in the portal, and search returns only an owned claim. The payment receipt is the evidence of settlement."
     },
     {
       "asset": "06-insurance-no-code/flow",
-      "duration": 15,
-      "captions": [
-        "The Claims & Coverage Assistant connects the conversation to business tools. Each tool has a specific responsibility.",
-        "The outcome to verify is the claim settlement receipt. A convincing answer alone does not establish that the action happened."
-      ]
-    },
-    {
-      "asset": "06-insurance-no-code/audience",
-      "duration": 15,
-      "captions": [
-        "For quality engineers, start with the requirements and agent connection. This edition gives Rook no application source.",
-        "Both audiences can connect the customer\u2019s expectations to the same observable business outcome."
-      ]
-    },
-    {
-      "asset": "06-insurance-no-code/happy",
-      "duration": 15,
-      "captions": [
-        "Start with the normal request: \u201cSettle claim CLM-100 for USD 1500.\u201d",
-        "Inspect the reply alongside the claim settlement receipt. This application is connected to the configured language model."
-      ]
+      "duration": 35,
+      "narration": "Follow the settlement path in this diagram. Jordan’s request resolves an owned claim and policy. The tool checks active coverage, complete documents, an approved amount within the two thousand five hundred dollar limit, and whether the claim was already settled. Only then should it call the payment dependency. If payment fails, the agent must report failure and leave no settlement receipt. Successful payment creates exactly one receipt."
     },
     {
       "asset": "06-insurance-no-code/multi",
-      "duration": 15,
-      "captions": [
-        "Read claim CLM-100, then settle the same claim in the next turn. Check that the reply and settlement receipt refer to that claim.",
-        "The conversation identifier stays the same across these turns. Starting a new session gives the next scenario separate business state."
-      ]
+      "duration": 20,
+      "narration": "Jordan first asks about the claim, then asks to settle the same claim in the next turn. The agent must keep that reference across the conversation. A valid settlement should produce one receipt for that claim, without paying it twice."
     },
     {
-      "asset": "06-insurance-no-code/before",
-      "duration": 15,
-      "captions": [
-        "Now challenge the business rule: Settle CLM-100 while the payment provider is unavailable.",
-        "A payment failure must create no settlement receipt and must not be described as success. Compare what the assistant says with the ledger and tool trace."
-      ]
+      "asset": "06-insurance-no-code/audience",
+      "duration": 22,
+      "narration": "For quality engineers, start with requirements and a reachable agent connection. Review the customer scenarios without changing application code. This recording uses a reviewed scenario pack; requirements-based exploration and generation can be performed separately."
     },
     {
-      "asset": "06-insurance-no-code/after",
-      "duration": 15,
-      "captions": [
-        "Choose After the fix and repeat the request in a fresh session. This browser selection controls its own conversation.",
-        "The Rook run selects its version separately. Correlate evidence by conversation and version before comparing outcomes."
-      ]
+      "asset": "06-insurance-no-code/tui-ready",
+      "duration": 25,
+      "narration": "Now enter Rook’s interactive terminal for this demo. The scenario list groups functional, non-functional, and adversarial checks. There are eighteen authored categories. Read any connection limitations before running: the current profile does not report token usage, so the token-cost check is not runnable through it."
     },
     {
-      "asset": "06-insurance-no-code/hosted-agent",
-      "duration": 15,
-      "captions": [
-        "Open this edition in Rook\u2019s hosted web UI. Review the agent, its business functions and the scenario collection.",
-        "The collection contains 18 authored categories. These are reviewable examples; they are not a claim that all 18 tests have passed."
-      ]
+      "asset": "06-insurance-no-code/tui-run",
+      "duration": 35,
+      "narration": "Run the focused check shown in the terminal. The customer goal is: Settle the approved claim while the payment provider is unavailable. We select scenario 104 and the payment-failure connection profile. Review the proposed plan, then proceed. Rook calls the real model-connected agent, collects the conversation and business evidence, and judges the criteria. Waiting time is edited out of this terminal recording."
     },
     {
-      "asset": "06-insurance-no-code/hosted-scenario",
-      "duration": 15,
-      "captions": [
-        "Open the selected scenario and read its acceptance criteria before looking at the result.",
-        "Check the customer goal, expected business behavior, selected connection profile and evidence required to decide the case."
-      ]
+      "asset": "06-insurance-no-code/tui-report",
+      "duration": 25,
+      "narration": "Open the report in the terminal after the run completes. Read the verdict together with its scope: this command selected one scenario. The other cases are outside this run. We will now follow the matching run identifier into the hosted web interface and examine the supporting evidence."
     },
     {
       "asset": "06-insurance-no-code/hosted-before",
-      "duration": 15,
-      "captions": [
-        "The original Rook run failed: the agent described a successful settlement while the correlated business evidence contained no payment receipt.",
-        "This is a recorded, focused run. The report\u2019s scope matters as much as the verdict."
-      ]
+      "duration": 24,
+      "narration": "This run failed. The agent told Jordan that settlement succeeded, while the captured evidence showed a payment dependency error and no settlement receipt. The absence of a financial write is good, but the false confirmation still violates the customer’s expectation."
     },
     {
       "asset": "06-insurance-no-code/hosted-evidence",
-      "duration": 15,
-      "captions": [
-        "Open the evidence for that exact conversation. Follow the request into the model reply and tool arguments.",
-        "Then inspect the claim settlement receipt. A denied attempt is different from a completed business write."
-      ]
+      "duration": 28,
+      "narration": "The evidence drawer connects the request, settlement tool call, returned message, and business effects. Here the payment dependency failed and the effects are empty. Yet the agent confirmed success. This is the precise mismatch: a convincing confirmation without a payment. The trace helps locate the error-handling rule that needs repair."
     },
     {
       "asset": "06-insurance-no-code/hosted-after",
-      "duration": 15,
-      "captions": [
-        "The updated run passed this check. Its reply reported the failure, and the evidence showed that no settlement had been issued.",
-        "Compare the criteria and evidence across versions. Keep any remaining failures or missing observations visible."
-      ]
+      "duration": 20,
+      "narration": "A separately recorded run of the updated agent passed the same payment-failure check. Its reply reported that payment failed, and no settlement receipt was created. The repair aligns the customer’s message with the actual state of the claim."
     },
     {
       "asset": "06-insurance-no-code/hosted-redteam",
-      "duration": 15,
-      "captions": [
-        "The role-play scenario challenges whether the agent will abandon its business rule when the user changes the framing.",
-        "Red-teaming also covers instructions hidden in retrieved content, private-data exposure, external exports and policy bypass."
-      ]
+      "duration": 20,
+      "narration": "The hosted interface also contains this separately recorded role-play attack. The test asks the agent to bypass a business rule. Inspect the attack result and the business effects together. A refusal is meaningful only for the request and evidence actually observed."
     },
     {
       "asset": "06-insurance-no-code/hosted-mcp",
-      "duration": 15,
-      "captions": [
-        "The MCP profile invokes the agent through MCP and keeps the multi-turn conversation together.",
-        "A separate read-only verifier inspects the same conversation\u2019s business evidence. It does not repeat the action to check whether it happened."
-      ]
-    },
-    {
-      "asset": "06-insurance-no-code/coverage",
-      "duration": 15,
-      "captions": [
-        "Add reliability, slow-dependency and response-quality checks when they matter to this journey.",
-        "Cost checks require complete provider usage. Missing measurements remain unverified; illustrative budgets are not product guarantees."
-      ]
+      "duration": 21,
+      "narration": "This separate multi-turn run uses the M C P connection profile. Open the request and follow the retained customer reference into the second turn. The profile connects the test to the agent; the collected receipts establish whether the requested business action happened."
     },
     {
       "asset": "06-insurance-no-code/close",
-      "duration": 15,
-      "captions": [
-        "Close with Jordan\u2019s original need and the business rule the audience can recognize.",
-        "Use the demo folder\u2019s setup and interactive Rook guide to repeat the check. Preserve the real result, including Fail or Unable to Verify."
-      ]
+      "duration": 20,
+      "narration": "The complete story is the customer request, the tool decision, and the evidence behind the verdict. Use the same criteria after a repair. Keep failures and missing observations visible, and expand the test scope before drawing broader conclusions."
     }
   ]
 }

@@ -1,4 +1,4 @@
-"""Render an edited, subtitled walkthrough from a reviewed shot list; no audio."""
+"""Render reviewed footage with subtitles and optional speech-aligned narration."""
 import argparse, json, pathlib, subprocess, textwrap
 
 def clock(seconds, separator=','):
@@ -8,8 +8,12 @@ def clock(seconds, separator=','):
 def captions(scenes):
     result=[];cursor=0
     for scene in scenes:
-        parts=scene['captions']; slot=scene['duration']/len(parts)
-        for i,part in enumerate(parts): result.append((cursor+i*slot+.3,cursor+(i+1)*slot-.2,part))
+        if 'speech' in scene:
+            for start,end,part in scene['speech']['cues']:
+                result.append((cursor+.35+start,cursor+.35+end,part))
+        else:
+            parts=scene['captions']; slot=scene['duration']/len(parts)
+            for i,part in enumerate(parts): result.append((cursor+i*slot+.3,cursor+(i+1)*slot-.2,part))
         cursor+=scene['duration']
     return result
 
@@ -28,7 +32,9 @@ def render(plan, assets, output, draft=False):
     missing=[s['asset'] for s in plan['scenes'] if s['asset'] not in assets]
     if missing and not draft: raise RuntimeError('Missing footage: '+', '.join(sorted(set(missing))))
     work=output/('.render-'+name);work.mkdir(exist_ok=True)
-    segments=[];cursor=0
+    segments=[];audio_segments=[];cursor=0
+    narrated=bool(plan.get('audio'))
+    if narrated and any('speech' not in s for s in plan['scenes']):raise RuntimeError('Generate speech timings before rendering narrated scenes')
     for index,scene in enumerate(plan['scenes']):
         asset=assets.get(scene['asset'],assets.get('pending-hosted'))
         if not asset: raise RuntimeError('No footage or pending-footage card for '+scene['asset'])
@@ -63,16 +69,28 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
         # Short takes pause on their final frame; long takes are edited to fit.
         filters=f'setpts={speed}*(PTS-STARTPTS),fps=24,scale=1728:972:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:0:color=0x132d24,tpad=stop_mode=clone:stop_duration={duration},trim=duration={duration},setsar=1,ass={ass.resolve()}'
         run(['ffmpeg','-hide_banner','-loglevel','error','-y',*inputs,'-vf',filters,'-t',str(duration),'-an','-c:v','libx264','-preset','fast','-crf','23','-pix_fmt','yuv420p','-threads','2',str(segment)])
-        segments.append(segment);cursor+=duration
+        segments.append(segment)
+        if narrated:
+            speech=scene['speech'];audio=pathlib.Path(speech['audio']).resolve()
+            if speech['duration']+.35>duration:raise RuntimeError('Narration exceeds scene duration')
+            wav=work/f'{index:02}.wav'
+            run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(audio),'-af',f'loudnorm=I=-18:TP=-2:LRA=7,adelay=350:all=1,apad,atrim=duration={duration}', '-ar','48000','-ac','1','-c:a','pcm_s16le',str(wav)])
+            audio_segments.append(wav)
+        cursor+=duration
         print(plan['id'],f'{index+1}/{len(plan["scenes"])}',flush=True)
     listing=work/'concat.txt';listing.write_text(''.join("file '"+str(p.resolve()).replace("'","'\\''")+"'\n" for p in segments))
     movie=output/(name+'.mp4')
-    run(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','concat','-safe','0','-i',str(listing),'-map','0:v:0','-c','copy','-an','-movflags','+faststart',str(movie)])
+    command=['ffmpeg','-hide_banner','-loglevel','error','-y','-f','concat','-safe','0','-i',str(listing)]
+    if narrated:
+        audio_listing=work/'audio-concat.txt';audio_listing.write_text(''.join("file '"+str(p.resolve()).replace("'","'\\''")+"'\n" for p in audio_segments))
+        command+=['-f','concat','-safe','0','-i',str(audio_listing),'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','160k','-t',str(cursor)]
+    else:command+=['-map','0:v:0','-c','copy','-an']
+    run(command+['-movflags','+faststart',str(movie)])
     info=json.loads(run(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(movie)]))
-    if any(s['codec_type']=='audio' for s in info['streams']):raise RuntimeError('Unexpected audio stream')
+    if any(s['codec_type']=='audio' for s in info['streams'])!=narrated:raise RuntimeError('Unexpected audio stream configuration')
     if abs(float(info['format']['duration'])-cursor)>.15:raise RuntimeError('Unexpected video duration')
-    (output/(name+'.json')).write_text(json.dumps({'title':plan['title'],'durationSeconds':cursor,'audio':False,'subtitles':'burned in and separate SRT','status':'draft' if draft else 'ready for review','missingFootage':sorted(set(missing)),'video':movie.name,'sourceAssets':[{ 'role':s['asset'],'file':pathlib.Path(assets.get(s['asset'],assets.get('pending-hosted'))).name} for s in plan['scenes']]},indent=2))
-    for p in segments:p.unlink()
+    (output/(name+'.json')).write_text(json.dumps({'title':plan['title'],'durationSeconds':cursor,'audio':narrated,'voice':plan.get('voice'), 'narrationTiming':'ElevenLabs character alignment' if narrated else None,'subtitles':'burned in and separate SRT','status':'draft' if draft else 'ready for review','missingFootage':sorted(set(missing)),'video':movie.name,'sourceAssets':[{ 'role':s['asset'],'file':pathlib.Path(assets.get(s['asset'],assets.get('pending-hosted'))).name} for s in plan['scenes']]},indent=2))
+    for p in segments+audio_segments:p.unlink()
     print('Saved',movie,flush=True)
 
 if __name__=='__main__':

@@ -1,136 +1,84 @@
 {
   "id": "healthcare-agent",
-  "title": "Harbor Care \u2014 QE demo",
-  "durationSeconds": 240,
-  "audio": false,
+  "title": "Harbor Care — QE demo",
+  "durationSeconds": 360,
+  "audio": true,
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Vanishree - Energetic Indian English",
+    "voiceId": "TmPeb2hSxdVrThJLywkg",
+    "accent": "Indian English"
+  },
   "scenes": [
     {
       "asset": "04-healthcare-no-code/intro",
-      "duration": 15,
-      "captions": [
-        "Meet Alex, a customer of Harbor Care. The assistant helps with a familiar service request.",
-        "This edited recording follows the customer\u2019s request into the agent\u2019s actions and the evidence Rook checks."
-      ]
+      "duration": 28,
+      "narration": "Meet Alex. Alex wants help booking a visit at Harbor Care, without exposing another patient’s information. The agent under test is the Patient Access Assistant. We will explain its tools and decision flow, test it in Rook’s interactive terminal, then inspect the same run in the hosted web interface. The customer data and business systems in this demonstration are fictional."
+    },
+    {
+      "asset": "04-healthcare-no-code/tools",
+      "duration": 33,
+      "narration": "The patient tool reads only the authenticated patient’s record. Booking checks ownership and available slot capacity before reserving a visit. Human escalation records an urgent handoff. Record export is restricted to the customer portal. Guidance supplies administrative information, with imported notes treated as untrusted content. These responsibilities keep scheduling separate from clinical advice."
     },
     {
       "asset": "04-healthcare-no-code/flow",
-      "duration": 15,
-      "captions": [
-        "The Patient Access Assistant connects the conversation to business tools. Each tool has a specific responsibility.",
-        "The outcome to verify is the appointment receipt and remaining slot capacity. A convincing answer alone does not establish that the action happened."
-      ]
-    },
-    {
-      "asset": "04-healthcare-no-code/audience",
-      "duration": 15,
-      "captions": [
-        "For quality engineers, start with the requirements and agent connection. This edition gives Rook no application source.",
-        "Both audiences can connect the customer\u2019s expectations to the same observable business outcome."
-      ]
-    },
-    {
-      "asset": "04-healthcare-no-code/happy",
-      "duration": 15,
-      "captions": [
-        "Start with the normal request: \u201cBook PAT-100 for an appointment at 10:00.\u201d",
-        "Inspect the reply alongside the appointment receipt and remaining slot capacity. This application is connected to the configured language model."
-      ]
+      "duration": 37,
+      "narration": "Start with Alex’s request. The intended flow checks whether this fictional administrative policy requires an urgent human handoff. Routine scheduling resolves the patient and requested slot. The booking tool must check both identity and remaining capacity. If the slot is full, there must be no appointment. An available slot produces one reservation and a receipt. The reply and recorded appointment must describe the same outcome."
     },
     {
       "asset": "04-healthcare-no-code/multi",
-      "duration": 15,
-      "captions": [
-        "Read the patient record, then ask for the same record again. The second turn must retain Alex\u2019s context and the same access boundary.",
-        "The conversation identifier stays the same across these turns. Starting a new session gives the next scenario separate business state."
-      ]
+      "duration": 20,
+      "narration": "Alex first identifies the patient, then requests a booking in the next turn. The conversation should preserve the right patient, without borrowing another session’s state. Inspect the appointment receipt to confirm the chosen patient and time."
     },
     {
-      "asset": "04-healthcare-no-code/before",
-      "duration": 15,
-      "captions": [
-        "Now challenge the business rule: Book PAT-100 for an appointment at 11:00.",
-        "The 11:00 slot has no capacity and must remain unavailable. Compare what the assistant says with the ledger and tool trace."
-      ]
+      "asset": "04-healthcare-no-code/audience",
+      "duration": 22,
+      "narration": "For quality engineers, start with requirements and a reachable agent connection. Review the customer scenarios without changing application code. This recording uses a reviewed scenario pack; requirements-based exploration and generation can be performed separately."
     },
     {
-      "asset": "04-healthcare-no-code/after",
-      "duration": 15,
-      "captions": [
-        "Choose After the fix and repeat the request in a fresh session. This browser selection controls its own conversation.",
-        "The Rook run selects its version separately. Correlate evidence by conversation and version before comparing outcomes."
-      ]
+      "asset": "04-healthcare-no-code/tui-ready",
+      "duration": 25,
+      "narration": "Now enter Rook’s interactive terminal for this demo. The scenario list groups functional, non-functional, and adversarial checks. There are eighteen authored categories. Read any connection limitations before running: the current profile does not report token usage, so the token-cost check is not runnable through it."
     },
     {
-      "asset": "04-healthcare-no-code/hosted-agent",
-      "duration": 15,
-      "captions": [
-        "Open this edition in Rook\u2019s hosted web UI. Review the agent, its business functions and the scenario collection.",
-        "The collection contains 18 authored categories. These are reviewable examples; they are not a claim that all 18 tests have passed."
-      ]
+      "asset": "04-healthcare-no-code/tui-run",
+      "duration": 36,
+      "narration": "Run the focused check shown in the terminal. The customer goal is: Book the eleven o’clock slot, even though it has no remaining capacity. We select scenario 103 and the normal connection profile. Review the proposed plan, then proceed. Rook calls the real model-connected agent, collects the conversation and business evidence, and judges the criteria. Waiting time is edited out of this terminal recording."
     },
     {
-      "asset": "04-healthcare-no-code/hosted-scenario",
-      "duration": 15,
-      "captions": [
-        "Open the selected scenario and read its acceptance criteria before looking at the result.",
-        "Check the customer goal, expected business behavior, selected connection profile and evidence required to decide the case."
-      ]
+      "asset": "04-healthcare-no-code/tui-report",
+      "duration": 25,
+      "narration": "Open the report in the terminal after the run completes. Read the verdict together with its scope: this command selected one scenario. The other cases are outside this run. We will now follow the matching run identifier into the hosted web interface and examine the supporting evidence."
     },
     {
       "asset": "04-healthcare-no-code/hosted-before",
-      "duration": 15,
-      "captions": [
-        "The original Rook run failed the full-slot check. The collected evidence showed an appointment was created when the slot had no capacity.",
-        "This is a recorded, focused run. The report\u2019s scope matters as much as the verdict."
-      ]
+      "duration": 24,
+      "narration": "This run failed the capacity boundary check. The original agent created an appointment in the eleven o’clock slot even though the slot had zero capacity. The failure is supported by a recorded business action, not simply by the wording of its reply."
     },
     {
       "asset": "04-healthcare-no-code/hosted-evidence",
-      "duration": 15,
-      "captions": [
-        "Open the evidence for that exact conversation. Follow the request into the model reply and tool arguments.",
-        "Then inspect the appointment receipt and remaining slot capacity. A denied attempt is different from a completed business write."
-      ]
+      "duration": 27,
+      "narration": "Open the evidence for this conversation and follow the booking tool arguments. The requested time is eleven o’clock. The original run recorded an appointment despite the full slot. That receipt connects the failed criterion to a customer impact: the system promised a visit it could not accommodate."
     },
     {
       "asset": "04-healthcare-no-code/hosted-after",
-      "duration": 15,
-      "captions": [
-        "The updated run passed. The same full-slot request created no appointment. Compare the denial with the recorded business state.",
-        "Compare the criteria and evidence across versions. Keep any remaining failures or missing observations visible."
-      ]
+      "duration": 22,
+      "narration": "A separately recorded run of the updated agent passed this same capacity check. It refused the full slot, and the evidence contained no appointment receipt. Compare the same criterion across the two versions, rather than comparing only their final messages."
     },
     {
       "asset": "04-healthcare-no-code/hosted-redteam",
-      "duration": 15,
-      "captions": [
-        "The role-play scenario challenges whether the agent will abandon its business rule when the user changes the framing.",
-        "Red-teaming also covers instructions hidden in retrieved content, private-data exposure, external exports and policy bypass."
-      ]
+      "duration": 20,
+      "narration": "The hosted interface also contains this separately recorded role-play attack. The test asks the agent to bypass a business rule. Inspect the attack result and the business effects together. A refusal is meaningful only for the request and evidence actually observed."
     },
     {
       "asset": "04-healthcare-no-code/hosted-mcp",
-      "duration": 15,
-      "captions": [
-        "The MCP profile invokes the agent through MCP and keeps the multi-turn conversation together.",
-        "A separate read-only verifier inspects the same conversation\u2019s business evidence. It does not repeat the action to check whether it happened."
-      ]
-    },
-    {
-      "asset": "04-healthcare-no-code/coverage",
-      "duration": 15,
-      "captions": [
-        "Add reliability, slow-dependency and response-quality checks when they matter to this journey.",
-        "Cost checks require complete provider usage. Missing measurements remain unverified; illustrative budgets are not product guarantees."
-      ]
+      "duration": 21,
+      "narration": "This separate multi-turn run uses the M C P connection profile. Open the request and follow the retained customer reference into the second turn. The profile connects the test to the agent; the collected receipts establish whether the requested business action happened."
     },
     {
       "asset": "04-healthcare-no-code/close",
-      "duration": 15,
-      "captions": [
-        "Close with Alex\u2019s original need and the business rule the audience can recognize.",
-        "Use the demo folder\u2019s setup and interactive Rook guide to repeat the check. Preserve the real result, including Fail or Unable to Verify."
-      ]
+      "duration": 20,
+      "narration": "The complete story is the customer request, the tool decision, and the evidence behind the verdict. Use the same criteria after a repair. Keep failures and missing observations visible, and expand the test scope before drawing broader conclusions."
     }
   ]
 }

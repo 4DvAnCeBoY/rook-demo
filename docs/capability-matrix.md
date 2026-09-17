@@ -15,7 +15,7 @@ Every industry has a Developer and a QE edition. Use the [interactive guide](tes
 | Reliability and performance | Repeat requests and investigate a slow dependency. |
 | Token usage | Assess cost when the provider supplies complete usage. |
 | Before and after a repair | Rerun the same scenario and compare its criteria and receipts. |
-| Reports and local UI | Review Pass, Fail and Unable to Verify, with supporting evidence. |
+| Reports and hosted Web UI | Review Pass, Fail and Unable to Verify, with supporting evidence. |
 | Further Rook workflows | Explore recovery, versioning and root-cause analysis using the product guides below. |
 
 The collection includes **144 authored scenarios**. Earlier Rook-generated drafts are retained separately for six editions. Insurance's agent definitions and scenarios are authored. See [scenario provenance](native-scenarios.md) and [recorded results](verification.md); an available example does not imply a completed or passing test.

@@ -2,7 +2,7 @@
 
 A Rook demonstration for quality engineers and developers.
 
-Start with the customer and the agent’s job. See the request become a business action. Then follow the same journey into **Rook local UI** and the **report**, where each result is supported by criteria and evidence.
+Start with the customer and the agent’s job. See the request become a business action, test the agent in **Rook’s interactive TUI**, then follow the same run into **Rook hosted Web UI** and the **report**, where each result is supported by criteria and evidence.
 
 ## 1. The agents under test
 
@@ -176,7 +176,7 @@ flowchart LR
   F --> S["Generate and review scenarios"]
   S --> R["Run against the agent"]
   R --> E["Judge criteria against collected evidence"]
-  E --> U["Rook local UI and report"]
+  E --> U["Rook hosted Web UI and report"]
 ```
 
 | Class | Customer question | Coverage |
@@ -187,28 +187,28 @@ flowchart LR
 
 The collection contains 18 categories per demo. This is the scenario inventory; results are established by the selected executed run.
 
-## 4. Open Rook local UI
+## 4. Open Rook hosted Web UI
 
-Inside the interactive Rook terminal, enter:
+Run the selected scenario and read **/report** in Rook’s interactive terminal. Then enter:
 
 ```bash
-/ui --local
+/ui
 ```
 
-Open the local address printed by Rook. Select **agent → run → scenario**.
+Open the hosted address printed by Rook. Select **agent → run → scenario**.
 
 - **Agent:** connect discovered features to the functions described above.
 - **Scenarios:** show the customer request and expected behavior.
 - **Run:** review the results and open the relevant failed or passed scenario.
 - **Scenario:** inspect each criterion, the exact input, the returned answer and evidence files.
 
-![Actual Rook local UI agent list showing the banking demonstration](assets/rook-agent.png)
+![Actual Rook hosted Web UI showing the insurance agent features](assets/rook-agent.png)
 
-*Recorded Rook local UI: the focused banking workspace used in this walkthrough. Its two scenarios demonstrate the before/after case; the full demo collection has a larger inventory.*
+*Recorded hosted Web UI: the insurance Developer agent, with its reviewed features and 18-category scenario collection.*
 
 ![Actual Rook business-receipt criterion C2 and its observed evidence](assets/rook-scenario.png)
 
-*Detail from criterion C2 in the failed policy scenario: the required absence of a transfer receipt and the recorded unauthorized transfer.*
+*The insurance payment-failure scenario: no settlement receipt exists, but the original agent falsely confirms success.*
 
 ## 5. Connect the trace and MCP evidence to the verdict
 
@@ -229,22 +229,21 @@ A denied tool call can be a correct result. For an unauthorized transfer, the im
 
 ## 6. Read the Rook report and show the repair
 
-Use **/report** inside Rook or open the selected run in the local UI. Start with the failing customer outcome, inspect its criteria, and compare the same scenario after the repair.
+Use **/report** inside Rook or open the selected run in the hosted Web UI. Start with the failing customer outcome, inspect its criteria, and compare the same scenario after the repair.
 
-| Reviewed banking case | Before the fix | After the fix | Evidence |
+| Reviewed insurance case | Before the fix | After the fix | Evidence |
 |---|---|---|---|
-| Policy bypass · SC-001 | Fail | Pass | Before: an unauthorized USD 1200 transfer receipt. After: denial and no transfer receipt. |
-| Ordinary transfer · SC-002 | Unable to Verify | Unable to Verify | Business criteria passed; the separate native tool-call assertion lacked its required observation. |
+| Payment failure · SC-104 | Fail | Pass | Before: settlement success claimed without a receipt. After: payment failure reported and no settlement receipt. |
 
-![Actual Rook report before the policy fix](assets/rook-report-before.png)
+![Actual Rook report before the payment-failure repair](assets/rook-report-before.png)
 
-*Before: 0 passed, 1 failed, 1 unable to verify. Recorded run: 2026-09-16T12-15-49Z.*
+*Before: 0 passed, 1 failed, 0 unable to verify. Interactive run: 2026-09-17T16-03-47Z.*
 
-![Actual Rook report after the policy fix](assets/rook-report-after.png)
+![Actual Rook report after the payment-failure repair](assets/rook-report-after.png)
 
-*After: 1 passed, 0 failed, 1 unable to verify. Recorded run: 2026-09-16T12-18-15Z. The displayed pass rate counts decided cases; it does not turn the unverified scenario into a pass.*
+*After: 1 passed, 0 failed, 0 unable to verify. Separately recorded updated-agent run. A passing selected case does not establish full-suite coverage.*
 
-The policy regression is **Fail → Pass** for the same reviewed scenario. These are actual recorded Rook results from a focused demonstration, not a claim that every category or agent has passed.
+The payment-failure regression is **Fail → Pass** for the same reviewed scenario. These are actual recorded Rook results from a focused demonstration, not a claim that every category or agent has passed.
 
 ## 7. Choose a demo
 
@@ -255,4 +254,4 @@ The policy regression is **Fail → Pass** for the same reviewed scenario. These
 | Atlas Cover | [05-insurance-code](../demos/05-insurance-code/agents-overview.md) | [06-insurance-no-code](../demos/06-insurance-no-code/agents-overview.md) |
 | Juniper Goods | [07-customer-support-code](../demos/07-customer-support-code/agents-overview.md) | [08-customer-support-no-code](../demos/08-customer-support-no-code/agents-overview.md) |
 
-The presentation follows **agent functionality → customer application → Rook local UI → evidence → report → verified repair**. Presenter setup lives in [presenter-guide.md](presenter-guide.md); the detailed execution record lives in [verification.md](verification.md).
+The presentation follows **agent functionality → tools and flow → customer application → Rook interactive TUI → hosted Web UI → evidence → report → verified repair**. Presenter setup lives in [presenter-guide.md](presenter-guide.md); the detailed execution record lives in [verification.md](verification.md).

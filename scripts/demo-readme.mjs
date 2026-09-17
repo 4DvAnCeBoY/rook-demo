@@ -56,13 +56,14 @@ Type these **inside Rook**, one at a time, and follow its prompts:
 
 \`\`\`text
 /scenarios list
+/sync
 /profile test demo-normal
-/run --test --only SC-101 --profile demo-normal
+/run --only SC-101 --profile demo-normal
 /report
-/ui --local
+/ui
 \`\`\`
 
-SC-101 tests the everyday customer request. Open **agent → run → scenario** in the local results page to inspect the conversation, trace and verdict. Use \`/guide\` for help and \`/exit\` to leave Rook.
+SC-101 tests the everyday customer request. Open **agent → run → scenario** in the hosted results page to inspect the conversation, trace and verdict. Use \`/guide\` for help and \`/exit\` to leave Rook.
 
 Continue with [before/after comparisons, multi-turn, red-teaming and MCP](../../docs/testing-with-rook.md). The browser's version choice applies to its conversation; the guide explains how to select the same version in Rook. Model responses can vary, so present the result you observe.
 

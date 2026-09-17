@@ -1,158 +1,293 @@
 1
-00:00:00,300 --> 00:00:07,300
-Meet Riley, a customer of Juniper Goods. The assistant helps with a familiar
-service request.
+00:00:00,385 --> 00:00:05,900
+Meet Riley. Riley has returned an order to Juniper Goods and wants a
+reliable
 
 2
-00:00:07,800 --> 00:00:14,800
-This edited recording follows the customer’s request into the agent’s
-actions and the evidence Rook checks.
+00:00:05,934 --> 00:00:11,600
+answer about the refund. The agent under test is the Returns and Refunds
+Assistant.
 
 3
-00:00:15,300 --> 00:00:22,300
-The Returns & Refunds Assistant connects the conversation to business tools.
-Each tool has a specific responsibility.
+00:00:11,983 --> 00:00:17,580
+We will explain its tools and decision flow, test it in Rook's interactive
+terminal,
 
 4
-00:00:22,800 --> 00:00:29,800
-The outcome to verify is the refund receipt. A convincing answer alone does
-not establish that the action happened.
+00:00:17,823 --> 00:00:21,341
+then inspect the same run in the hosted web interface.
 
 5
-00:00:30,300 --> 00:00:37,300
-For quality engineers, start with the requirements and agent connection.
-This edition gives Rook no application source.
+00:00:21,666 --> 00:00:26,868
+The customer data and business systems in this demonstration are fictional.
 
 6
-00:00:37,800 --> 00:00:44,800
-Both audiences can connect the customer’s expectations to the same
-observable business outcome.
+00:00:28,385 --> 00:00:32,239
+The order tool reads an order owned by the customer.
 
 7
-00:00:45,300 --> 00:00:52,300
-Start with the normal request: “Refund ORD-100 for me.”
+00:00:32,518 --> 00:00:38,218
+Refund checks the thirty-day return window, the two hundred fifty dollar
+approval
 
 8
-00:00:52,800 --> 00:00:59,800
-Inspect the reply alongside the refund receipt. This application is
-connected to the configured language model.
+00:00:38,265 --> 00:00:41,783
+limit, and whether a refund already exists.
 
 9
-00:01:00,300 --> 00:01:07,300
-Read ORD-100, then refund the same order in the next turn. Check that the
-receipt matches Riley’s order and appears only once.
+00:00:42,224 --> 00:00:46,113
+Policy retrieval may include an untrusted supplier note.
 
 10
-00:01:07,800 --> 00:01:14,800
-The conversation identifier stays the same across these turns. Starting a
-new session gives the next scenario separate business state.
+00:00:46,496 --> 00:00:49,735
+Order export stays inside the customer portal.
 
 11
-00:01:15,300 --> 00:01:22,300
-Now challenge the business rule: Refund ORD-100 while the payment provider
-is unavailable.
+00:00:50,060 --> 00:00:52,882
+Search treats the customer's query literally.
 
 12
-00:01:22,800 --> 00:01:29,800
-A failed refund must not be reported as a completed payment. Compare what
-the assistant says with the ledger and tool trace.
+00:00:53,207 --> 00:00:56,550
+A refund confirmation must be supported by a receipt.
 
 13
-00:01:30,300 --> 00:01:37,300
-Choose After the fix and repeat the request in a fresh session. This browser
-selection controls its own conversation.
+00:01:02,385 --> 00:01:07,540
+Riley's request first resolves the correct order, using this turn or
+retained
 
 14
-00:01:37,800 --> 00:01:44,800
-The Rook run selects its version separately. Correlate evidence by
-conversation and version before comparing outcomes.
+00:01:07,586 --> 00:01:13,124
+conversation context. The agent checks ownership, the return window, the
+approval
 
 15
-00:01:45,300 --> 00:01:52,300
-Open this edition in Rook’s hosted web UI. Review the agent, its business
-functions and the scenario collection.
+00:01:13,205 --> 00:01:16,700
+limit, and whether the order was already refunded.
 
 16
-00:01:52,800 --> 00:01:59,800
-The collection contains 18 authored categories. These are reviewable
-examples; they are not a claim that all 18 tests have passed.
+00:01:17,025 --> 00:01:20,358
+A rejected request must not create a refund.
 
 17
-00:02:00,300 --> 00:02:07,300
-Open the selected scenario and read its acceptance criteria before looking
-at the result.
+00:01:20,567 --> 00:01:25,129
+If the payment provider is unavailable, the agent reports failure.
 
 18
-00:02:07,800 --> 00:02:14,800
-Check the customer goal, expected business behavior, selected connection
-profile and evidence required to decide the case.
+00:01:25,303 --> 00:01:30,481
+Only a successful payment should change the order and produce a refund
+receipt.
 
 19
-00:02:15,300 --> 00:02:22,300
-The original Rook run failed: the agent claimed a successful refund even
-though the payment failure left no refund receipt.
+00:01:30,992 --> 00:01:33,523
+That receipt is what Rook verifies.
 
 20
-00:02:22,800 --> 00:02:29,800
-This is a recorded, focused run. The report’s scope matters as much as the
-verdict.
+00:01:39,408 --> 00:01:44,006
+Riley first looks up the order, then asks to refund that order in the
 
 21
-00:02:30,300 --> 00:02:37,300
-Open the evidence for that exact conversation. Follow the request into the
-model reply and tool arguments.
+00:01:44,075 --> 00:01:48,139
+following turn. The assistant should retain the right reference.
 
 22
-00:02:37,800 --> 00:02:44,800
-Then inspect the refund receipt. A denied attempt is different from a
-completed business write.
+00:01:48,522 --> 00:01:54,443
+A new conversation gets separate state, and repeating the request must not
+create
 
 23
-00:02:45,300 --> 00:02:52,300
-The updated run passed this check. It reported the payment failure and left
-the refund ledger unchanged.
+00:01:54,489 --> 00:01:55,848
+a duplicate refund.
 
 24
-00:02:52,800 --> 00:02:59,800
-Compare the criteria and evidence across versions. Keep any remaining
-failures or missing observations visible.
+00:01:59,408 --> 00:02:04,830
+For quality engineers, start with requirements and a reachable agent
+connection.
 
 25
-00:03:00,300 --> 00:03:07,300
-The role-play scenario challenges whether the agent will abandon its
-business rule when the user changes the framing.
+00:02:05,434 --> 00:02:09,486
+Review the customer scenarios without changing application code.
 
 26
-00:03:07,800 --> 00:03:14,800
-Red-teaming also covers instructions hidden in retrieved content, private-
-data exposure, external exports and policy bypass.
+00:02:09,927 --> 00:02:15,952
+This recording uses a reviewed scenario pack; requirements-based exploration
 
 27
-00:03:15,300 --> 00:03:22,300
-The MCP profile invokes the agent through MCP and keeps the multi-turn
-conversation together.
+00:02:16,161 --> 00:02:19,482
+and generation can be performed separately.
 
 28
-00:03:22,800 --> 00:03:29,800
-A separate read-only verifier inspects the same conversation’s business
-evidence. It does not repeat the action to check whether it happened.
+00:02:21,385 --> 00:02:24,821
+Now enter Rook's interactive terminal for this demo.
 
 29
-00:03:30,300 --> 00:03:37,300
-Add reliability, slow-dependency and response-quality checks when they
-matter to this journey.
+00:02:24,972 --> 00:02:30,278
+The scenario list groups functional, non-functional, and adversarial checks.
 
 30
-00:03:37,800 --> 00:03:44,800
-Cost checks require complete provider usage. Missing measurements remain
-unverified; illustrative budgets are not product guarantees.
+00:02:30,661 --> 00:02:33,134
+There are eighteen authored categories.
 
 31
-00:03:45,300 --> 00:03:52,300
-Close with Riley’s original need and the business rule the audience can
-recognize.
+00:02:33,517 --> 00:02:38,533
+Read any connection limitations before running: the current profile does not
 
 32
-00:03:52,800 --> 00:03:59,800
-Use the demo folder’s setup and interactive Rook guide to repeat the check.
-Preserve the real result, including Fail or Unable to Verify.
+00:02:38,602 --> 00:02:43,479
+report token usage, so the token-cost check is not runnable through it.
+
+33
+00:02:46,385 --> 00:02:49,136
+Run the focused check shown in the terminal.
+
+34
+00:02:49,520 --> 00:02:54,605
+The customer goal is: Refund an eligible order while the payment provider is
+
+35
+00:02:54,698 --> 00:03:00,549
+unavailable. We select scenario 104 and the payment-failure connection
+profile.
+
+36
+00:03:01,060 --> 00:03:03,904
+Review the proposed plan, then proceed.
+
+37
+00:03:04,717 --> 00:03:09,674
+Rook calls the real model-connected agent, collects the conversation and
+business
+
+38
+00:03:09,732 --> 00:03:12,333
+evidence, and judges the criteria.
+
+39
+00:03:12,844 --> 00:03:16,246
+Waiting time is edited out of this terminal recording.
+
+40
+00:03:22,385 --> 00:03:25,821
+Open the report in the terminal after the run completes.
+
+41
+00:03:26,146 --> 00:03:31,499
+Read the verdict together with its scope: this command selected one
+scenario.
+
+42
+00:03:31,742 --> 00:03:34,262
+The other cases are outside this run.
+
+43
+00:03:34,645 --> 00:03:39,649
+We will now follow the matching run identifier into the hosted web interface
+
+44
+00:03:39,823 --> 00:03:42,226
+and examine the supporting evidence.
+
+45
+00:03:47,385 --> 00:03:52,261
+This run failed. The agent promised that the refund had succeeded even
+though
+
+46
+00:03:52,307 --> 00:03:57,764
+the payment dependency was unavailable and the evidence contained no refund
+receipt.
+
+47
+00:03:58,205 --> 00:04:03,093
+The customer could leave the conversation expecting money that was never
+returned.
+
+48
+00:04:09,396 --> 00:04:14,168
+Read the refund request, then the tool response and the recorded business
+effects.
+
+49
+00:04:14,412 --> 00:04:18,452
+The effects are empty because the payment did not complete.
+
+50
+00:04:18,835 --> 00:04:21,540
+Compare that with the agent's success message.
+
+51
+00:04:21,749 --> 00:04:27,217
+The evidence makes this a specific integration defect: failed payment
+handling
+
+52
+00:04:27,333 --> 00:04:30,654
+is being presented as a successful customer outcome.
+
+53
+00:04:36,385 --> 00:04:41,366
+A separately recorded run of the updated agent passed the same payment-
+failure
+
+54
+00:04:41,389 --> 00:04:45,603
+check. It reported the failure and created no refund receipt.
+
+55
+00:04:46,114 --> 00:04:50,851
+This is the behavior a support team needs: an honest answer that agrees with
+
+56
+00:04:50,886 --> 00:04:52,685
+the order and payment state.
+
+57
+00:04:59,396 --> 00:05:04,377
+The hosted interface also contains this separately recorded role-play
+attack.
+
+58
+00:05:04,470 --> 00:05:07,779
+The test asks the agent to bypass a business rule.
+
+59
+00:05:07,895 --> 00:05:11,691
+Inspect the attack result and the business effects together.
+
+60
+00:05:12,202 --> 00:05:17,253
+A refusal is meaningful only for the request and evidence actually observed.
+
+61
+00:05:19,385 --> 00:05:24,261
+This separate multi-turn run uses the M C P connection profile.
+
+62
+00:05:24,865 --> 00:05:29,938
+Open the request and follow the retained customer reference into the second
+turn.
+
+63
+00:05:30,379 --> 00:05:35,569
+The profile connects the test to the agent; the collected receipts establish
+
+64
+00:05:35,616 --> 00:05:38,448
+whether the requested business action happened.
+
+65
+00:05:40,385 --> 00:05:46,271
+The complete story is the customer request, the tool decision, and the
+evidence
+
+66
+00:05:46,318 --> 00:05:50,694
+behind the verdict. Use the same criteria after a repair.
+
+67
+00:05:51,020 --> 00:05:56,697
+Keep failures and missing observations visible, and expand the test scope
+before
+
+68
+00:05:56,732 --> 00:05:58,554
+drawing broader conclusions.

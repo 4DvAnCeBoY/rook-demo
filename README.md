@@ -52,13 +52,14 @@ This opens Rook's interactive terminal. Type the following **inside Rook**, one 
 
 ```text
 /scenarios list
+/sync
 /profile test demo-normal
-/run --test --only SC-101 --profile demo-normal
+/run --only SC-101 --profile demo-normal
 /report
-/ui --local
+/ui
 ```
 
-Follow Rook's prompts. The last command opens the local results page, where you can inspect the conversation, tool trace and report. Use `/guide` for help and `/exit` to leave Rook. Testing uses your model and Rook accounts.
+Follow Rook's prompts. The last command opens the hosted results page, where you can inspect the conversation, tool trace and report. Use `/guide` for help and `/exit` to leave Rook. Testing uses your model and Rook accounts.
 
 ## Continue the demo
 

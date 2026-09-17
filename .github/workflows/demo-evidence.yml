@@ -22,6 +22,8 @@ jobs:
       - run: npm ci
       - run: npm run setup
       - run: npm test
+      - name: Check narration timing and cache isolation
+        run: python3 -m unittest discover -s tests -p 'test_video_pipeline.py'
       - run: npm run check
       - run: npm run rook:coverage
       - name: Replay recorded evidence and expected gate decisions

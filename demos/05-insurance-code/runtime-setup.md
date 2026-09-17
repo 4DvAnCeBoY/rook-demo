@@ -52,7 +52,7 @@ Use `rook project use PROJECT_ID` if you already have a project. Skip setup for 
 npm run rook
 ```
 
-Follow the [interactive demo guide](../../docs/testing-with-rook.md). Commands such as `/guide`, `/run`, `/report` and `/ui --local` are entered inside Rook. Rook sign-in is separate from your model key; both services may charge for usage.
+Follow the [interactive demo guide](../../docs/testing-with-rook.md). Commands such as `/guide`, `/run`, `/report` and `/ui` are entered inside Rook. Rook sign-in is separate from your model key; both services may charge for usage.
 
 ## Common questions
 
