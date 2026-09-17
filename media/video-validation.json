@@ -11,7 +11,7 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "d4ae5225fb29ff6f27132e4e57e1662afbd42ce6040d96229a5bb50044dc27e8"
+      "sha256": "cacde0a1dcfc27366d6e330943a7fec9dea740fc308b6aee7e0361b3e2e7925c"
     },
     {
       "id": "banking-agent-code",
@@ -23,7 +23,7 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "9f8d03e1c50d313ce386985c73db93e5fd5e1640ec1c11207d79e1007f79e9a3"
+      "sha256": "61f22e10a93d06519b6764cd089c6f65fcef60686f6576704cc99e4a905c6d5e"
     },
     {
       "id": "customer-support-agent",
@@ -35,7 +35,7 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "6761ca8c2f9b5927365161c4a23209afe7f84eac4ace39fedbac36c2572ecb88"
+      "sha256": "0d23f4e8989d2bf224c07c16c25685e4100b7eab14e7764e65a6e1465a8590f0"
     },
     {
       "id": "customer-support-agent-code",
@@ -47,7 +47,7 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "ad149ec64257bd9c892b43c8cee3b442a521ced6fde483288f85e11db0de5c8d"
+      "sha256": "b04dbb6558e431fd17a64f6a950db2dc48412942b176f0e2079748f141f87066"
     },
     {
       "id": "healthcare-agent",
@@ -59,7 +59,7 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "997dd82a77dab8f5b1a578147d1313983155afe249d3f175346b1fbc9553f48a"
+      "sha256": "5dd359bb7a2da41cb850c8271a51663ab44c83f1d3efb504376e8dc4ae751d24"
     },
     {
       "id": "healthcare-agent-code",
@@ -71,7 +71,7 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "1ee2be76629b5087230a9358c41d6d07863f338be878e11a2cdc876582a3586c"
+      "sha256": "a01d46119180f0467de50a3a5e0c4b311c04aa434461dc0e9228c00d19a67dd6"
     },
     {
       "id": "insurance-agent",
@@ -83,7 +83,7 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "b9e05e2fb0953d674908c00bd021c3ad7c249f48abb78edfcdef2cccd359d484"
+      "sha256": "50612d2fc7a8327438621854df854286471d3f7cfcbb5a17196369f40035cf1b"
     },
     {
       "id": "insurance-agent-code",
@@ -95,7 +95,7 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "edbdd9534c0471d9eaabf4fc2733de9a9cdfe6f4dc8e48cce2eb1315d725b6d0"
+      "sha256": "22470e4850228c0539af369793cd7567bae5a6ed09da930dd0a7b7e5da45ac30"
     },
     {
       "id": "rook-overview",
@@ -107,14 +107,14 @@
       "longestDetectedSilenceSeconds": 0,
       "detectedSilencesAbove1_2Seconds": [],
       "decodedAllFrames": true,
-      "sha256": "186335bb9945fc2010511020515e0c66bd9964e694e52e174817998ec72b68bb"
+      "sha256": "a06da7f978245d093c464c2f649d6910710f3a79a656be4820d2df9030a4c1dd"
     }
   ],
   "browserPlayback": [
     {
       "id": "rook-overview",
       "unmutedPlayback": true,
-      "decodedAudioBytes": 14312,
+      "decodedAudioBytes": 15175,
       "chapterSeek": true
     },
     {
@@ -138,13 +138,13 @@
     {
       "id": "healthcare-agent",
       "unmutedPlayback": true,
-      "decodedAudioBytes": 13306,
+      "decodedAudioBytes": 12603,
       "chapterSeek": true
     },
     {
       "id": "insurance-agent-code",
       "unmutedPlayback": true,
-      "decodedAudioBytes": 14481,
+      "decodedAudioBytes": 13964,
       "chapterSeek": true
     },
     {
@@ -156,13 +156,13 @@
     {
       "id": "customer-support-agent-code",
       "unmutedPlayback": true,
-      "decodedAudioBytes": 13768,
+      "decodedAudioBytes": 13358,
       "chapterSeek": true
     },
     {
       "id": "customer-support-agent",
       "unmutedPlayback": true,
-      "decodedAudioBytes": 13358,
+      "decodedAudioBytes": 14160,
       "chapterSeek": true
     }
   ]
