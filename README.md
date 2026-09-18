@@ -9,6 +9,12 @@ Explore an agent, generate tests, prove its connection and inspect the evidence.
 | Insurance | [insurance-agent-code](demos/05-insurance-code/README.md) | [insurance-agent](demos/06-insurance-no-code/README.md) |
 | Customer Support | [customer-support-agent-code](demos/07-customer-support-code/README.md) | [customer-support-agent](demos/08-customer-support-no-code/README.md) |
 
+## Watch the recorded walkthroughs
+
+The [video library](delivery/README.md) includes all nine generated MP4s: the workflow overview and eight industry editions, narrated by Andrew in American English with no added scene pauses. Captions, chapter markers and posters are included.
+
+Run `npm run videos` and open <http://127.0.0.1:65213> to use the playback library, or download individual videos from the library's file table.
+
 ## Start an application
 
 You need Node.js 22 or later, Rook and an OpenAI API key. From a fresh checkout:

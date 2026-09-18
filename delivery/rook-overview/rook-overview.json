@@ -1,0 +1,114 @@
+{
+  "title": "Agent Assurance \u2014 ROOK | Workflow overview",
+  "durationSeconds": 319.79166666666663,
+  "audio": true,
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Andrew \u2014 Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
+  },
+  "narrationTiming": "ElevenLabs character alignment",
+  "subtitles": "burned in and separate SRT",
+  "status": "ready for review",
+  "missingFootage": [],
+  "video": "rook-overview.mp4",
+  "sourceAssets": [
+    {
+      "role": "overview/poster",
+      "file": "overview-poster.png"
+    },
+    {
+      "role": "overview/industries",
+      "file": "overview-industries.png"
+    },
+    {
+      "role": "overview/audiences",
+      "file": "overview-audiences.png"
+    },
+    {
+      "role": "insurance-agent-code/application",
+      "file": "insurance-agent-code--application.mp4"
+    },
+    {
+      "role": "insurance-agent-code/tools",
+      "file": "insurance-agent-code-tools.png"
+    },
+    {
+      "role": "insurance-agent-code/flow",
+      "file": "insurance-agent-code-flow.png"
+    },
+    {
+      "role": "insurance-agent-code/explore",
+      "file": "insurance-agent-code--explore.mp4"
+    },
+    {
+      "role": "insurance-agent-code/features",
+      "file": "insurance-agent-code-features.png"
+    },
+    {
+      "role": "insurance-agent-code/generate",
+      "file": "insurance-agent-code--generate.mp4"
+    },
+    {
+      "role": "insurance-agent-code/scenarios",
+      "file": "insurance-agent-code-scenarios.png"
+    },
+    {
+      "role": "insurance-agent-code/profile-add",
+      "file": "insurance-agent-code--profile-add.mp4"
+    },
+    {
+      "role": "insurance-agent-code/profile-test",
+      "file": "insurance-agent-code--profile-test.mp4"
+    },
+    {
+      "role": "insurance-agent-code/run-local",
+      "file": "insurance-agent-code--run-local.mp4"
+    },
+    {
+      "role": "insurance-agent-code/report",
+      "file": "insurance-agent-code--report.mp4"
+    },
+    {
+      "role": "insurance-agent-code/artifacts",
+      "file": "insurance-agent-code-artifacts.png"
+    },
+    {
+      "role": "insurance-agent-code/finding",
+      "file": "insurance-agent-code-finding.png"
+    },
+    {
+      "role": "insurance-agent-code/redteam",
+      "file": "insurance-agent-code--redteam.mp4"
+    },
+    {
+      "role": "insurance-agent-code/mcp",
+      "file": "insurance-agent-code--mcp.mp4"
+    },
+    {
+      "role": "insurance-agent-code/after",
+      "file": "insurance-agent-code--after.mp4"
+    },
+    {
+      "role": "overview/gap",
+      "file": "overview-gap.png"
+    },
+    {
+      "role": "overview/workflow",
+      "file": "workflow.png"
+    },
+    {
+      "role": "insurance-agent-code/sync",
+      "file": "insurance-agent-code--sync.mp4"
+    },
+    {
+      "role": "insurance-agent-code/hosted",
+      "file": "insurance-agent-code--hosted.mp4"
+    },
+    {
+      "role": "insurance-agent-code/close",
+      "file": "close.png"
+    }
+  ]
+}

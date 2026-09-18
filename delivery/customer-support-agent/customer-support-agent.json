@@ -1,0 +1,98 @@
+{
+  "title": "Agent Assurance \u2014 ROOK | Juniper Goods | QE",
+  "durationSeconds": 249.87500000000003,
+  "audio": true,
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Andrew \u2014 Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
+  },
+  "narrationTiming": "ElevenLabs character alignment",
+  "subtitles": "burned in and separate SRT",
+  "status": "ready for review",
+  "missingFootage": [],
+  "video": "customer-support-agent.mp4",
+  "sourceAssets": [
+    {
+      "role": "customer-support-agent/poster",
+      "file": "customer-support-agent-poster.png"
+    },
+    {
+      "role": "customer-support-agent/application",
+      "file": "customer-support-agent--application.mp4"
+    },
+    {
+      "role": "customer-support-agent/tools",
+      "file": "customer-support-agent-tools.png"
+    },
+    {
+      "role": "customer-support-agent/flow",
+      "file": "customer-support-agent-flow.png"
+    },
+    {
+      "role": "customer-support-agent/explore",
+      "file": "customer-support-agent--explore.mp4"
+    },
+    {
+      "role": "customer-support-agent/features",
+      "file": "customer-support-agent-features.png"
+    },
+    {
+      "role": "customer-support-agent/generate",
+      "file": "customer-support-agent--generate.mp4"
+    },
+    {
+      "role": "customer-support-agent/scenarios",
+      "file": "customer-support-agent-scenarios.png"
+    },
+    {
+      "role": "customer-support-agent/profile-add",
+      "file": "customer-support-agent--profile-add.mp4"
+    },
+    {
+      "role": "customer-support-agent/profile-test",
+      "file": "customer-support-agent--profile-test.mp4"
+    },
+    {
+      "role": "customer-support-agent/run-local",
+      "file": "customer-support-agent--run-local.mp4"
+    },
+    {
+      "role": "customer-support-agent/report",
+      "file": "customer-support-agent--report.mp4"
+    },
+    {
+      "role": "customer-support-agent/artifacts",
+      "file": "customer-support-agent-artifacts.png"
+    },
+    {
+      "role": "customer-support-agent/finding",
+      "file": "customer-support-agent-finding.png"
+    },
+    {
+      "role": "customer-support-agent/redteam",
+      "file": "customer-support-agent--redteam.mp4"
+    },
+    {
+      "role": "customer-support-agent/mcp",
+      "file": "customer-support-agent--mcp.mp4"
+    },
+    {
+      "role": "customer-support-agent/after",
+      "file": "customer-support-agent--after.mp4"
+    },
+    {
+      "role": "customer-support-agent/sync",
+      "file": "customer-support-agent--sync.mp4"
+    },
+    {
+      "role": "customer-support-agent/hosted",
+      "file": "customer-support-agent--hosted.mp4"
+    },
+    {
+      "role": "customer-support-agent/close",
+      "file": "close.png"
+    }
+  ]
+}

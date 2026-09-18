@@ -1,0 +1,98 @@
+{
+  "title": "Agent Assurance \u2014 ROOK | Juniper Goods | Developer",
+  "durationSeconds": 250.9166666666667,
+  "audio": true,
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Andrew \u2014 Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
+  },
+  "narrationTiming": "ElevenLabs character alignment",
+  "subtitles": "burned in and separate SRT",
+  "status": "ready for review",
+  "missingFootage": [],
+  "video": "customer-support-agent-code.mp4",
+  "sourceAssets": [
+    {
+      "role": "customer-support-agent-code/poster",
+      "file": "customer-support-agent-code-poster.png"
+    },
+    {
+      "role": "customer-support-agent-code/application",
+      "file": "customer-support-agent-code--application.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/tools",
+      "file": "customer-support-agent-code-tools.png"
+    },
+    {
+      "role": "customer-support-agent-code/flow",
+      "file": "customer-support-agent-code-flow.png"
+    },
+    {
+      "role": "customer-support-agent-code/explore",
+      "file": "customer-support-agent-code--explore.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/features",
+      "file": "customer-support-agent-code-features.png"
+    },
+    {
+      "role": "customer-support-agent-code/generate",
+      "file": "customer-support-agent-code--generate.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/scenarios",
+      "file": "customer-support-agent-code-scenarios.png"
+    },
+    {
+      "role": "customer-support-agent-code/profile-add",
+      "file": "customer-support-agent-code--profile-add.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/profile-test",
+      "file": "customer-support-agent-code--profile-test.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/run-local",
+      "file": "customer-support-agent-code--run-local.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/report",
+      "file": "customer-support-agent-code--report.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/artifacts",
+      "file": "customer-support-agent-code-artifacts.png"
+    },
+    {
+      "role": "customer-support-agent-code/finding",
+      "file": "customer-support-agent-code-finding.png"
+    },
+    {
+      "role": "customer-support-agent-code/redteam",
+      "file": "customer-support-agent-code--redteam.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/mcp",
+      "file": "customer-support-agent-code--mcp.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/after",
+      "file": "customer-support-agent-code--after.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/sync",
+      "file": "customer-support-agent-code--sync.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/hosted",
+      "file": "customer-support-agent-code--hosted.mp4"
+    },
+    {
+      "role": "customer-support-agent-code/close",
+      "file": "close.png"
+    }
+  ]
+}

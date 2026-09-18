@@ -1,0 +1,98 @@
+{
+  "title": "Agent Assurance \u2014 ROOK | Northstar Bank | QE",
+  "durationSeconds": 255.95833333333334,
+  "audio": true,
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Andrew \u2014 Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
+  },
+  "narrationTiming": "ElevenLabs character alignment",
+  "subtitles": "burned in and separate SRT",
+  "status": "ready for review",
+  "missingFootage": [],
+  "video": "banking-agent.mp4",
+  "sourceAssets": [
+    {
+      "role": "banking-agent/poster",
+      "file": "banking-agent-poster.png"
+    },
+    {
+      "role": "banking-agent/application",
+      "file": "banking-agent--application.mp4"
+    },
+    {
+      "role": "banking-agent/tools",
+      "file": "banking-agent-tools.png"
+    },
+    {
+      "role": "banking-agent/flow",
+      "file": "banking-agent-flow.png"
+    },
+    {
+      "role": "banking-agent/explore",
+      "file": "banking-agent--explore.mp4"
+    },
+    {
+      "role": "banking-agent/features",
+      "file": "banking-agent-features.png"
+    },
+    {
+      "role": "banking-agent/generate",
+      "file": "banking-agent--generate.mp4"
+    },
+    {
+      "role": "banking-agent/scenarios",
+      "file": "banking-agent-scenarios.png"
+    },
+    {
+      "role": "banking-agent/profile-add",
+      "file": "banking-agent--profile-add.mp4"
+    },
+    {
+      "role": "banking-agent/profile-test",
+      "file": "banking-agent--profile-test.mp4"
+    },
+    {
+      "role": "banking-agent/run-local",
+      "file": "banking-agent--run-local.mp4"
+    },
+    {
+      "role": "banking-agent/report",
+      "file": "banking-agent--report.mp4"
+    },
+    {
+      "role": "banking-agent/artifacts",
+      "file": "banking-agent-artifacts.png"
+    },
+    {
+      "role": "banking-agent/finding",
+      "file": "banking-agent-finding.png"
+    },
+    {
+      "role": "banking-agent/redteam",
+      "file": "banking-agent--redteam.mp4"
+    },
+    {
+      "role": "banking-agent/mcp",
+      "file": "banking-agent--mcp.mp4"
+    },
+    {
+      "role": "banking-agent/after",
+      "file": "banking-agent--after.mp4"
+    },
+    {
+      "role": "banking-agent/sync",
+      "file": "banking-agent--sync.mp4"
+    },
+    {
+      "role": "banking-agent/hosted",
+      "file": "banking-agent--hosted.mp4"
+    },
+    {
+      "role": "banking-agent/close",
+      "file": "close.png"
+    }
+  ]
+}

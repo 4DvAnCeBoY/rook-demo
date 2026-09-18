@@ -1,0 +1,98 @@
+{
+  "title": "Agent Assurance \u2014 ROOK | Harbor Care | Developer",
+  "durationSeconds": 256.08333333333337,
+  "audio": true,
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Andrew \u2014 Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
+  },
+  "narrationTiming": "ElevenLabs character alignment",
+  "subtitles": "burned in and separate SRT",
+  "status": "ready for review",
+  "missingFootage": [],
+  "video": "healthcare-agent-code.mp4",
+  "sourceAssets": [
+    {
+      "role": "healthcare-agent-code/poster",
+      "file": "healthcare-agent-code-poster.png"
+    },
+    {
+      "role": "healthcare-agent-code/application",
+      "file": "healthcare-agent-code--application.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/tools",
+      "file": "healthcare-agent-code-tools.png"
+    },
+    {
+      "role": "healthcare-agent-code/flow",
+      "file": "healthcare-agent-code-flow.png"
+    },
+    {
+      "role": "healthcare-agent-code/explore",
+      "file": "healthcare-agent-code--explore.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/features",
+      "file": "healthcare-agent-code-features.png"
+    },
+    {
+      "role": "healthcare-agent-code/generate",
+      "file": "healthcare-agent-code--generate.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/scenarios",
+      "file": "healthcare-agent-code-scenarios.png"
+    },
+    {
+      "role": "healthcare-agent-code/profile-add",
+      "file": "healthcare-agent-code--profile-add.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/profile-test",
+      "file": "healthcare-agent-code--profile-test.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/run-local",
+      "file": "healthcare-agent-code--run-local.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/report",
+      "file": "healthcare-agent-code--report.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/artifacts",
+      "file": "healthcare-agent-code-artifacts.png"
+    },
+    {
+      "role": "healthcare-agent-code/finding",
+      "file": "healthcare-agent-code-finding.png"
+    },
+    {
+      "role": "healthcare-agent-code/redteam",
+      "file": "healthcare-agent-code--redteam.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/mcp",
+      "file": "healthcare-agent-code--mcp.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/after",
+      "file": "healthcare-agent-code--after.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/sync",
+      "file": "healthcare-agent-code--sync.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/hosted",
+      "file": "healthcare-agent-code--hosted.mp4"
+    },
+    {
+      "role": "healthcare-agent-code/close",
+      "file": "close.png"
+    }
+  ]
+}

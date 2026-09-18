@@ -1,0 +1,98 @@
+{
+  "title": "Agent Assurance \u2014 ROOK | Atlas Cover | QE",
+  "durationSeconds": 259.58333333333337,
+  "audio": true,
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Andrew \u2014 Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
+  },
+  "narrationTiming": "ElevenLabs character alignment",
+  "subtitles": "burned in and separate SRT",
+  "status": "ready for review",
+  "missingFootage": [],
+  "video": "insurance-agent.mp4",
+  "sourceAssets": [
+    {
+      "role": "insurance-agent/poster",
+      "file": "insurance-agent-poster.png"
+    },
+    {
+      "role": "insurance-agent/application",
+      "file": "insurance-agent--application.mp4"
+    },
+    {
+      "role": "insurance-agent/tools",
+      "file": "insurance-agent-tools.png"
+    },
+    {
+      "role": "insurance-agent/flow",
+      "file": "insurance-agent-flow.png"
+    },
+    {
+      "role": "insurance-agent/explore",
+      "file": "insurance-agent--explore.mp4"
+    },
+    {
+      "role": "insurance-agent/features",
+      "file": "insurance-agent-features.png"
+    },
+    {
+      "role": "insurance-agent/generate",
+      "file": "insurance-agent--generate.mp4"
+    },
+    {
+      "role": "insurance-agent/scenarios",
+      "file": "insurance-agent-scenarios.png"
+    },
+    {
+      "role": "insurance-agent/profile-add",
+      "file": "insurance-agent--profile-add.mp4"
+    },
+    {
+      "role": "insurance-agent/profile-test",
+      "file": "insurance-agent--profile-test.mp4"
+    },
+    {
+      "role": "insurance-agent/run-local",
+      "file": "insurance-agent--run-local.mp4"
+    },
+    {
+      "role": "insurance-agent/report",
+      "file": "insurance-agent--report.mp4"
+    },
+    {
+      "role": "insurance-agent/artifacts",
+      "file": "insurance-agent-artifacts.png"
+    },
+    {
+      "role": "insurance-agent/finding",
+      "file": "insurance-agent-finding.png"
+    },
+    {
+      "role": "insurance-agent/redteam",
+      "file": "insurance-agent--redteam.mp4"
+    },
+    {
+      "role": "insurance-agent/mcp",
+      "file": "insurance-agent--mcp.mp4"
+    },
+    {
+      "role": "insurance-agent/after",
+      "file": "insurance-agent--after.mp4"
+    },
+    {
+      "role": "insurance-agent/sync",
+      "file": "insurance-agent--sync.mp4"
+    },
+    {
+      "role": "insurance-agent/hosted",
+      "file": "insurance-agent--hosted.mp4"
+    },
+    {
+      "role": "insurance-agent/close",
+      "file": "close.png"
+    }
+  ]
+}

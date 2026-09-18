@@ -5,7 +5,7 @@ node_modules/
 .demo-state/
 .testmuai/
 artifacts/local/
-delivery/
+delivery/*.zip
 *.log
 .DS_Store
 __pycache__/

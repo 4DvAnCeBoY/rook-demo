@@ -1,0 +1,1069 @@
+{
+  "title": "Agent Assurance \u2014 ROOK",
+  "recordedOn": "2026-09-17",
+  "rebuiltOn": "2026-09-18",
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "Andrew \u2014 Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
+  },
+  "addedScenePauses": false,
+  "videos": [
+    {
+      "id": "rook-overview",
+      "title": "Workflow overview",
+      "audience": "QE + Developer",
+      "industry": "All industries",
+      "durationSeconds": 319.792,
+      "video": "rook-overview/rook-overview.mp4",
+      "subtitles": "rook-overview/rook-overview.srt",
+      "poster": "rook-overview/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 12.25
+        },
+        {
+          "title": "Four industries",
+          "start": 12.25,
+          "duration": 15.333333333333334
+        },
+        {
+          "title": "QE and Developer",
+          "start": 27.583,
+          "duration": 13.541666666666666
+        },
+        {
+          "title": "Customer conversation",
+          "start": 41.125,
+          "duration": 11.291666666666666
+        },
+        {
+          "title": "Agent tools",
+          "start": 52.417,
+          "duration": 15.0
+        },
+        {
+          "title": "Decision flow",
+          "start": 67.417,
+          "duration": 16.083333333333332
+        },
+        {
+          "title": "Explore",
+          "start": 83.5,
+          "duration": 14.791666666666666
+        },
+        {
+          "title": "Local feature files",
+          "start": 98.292,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 109.083,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 124.167,
+          "duration": 14.041666666666666
+        },
+        {
+          "title": "Create a profile",
+          "start": 138.208,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 148.458,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 158.75,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 172.5,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 184.708,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 199.292,
+          "duration": 15.583333333333334
+        },
+        {
+          "title": "Adversarial test",
+          "start": 214.875,
+          "duration": 12.625
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 227.5,
+          "duration": 15.291666666666666
+        },
+        {
+          "title": "Verify the repair",
+          "start": 242.792,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Verification gap",
+          "start": 255.0,
+          "duration": 17.291666666666668
+        },
+        {
+          "title": "Local first",
+          "start": 272.292,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Optional sync",
+          "start": 284.375,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 297.0,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 309.083,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "465a3a445cb41c00c77100e9b12f3a8e115856f2560f06c95d923f6dd6780555"
+    },
+    {
+      "id": "banking-agent-code",
+      "title": "Northstar Bank",
+      "audience": "Developer",
+      "industry": "Banking",
+      "durationSeconds": 258.792,
+      "video": "banking-agent-code/banking-agent-code.mp4",
+      "subtitles": "banking-agent-code/banking-agent-code.srt",
+      "poster": "banking-agent-code/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 9.5
+        },
+        {
+          "title": "Customer conversation",
+          "start": 9.5,
+          "duration": 11.208333333333334
+        },
+        {
+          "title": "Agent tools",
+          "start": 20.708,
+          "duration": 15.0
+        },
+        {
+          "title": "Decision flow",
+          "start": 35.708,
+          "duration": 16.041666666666668
+        },
+        {
+          "title": "Explore",
+          "start": 51.75,
+          "duration": 14.791666666666666
+        },
+        {
+          "title": "Local feature files",
+          "start": 66.542,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 77.333,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 92.417,
+          "duration": 12.375
+        },
+        {
+          "title": "Create a profile",
+          "start": 104.792,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 115.042,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 125.333,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 139.083,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 151.292,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 165.875,
+          "duration": 16.541666666666668
+        },
+        {
+          "title": "Adversarial test",
+          "start": 182.417,
+          "duration": 13.875
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 196.292,
+          "duration": 12.791666666666666
+        },
+        {
+          "title": "Verify the repair",
+          "start": 209.083,
+          "duration": 14.291666666666666
+        },
+        {
+          "title": "Optional sync",
+          "start": 223.375,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 236.0,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 248.083,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "a633f70eef9b0bb460fb495a4f3c35dcc9f534f3bde3db25a8ba53817ddfdd5d"
+    },
+    {
+      "id": "banking-agent",
+      "title": "Northstar Bank",
+      "audience": "QE",
+      "industry": "Banking",
+      "durationSeconds": 255.958,
+      "video": "banking-agent/banking-agent.mp4",
+      "subtitles": "banking-agent/banking-agent.srt",
+      "poster": "banking-agent/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 9.5
+        },
+        {
+          "title": "Customer conversation",
+          "start": 9.5,
+          "duration": 11.208333333333334
+        },
+        {
+          "title": "Agent tools",
+          "start": 20.708,
+          "duration": 15.0
+        },
+        {
+          "title": "Decision flow",
+          "start": 35.708,
+          "duration": 16.041666666666668
+        },
+        {
+          "title": "Explore",
+          "start": 51.75,
+          "duration": 11.958333333333334
+        },
+        {
+          "title": "Local feature files",
+          "start": 63.708,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 74.5,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 89.583,
+          "duration": 12.375
+        },
+        {
+          "title": "Create a profile",
+          "start": 101.958,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 112.208,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 122.5,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 136.25,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 148.458,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 163.042,
+          "duration": 16.541666666666668
+        },
+        {
+          "title": "Adversarial test",
+          "start": 179.583,
+          "duration": 13.875
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 193.458,
+          "duration": 12.791666666666666
+        },
+        {
+          "title": "Verify the repair",
+          "start": 206.25,
+          "duration": 14.291666666666666
+        },
+        {
+          "title": "Optional sync",
+          "start": 220.542,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 233.167,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 245.25,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "941cf406fe07da8f85e4af03063ccd7503ce2994bd76866247357c51b16387fa"
+    },
+    {
+      "id": "healthcare-agent-code",
+      "title": "Harbor Care",
+      "audience": "Developer",
+      "industry": "Healthcare",
+      "durationSeconds": 256.083,
+      "video": "healthcare-agent-code/healthcare-agent-code.mp4",
+      "subtitles": "healthcare-agent-code/healthcare-agent-code.srt",
+      "poster": "healthcare-agent-code/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 11.625
+        },
+        {
+          "title": "Customer conversation",
+          "start": 11.625,
+          "duration": 11.5
+        },
+        {
+          "title": "Agent tools",
+          "start": 23.125,
+          "duration": 14.5
+        },
+        {
+          "title": "Decision flow",
+          "start": 37.625,
+          "duration": 15.708333333333334
+        },
+        {
+          "title": "Explore",
+          "start": 53.333,
+          "duration": 14.791666666666666
+        },
+        {
+          "title": "Local feature files",
+          "start": 68.125,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 78.917,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 94.0,
+          "duration": 13.125
+        },
+        {
+          "title": "Create a profile",
+          "start": 107.125,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 117.375,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 127.667,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 141.417,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 153.625,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 168.208,
+          "duration": 12.541666666666666
+        },
+        {
+          "title": "Adversarial test",
+          "start": 180.75,
+          "duration": 13.083333333333334
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 193.833,
+          "duration": 14.333333333333334
+        },
+        {
+          "title": "Verify the repair",
+          "start": 208.167,
+          "duration": 12.5
+        },
+        {
+          "title": "Optional sync",
+          "start": 220.667,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 233.292,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 245.375,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "856b9a20ad99d66ca16b9d312eb964f9e99f37e327962e13f33b531002ca4ac4"
+    },
+    {
+      "id": "healthcare-agent",
+      "title": "Harbor Care",
+      "audience": "QE",
+      "industry": "Healthcare",
+      "durationSeconds": 251.833,
+      "video": "healthcare-agent/healthcare-agent.mp4",
+      "subtitles": "healthcare-agent/healthcare-agent.srt",
+      "poster": "healthcare-agent/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 11.625
+        },
+        {
+          "title": "Customer conversation",
+          "start": 11.625,
+          "duration": 11.5
+        },
+        {
+          "title": "Agent tools",
+          "start": 23.125,
+          "duration": 14.5
+        },
+        {
+          "title": "Decision flow",
+          "start": 37.625,
+          "duration": 15.708333333333334
+        },
+        {
+          "title": "Explore",
+          "start": 53.333,
+          "duration": 11.958333333333334
+        },
+        {
+          "title": "Local feature files",
+          "start": 65.292,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 76.083,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 91.167,
+          "duration": 13.125
+        },
+        {
+          "title": "Create a profile",
+          "start": 104.292,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 114.542,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 124.833,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 138.583,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 150.792,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 165.375,
+          "duration": 12.541666666666666
+        },
+        {
+          "title": "Adversarial test",
+          "start": 177.917,
+          "duration": 13.083333333333334
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 191.0,
+          "duration": 12.916666666666666
+        },
+        {
+          "title": "Verify the repair",
+          "start": 203.917,
+          "duration": 12.5
+        },
+        {
+          "title": "Optional sync",
+          "start": 216.417,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 229.042,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 241.125,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "5d9e2ff0a129d034e49a12a2aacf38f463af19b6a26844aeabb28003294089ba"
+    },
+    {
+      "id": "insurance-agent-code",
+      "title": "Atlas Cover",
+      "audience": "Developer",
+      "industry": "Insurance",
+      "durationSeconds": 262.417,
+      "video": "insurance-agent-code/insurance-agent-code.mp4",
+      "subtitles": "insurance-agent-code/insurance-agent-code.srt",
+      "poster": "insurance-agent-code/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 13.125
+        },
+        {
+          "title": "Customer conversation",
+          "start": 13.125,
+          "duration": 11.291666666666666
+        },
+        {
+          "title": "Agent tools",
+          "start": 24.417,
+          "duration": 15.0
+        },
+        {
+          "title": "Decision flow",
+          "start": 39.417,
+          "duration": 16.083333333333332
+        },
+        {
+          "title": "Explore",
+          "start": 55.5,
+          "duration": 14.791666666666666
+        },
+        {
+          "title": "Local feature files",
+          "start": 70.292,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 81.083,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 96.167,
+          "duration": 14.041666666666666
+        },
+        {
+          "title": "Create a profile",
+          "start": 110.208,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 120.458,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 130.75,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 144.5,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 156.708,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 171.292,
+          "duration": 15.583333333333334
+        },
+        {
+          "title": "Adversarial test",
+          "start": 186.875,
+          "duration": 12.625
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 199.5,
+          "duration": 15.291666666666666
+        },
+        {
+          "title": "Verify the repair",
+          "start": 214.792,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Optional sync",
+          "start": 227.0,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 239.625,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 251.708,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "7ee6865803baae08a32c84d8b8e6681a10d5bb183412a0a58fe9431dd202659d"
+    },
+    {
+      "id": "insurance-agent",
+      "title": "Atlas Cover",
+      "audience": "QE",
+      "industry": "Insurance",
+      "durationSeconds": 259.583,
+      "video": "insurance-agent/insurance-agent.mp4",
+      "subtitles": "insurance-agent/insurance-agent.srt",
+      "poster": "insurance-agent/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 13.125
+        },
+        {
+          "title": "Customer conversation",
+          "start": 13.125,
+          "duration": 11.291666666666666
+        },
+        {
+          "title": "Agent tools",
+          "start": 24.417,
+          "duration": 15.0
+        },
+        {
+          "title": "Decision flow",
+          "start": 39.417,
+          "duration": 16.083333333333332
+        },
+        {
+          "title": "Explore",
+          "start": 55.5,
+          "duration": 11.958333333333334
+        },
+        {
+          "title": "Local feature files",
+          "start": 67.458,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 78.25,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 93.333,
+          "duration": 14.041666666666666
+        },
+        {
+          "title": "Create a profile",
+          "start": 107.375,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 117.625,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 127.917,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 141.667,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 153.875,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 168.458,
+          "duration": 15.583333333333334
+        },
+        {
+          "title": "Adversarial test",
+          "start": 184.042,
+          "duration": 12.625
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 196.667,
+          "duration": 15.291666666666666
+        },
+        {
+          "title": "Verify the repair",
+          "start": 211.958,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Optional sync",
+          "start": 224.167,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 236.792,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 248.875,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "6d44f03195b0438fceceabf034e301e14fe719ec8f7208611c1d223f361a123b"
+    },
+    {
+      "id": "customer-support-agent-code",
+      "title": "Juniper Goods",
+      "audience": "Developer",
+      "industry": "Customer Support",
+      "durationSeconds": 250.917,
+      "video": "customer-support-agent-code/customer-support-agent-code.mp4",
+      "subtitles": "customer-support-agent-code/customer-support-agent-code.srt",
+      "poster": "customer-support-agent-code/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 11.0
+        },
+        {
+          "title": "Customer conversation",
+          "start": 11.0,
+          "duration": 11.666666666666666
+        },
+        {
+          "title": "Agent tools",
+          "start": 22.667,
+          "duration": 12.625
+        },
+        {
+          "title": "Decision flow",
+          "start": 35.292,
+          "duration": 13.958333333333334
+        },
+        {
+          "title": "Explore",
+          "start": 49.25,
+          "duration": 14.791666666666666
+        },
+        {
+          "title": "Local feature files",
+          "start": 64.042,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 74.833,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 89.917,
+          "duration": 14.458333333333334
+        },
+        {
+          "title": "Create a profile",
+          "start": 104.375,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 114.625,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 124.917,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 138.667,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 150.875,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 165.458,
+          "duration": 13.208333333333334
+        },
+        {
+          "title": "Adversarial test",
+          "start": 178.667,
+          "duration": 12.25
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 190.917,
+          "duration": 13.291666666666666
+        },
+        {
+          "title": "Verify the repair",
+          "start": 204.208,
+          "duration": 11.291666666666666
+        },
+        {
+          "title": "Optional sync",
+          "start": 215.5,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 228.125,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 240.208,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "96dd9d56a920e50a9cf2571d5bcf4ae8180986651040718a79c6459241ba0bdc"
+    },
+    {
+      "id": "customer-support-agent",
+      "title": "Juniper Goods",
+      "audience": "QE",
+      "industry": "Customer Support",
+      "durationSeconds": 249.875,
+      "video": "customer-support-agent/customer-support-agent.mp4",
+      "subtitles": "customer-support-agent/customer-support-agent.srt",
+      "poster": "customer-support-agent/poster.png",
+      "chapters": [
+        {
+          "title": "The business question",
+          "start": 0,
+          "duration": 11.0
+        },
+        {
+          "title": "Customer conversation",
+          "start": 11.0,
+          "duration": 11.666666666666666
+        },
+        {
+          "title": "Agent tools",
+          "start": 22.667,
+          "duration": 12.625
+        },
+        {
+          "title": "Decision flow",
+          "start": 35.292,
+          "duration": 13.958333333333334
+        },
+        {
+          "title": "Explore",
+          "start": 49.25,
+          "duration": 11.958333333333334
+        },
+        {
+          "title": "Local feature files",
+          "start": 61.208,
+          "duration": 10.791666666666666
+        },
+        {
+          "title": "Generate",
+          "start": 72.0,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Review criteria",
+          "start": 87.083,
+          "duration": 14.458333333333334
+        },
+        {
+          "title": "Create a profile",
+          "start": 101.542,
+          "duration": 10.25
+        },
+        {
+          "title": "Show and test the profile",
+          "start": 111.792,
+          "duration": 10.291666666666666
+        },
+        {
+          "title": "Run locally",
+          "start": 122.083,
+          "duration": 13.75
+        },
+        {
+          "title": "Read the report",
+          "start": 135.833,
+          "duration": 12.208333333333334
+        },
+        {
+          "title": "Inspect local artifacts",
+          "start": 148.042,
+          "duration": 14.583333333333334
+        },
+        {
+          "title": "Explain the finding",
+          "start": 162.625,
+          "duration": 13.208333333333334
+        },
+        {
+          "title": "Adversarial test",
+          "start": 175.833,
+          "duration": 12.25
+        },
+        {
+          "title": "MCP and multi-turn",
+          "start": 188.083,
+          "duration": 15.083333333333334
+        },
+        {
+          "title": "Verify the repair",
+          "start": 203.167,
+          "duration": 11.291666666666666
+        },
+        {
+          "title": "Optional sync",
+          "start": 214.458,
+          "duration": 12.625
+        },
+        {
+          "title": "Hosted Web UI",
+          "start": 227.083,
+          "duration": 12.083333333333334
+        },
+        {
+          "title": "Review the workflow",
+          "start": 239.167,
+          "duration": 10.708333333333334
+        }
+      ],
+      "audio": true,
+      "voice": "Andrew \u2014 Smooth, Smart and Clear \u2014 American English (ElevenLabs)",
+      "sha256": "dfea95f9806391cb57bf8a3efe25ba325b88e815c8ec504c831a7ea877f6d76b"
+    }
+  ]
+}
