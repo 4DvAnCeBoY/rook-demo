@@ -45,8 +45,12 @@ flowchart TD
   C -->|No| D["Deny without moving money"]
   C -->|Yes| E{"Owned accounts, sufficient funds and at most USD 1000?"}
   E -->|No| D
-  E -->|Yes| F["Update both balances and record transfer receipt"]
-  F --> G["Return confirmation and trace"]
+  E -->|Yes| H{"Transfer service available?"}
+  H -->|No| I["Report failure; no transfer receipt"]
+  H -->|Yes| F["Update both balances and record transfer receipt"]
+  F --> G["Return outcome and trace"]
+  D --> G
+  I --> G
 ```
 
 ## From this agent to Rook’s report

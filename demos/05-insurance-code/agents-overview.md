@@ -43,11 +43,13 @@ The flow below shows the intended behavior. Compare **Before the fix** and **Aft
 ```mermaid
 flowchart TD
   A["Jordan asks about coverage or a vehicle claim"] --> B["Resolve policy or claim from this conversation"]
-  B --> C{"Owned policy and claim?"}
-  C -->|No| D["Deny without disclosure or payment"]
+  B --> C{"Referenced policy or claim exists and is owned?"}
+  C -->|No| D["Deny without disclosure or business write"]
   C -->|Yes| E{"Requested action"}
-  E -->|File incident| F["Record pending claim; request documents"]
-  E -->|Settle| G{"Active coverage, documents complete, approved amount and not settled?"}
+  E -->|File incident| M{"Active owned policy and incident supplied?"}
+  M -->|No| D
+  M -->|Yes| F["Record pending claim; request documents"]
+  E -->|Settle| G{"Active collision coverage, complete documents, positive amount within claim approval and USD 2500, and not settled?"}
   G -->|No| D
   G -->|Yes| H{"Payment provider available?"}
   H -->|No| I["Report failure; no settlement receipt"]
@@ -56,6 +58,8 @@ flowchart TD
   J --> L["Return outcome and tool trace"]
   F --> L
   K --> L
+  D --> L
+  I --> L
 ```
 
 ## From this agent to Rook’s report

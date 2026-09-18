@@ -30,24 +30,27 @@ class NarrationTests(unittest.TestCase):
         records=[{'duration':3.4,'audio':'first.mp3','cues':[]},{'duration':7.9,'audio':'second.mp3','cues':[]}]
         with tempfile.TemporaryDirectory() as tmp, patch.object(narration,'synthesize',side_effect=records):
             result=narration.narrate(plan,Path(tmp)/'output',Path(tmp)/'cache')
-        self.assertLess(result['durationSeconds'],13)
+        self.assertLess(result['durationSeconds'],11.4)
         for scene in result['scenes']:
-            self.assertLessEqual(scene['duration']-scene['speech']['duration'],.7)
+            self.assertGreaterEqual(scene['duration'],scene['speech']['duration'])
+            self.assertLess(scene['duration']-scene['speech']['duration'],1/24)
             self.assertAlmostEqual(scene['duration']*24,round(scene['duration']*24))
 
     @unittest.skipUnless(shutil.which('ffmpeg'), 'FFmpeg required for audio timing regression')
-    def test_normalized_mp3_preserves_opening_silence_and_scene_duration(self):
+    def test_normalized_mp3_starts_without_added_silence_and_matches_scene_duration(self):
         with tempfile.TemporaryDirectory() as tmp:
             source=Path(tmp)/'speech.mp3';output=Path(tmp)/'scene.wav'
             subprocess.run(['ffmpeg','-v','error','-y','-f','lavfi','-i',
                             'sine=frequency=600:duration=5:sample_rate=44100',
                             '-c:a','libmp3lame',str(source)],check=True)
-            renderer.render_scene_audio(source,7,output)
+            renderer.render_scene_audio(source,5,output)
             with wave.open(str(output)) as wav:
-                self.assertEqual(wav.getnframes(),7*48000)
+                self.assertEqual(wav.getnframes(),5*48000)
                 self.assertEqual(wav.getframerate(),48000)
-                self.assertEqual(wav.readframes(16800),bytes(16800*2))
+                self.assertNotEqual(wav.readframes(2400),bytes(2400*2))
                 self.assertNotEqual(wav.readframes(48000),bytes(48000*2))
+                wav.setpos(5*48000-2400)
+                self.assertNotEqual(wav.readframes(2400),bytes(2400*2))
 
     def test_concurrent_renders_share_one_audio_and_timing_pair(self):
         class Response:
@@ -77,9 +80,9 @@ class NarrationTests(unittest.TestCase):
             {'duration': 10, 'speech': {'cues': [[1.2, 3.4, 'First statement.']]}},
             {'duration': 8, 'speech': {'cues': [[0, 2.5, 'Second statement.']]}},
         ])
-        self.assertAlmostEqual(cues[0][0], 1.55)
-        self.assertAlmostEqual(cues[1][0], 10.35)
-        self.assertAlmostEqual(cues[1][1], 12.85)
+        self.assertAlmostEqual(cues[0][0], 1.2)
+        self.assertAlmostEqual(cues[1][0], 10)
+        self.assertAlmostEqual(cues[1][1], 12.5)
         self.assertLess(cues[0][1], cues[1][0])
 
 if __name__ == '__main__':

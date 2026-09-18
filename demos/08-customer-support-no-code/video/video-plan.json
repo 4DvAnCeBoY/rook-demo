@@ -5,9 +5,9 @@
   "audio": true,
   "voice": {
     "provider": "ElevenLabs",
-    "name": "Vanishree — Energetic Indian English",
-    "voiceId": "TmPeb2hSxdVrThJLywkg",
-    "accent": "Indian English"
+    "name": "Andrew — Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
   },
   "scenes": [
     {

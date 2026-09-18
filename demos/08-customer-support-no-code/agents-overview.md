@@ -43,12 +43,14 @@ flowchart TD
   A["Riley requests a return or refund"] --> B["Resolve order from this turn or retained context"]
   B --> C{"Order exists and belongs to Riley?"}
   C -->|No| D["Deny without a refund"]
-  C -->|Yes| E{"At most 30 days, at most USD 250 and not already refunded?"}
+  C -->|Yes| E{"Positive amount, at most 30 days, at most USD 250 and not already refunded?"}
   E -->|No| D
   E -->|Yes| F{"Payment dependency available?"}
   F -->|No| G["Report failure without a success receipt"]
   F -->|Yes| H["Mark order refunded and record refund receipt"]
-  H --> I["Return confirmation and trace"]
+  H --> I["Return outcome and trace"]
+  D --> I
+  G --> I
 ```
 
 ## From this agent to Rook’s report

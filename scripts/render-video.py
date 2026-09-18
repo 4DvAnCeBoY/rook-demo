@@ -10,7 +10,7 @@ def captions(scenes):
     for scene in scenes:
         if 'speech' in scene:
             for start,end,part in scene['speech']['cues']:
-                result.append((cursor+.35+start,cursor+.35+end,part))
+                result.append((cursor+start,cursor+end,part))
         else:
             parts=scene['captions']; slot=scene['duration']/len(parts)
             for i,part in enumerate(parts): result.append((cursor+i*slot+.3,cursor+(i+1)*slot-.2,part))
@@ -28,8 +28,8 @@ def run(args):
 def render_scene_audio(audio, duration, output):
     samples=round(duration*48000)
     # loudnorm can leave a timestamp offset. Reset it after resampling so
-    # every scene retains its opening delay and exact place on the timeline.
-    filters=f'loudnorm=I=-18:TP=-2:LRA=7,aresample=48000,asetpts=N/SR/TB,adelay=350:all=1,apad,atrim=end_sample={samples}'
+    # speech starts at its recorded timestamp, without an added opening delay.
+    filters=f'loudnorm=I=-18:TP=-2:LRA=7,aresample=48000,asetpts=N/SR/TB,apad,atrim=end_sample={samples}'
     run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(audio),'-af',filters,'-ar','48000','-ac','1','-c:a','pcm_s16le',str(output)])
     with wave.open(str(output)) as wav:
         if wav.getframerate()!=48000 or wav.getnframes()!=samples:
@@ -82,7 +82,7 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
         segments.append(segment)
         if narrated:
             speech=scene['speech'];audio=pathlib.Path(speech['audio']).resolve()
-            if speech['duration']+.35>duration:raise RuntimeError('Narration exceeds scene duration')
+            if speech['duration']>duration:raise RuntimeError('Narration exceeds scene duration')
             wav=work/f'{index:02}.wav'
             render_scene_audio(audio,duration,wav)
             audio_segments.append(wav)

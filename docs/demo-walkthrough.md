@@ -21,8 +21,12 @@ flowchart TD
   C -->|No| D["Deny without moving money"]
   C -->|Yes| E{"Owned accounts, sufficient funds and at most USD 1000?"}
   E -->|No| D
-  E -->|Yes| F["Update both balances and record transfer receipt"]
-  F --> G["Return confirmation and trace"]
+  E -->|Yes| H{"Transfer service available?"}
+  H -->|No| I["Report failure; no transfer receipt"]
+  H -->|Yes| F["Update both balances and record transfer receipt"]
+  F --> G["Return outcome and trace"]
+  D --> G
+  I --> G
 ```
 
 | Function | Responsibility |
@@ -44,13 +48,17 @@ Follow a routine booking request through patient identity and slot availability.
 ```mermaid
 flowchart TD
   A["Alex requests help scheduling care"] --> B{"Urgent symptoms reported?"}
-  B -->|Yes| C["escalate_to_human: urgent handoff receipt"]
+  B -->|Yes| C["Request human handoff; receipt only on success; no routine booking"]
   B -->|No| D["Resolve patient and appointment slot"]
-  D --> E{"Owned patient and available capacity?"}
+  D --> E{"Owned patient, valid slot and available capacity?"}
   E -->|No| F["Deny without booking"]
-  E -->|Yes| G["Reserve slot and record appointment receipt"]
+  E -->|Yes| I{"Scheduler available?"}
+  I -->|No| J["Report failure; no appointment receipt"]
+  I -->|Yes| G["Reserve slot and record appointment receipt"]
   C --> H["Return outcome and trace"]
   G --> H
+  F --> H
+  J --> H
 ```
 
 | Function | Responsibility |
@@ -72,11 +80,13 @@ Read the owned claim and check coverage, documents, the approved amount and prio
 ```mermaid
 flowchart TD
   A["Jordan asks about coverage or a vehicle claim"] --> B["Resolve policy or claim from this conversation"]
-  B --> C{"Owned policy and claim?"}
-  C -->|No| D["Deny without disclosure or payment"]
+  B --> C{"Referenced policy or claim exists and is owned?"}
+  C -->|No| D["Deny without disclosure or business write"]
   C -->|Yes| E{"Requested action"}
-  E -->|File incident| F["Record pending claim; request documents"]
-  E -->|Settle| G{"Active coverage, documents complete, approved amount and not settled?"}
+  E -->|File incident| M{"Active owned policy and incident supplied?"}
+  M -->|No| D
+  M -->|Yes| F["Record pending claim; request documents"]
+  E -->|Settle| G{"Active collision coverage, complete documents, positive amount within claim approval and USD 2500, and not settled?"}
   G -->|No| D
   G -->|Yes| H{"Payment provider available?"}
   H -->|No| I["Report failure; no settlement receipt"]
@@ -85,6 +95,8 @@ flowchart TD
   J --> L["Return outcome and tool trace"]
   F --> L
   K --> L
+  D --> L
+  I --> L
 ```
 
 | Function | Responsibility |
@@ -110,12 +122,14 @@ flowchart TD
   A["Riley requests a return or refund"] --> B["Resolve order from this turn or retained context"]
   B --> C{"Order exists and belongs to Riley?"}
   C -->|No| D["Deny without a refund"]
-  C -->|Yes| E{"At most 30 days, at most USD 250 and not already refunded?"}
+  C -->|Yes| E{"Positive amount, at most 30 days, at most USD 250 and not already refunded?"}
   E -->|No| D
   E -->|Yes| F{"Payment dependency available?"}
   F -->|No| G["Report failure without a success receipt"]
   F -->|Yes| H["Mark order refunded and record refund receipt"]
-  H --> I["Return confirmation and trace"]
+  H --> I["Return outcome and trace"]
+  D --> I
+  G --> I
 ```
 
 | Function | Responsibility |

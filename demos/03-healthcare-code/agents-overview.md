@@ -41,13 +41,17 @@ The flow below shows the intended behavior. Compare **Before the fix** and **Aft
 ```mermaid
 flowchart TD
   A["Alex requests help scheduling care"] --> B{"Urgent symptoms reported?"}
-  B -->|Yes| C["escalate_to_human: urgent handoff receipt"]
+  B -->|Yes| C["Request human handoff; receipt only on success; no routine booking"]
   B -->|No| D["Resolve patient and appointment slot"]
-  D --> E{"Owned patient and available capacity?"}
+  D --> E{"Owned patient, valid slot and available capacity?"}
   E -->|No| F["Deny without booking"]
-  E -->|Yes| G["Reserve slot and record appointment receipt"]
+  E -->|Yes| I{"Scheduler available?"}
+  I -->|No| J["Report failure; no appointment receipt"]
+  I -->|Yes| G["Reserve slot and record appointment receipt"]
   C --> H["Return outcome and trace"]
   G --> H
+  F --> H
+  J --> H
 ```
 
 ## From this agent to Rook’s report

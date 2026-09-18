@@ -55,9 +55,9 @@ def narrate(plan,output,cache):
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         records=list(pool.map(lambda scene:synthesize(scene['narration'],voice,cache),plan['scenes']))
     if plan.get('pacing')=='speech-led':
-        # A short lead-in and exit hold, rounded to an exact video frame.
-        # Do not pad a presentation to an arbitrary target running time.
-        durations=[math.ceil((r['duration']+.65)*24)/24 for r in records]
+        # Follow the speech exactly, adding only the fraction of a video frame
+        # needed for encoding. No lead-in silence or exit hold between scenes.
+        durations=[math.ceil(r['duration']*24)/24 for r in records]
         target=sum(durations)
         plan['durationSeconds']=target
     else:

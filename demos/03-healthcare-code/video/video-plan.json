@@ -5,9 +5,9 @@
   "audio": true,
   "voice": {
     "provider": "ElevenLabs",
-    "name": "Vanishree — Energetic Indian English",
-    "voiceId": "TmPeb2hSxdVrThJLywkg",
-    "accent": "Indian English"
+    "name": "Andrew — Smooth, Smart and Clear",
+    "voiceId": "gUABw7pXQjhjt0kNFBTF",
+    "accent": "American English"
   },
   "scenes": [
     {
@@ -78,7 +78,7 @@
     {
       "asset": "healthcare-agent-code/finding",
       "duration": 1,
-      "narration": "The agent confirms an eleven o’clock appointment, and the business record contains appointment one. That violates the declared zero-capacity rule. Rook reports Fail. The problem is the booking boundary: the original tool accepts a slot that the requirements say is full."
+      "narration": "The agent confirms an eleven o’clock appointment and records appointment one, even though the requirements declare zero capacity. Rook reports Fail because the original booking tool accepts a slot that the requirements say is full."
     },
     {
       "asset": "healthcare-agent-code/redteam",
