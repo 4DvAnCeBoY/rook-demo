@@ -104,3 +104,5 @@ for (const [domainId, domain] of Object.entries(domains)) {
 }
 await writeFile(join(root, 'catalog.json'), JSON.stringify({ audiences: ['QE', 'Developer'], taxonomy, demos }, null, 2) + '\n');
 console.log(`Wrote ${demos.length} demo directories, each with 18 category probes.`);
+
+await import('./build-standalone.mjs');
