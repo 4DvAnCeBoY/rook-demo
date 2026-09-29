@@ -11,7 +11,7 @@
     "setup": "node scripts/setup-env.mjs",
     "check:llm": "node scripts/check-model.mjs",
     "demo": "node scripts/start.mjs",
-    "test": "node --test tests/*.test.mjs",
+    "test": "node --test tests/*.test.mjs && npm run evidence:check",
     "rehearse": "node scripts/rehearse.mjs",
     "check": "node scripts/check.mjs",
     "check:ui": "node scripts/check-ui.mjs",
@@ -28,7 +28,8 @@
     "media:plan": "node scripts/build-assurance-media.mjs",
     "demos:build": "node scripts/build-standalone.mjs",
     "test:standalone": "node --test tests/standalone.test.mjs",
-    "rook:ci": "node scripts/rook-ci.mjs"
+    "rook:ci": "node scripts/rook-ci.mjs",
+    "evidence:check": "node scripts/check-full-category-runs.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.30.0",
