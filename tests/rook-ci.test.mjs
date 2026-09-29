@@ -54,7 +54,7 @@ test('workspace copies are isolated, portable and consistently retargeted', asyn
   const dir = await mkdtemp(join(tmpdir(), 'native CI with spaces '));
   t.after(() => rm(dir, { recursive: true, force: true }));
   const source = join(root, 'demos/01-banking-code');
-  const original = await readFile(join(source, '.testmuai/rook/settings.json'));
+  const original = await readFile(join(source, '.testmuai/rook/sample-settings.json'));
   const destinations = [join(dir, 'one'), join(dir, 'two')];
   const copies = await Promise.all(destinations.map(destination => copyNativeWorkspace(source, destination, 'CI-PROJECT')));
   for (const copy of copies) {
@@ -66,7 +66,7 @@ test('workspace copies are isolated, portable and consistently retargeted', asyn
   }
   await writeFile(join(copies[0].agent, 'agent.yaml'), 'changed');
   assert.notEqual(await readFile(join(copies[1].agent, 'agent.yaml'), 'utf8'), 'changed');
-  assert.deepEqual(await readFile(join(source, '.testmuai/rook/settings.json')), original);
+  assert.deepEqual(await readFile(join(source, '.testmuai/rook/sample-settings.json')), original);
   await assert.rejects(copyNativeWorkspace(source, destinations[0]), /empty/);
   await assert.rejects(copyNativeWorkspace(source, join(dir, 'bad'), '../escape'), /project/);
 });
