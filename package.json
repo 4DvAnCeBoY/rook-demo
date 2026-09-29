@@ -25,7 +25,10 @@
     "samples:check": "node scripts/sample-runs.mjs",
     "docs:build": "node scripts/build-demo-guide.mjs",
     "videos": "node scripts/serve-videos.mjs",
-    "media:plan": "node scripts/build-assurance-media.mjs"
+    "media:plan": "node scripts/build-assurance-media.mjs",
+    "demos:build": "node scripts/build-standalone.mjs",
+    "test:standalone": "node --test tests/standalone.test.mjs",
+    "rook:ci": "node scripts/rook-ci.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.30.0",
